@@ -4,7 +4,25 @@
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
-( function() {
+function onLoad(fn) {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fn);
+    }
+    fn();
+}
+
+function onClick(fn, el = document) {
+	function handleClick (event) {
+		event.preventDefault();
+
+		fn(event);
+	}
+
+	el.addEventListener('mouseup', handleClick.bind(this));
+	el.addEventListener('touchend', handleClick.bind(this));
+}
+
+onLoad(function() {
 	const siteNavigation = document.getElementById( 'site-navigation' );
 
 	// Return early if the navigation don't exist.
@@ -32,7 +50,7 @@
 	}
 
 	// Toggle the .toggled class and the aria-expanded value each time the button is clicked.
-	button.addEventListener( 'click', function() {
+	onClick(function() {
 		siteNavigation.classList.toggle( 'toggled' );
 
 		if ( button.getAttribute( 'aria-expanded' ) === 'true' ) {
@@ -43,7 +61,7 @@
 	} );
 
 	// Remove the .toggled class and set aria-expanded to false when the user clicks outside the navigation.
-	document.addEventListener( 'click', function( event ) {
+	onClick(function( event ) {
 		const isClickInside = siteNavigation.contains( event.target );
 
 		if ( ! isClickInside ) {
@@ -66,13 +84,14 @@
 
 	// Toggle focus each time a menu link with children receive a touch event.
 	for ( const link of linksWithChildren ) {
-		link.addEventListener( 'touchstart', toggleFocus, false );
+		onClick(toggleFocus, link);
+		//link.addEventListener( 'touchstart', toggleFocus, false );
 	}
 
 	/**
 	 * Sets or removes .focus class on an element.
 	 */
-	function toggleFocus() {
+	function toggleFocus(event) {
 		if ( event.type === 'focus' || event.type === 'blur' ) {
 			let self = this;
 			// Move up through the ancestors of the current link until we hit .nav-menu.
@@ -96,4 +115,4 @@
 			menuItem.classList.toggle( 'focus' );
 		}
 	}
-}() );
+});

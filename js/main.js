@@ -1,18 +1,22 @@
+function onLoad(fn) {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fn);
+    }
+    fn();
+}
 
-
-jQuery( function($) {
-  $('[data-hero-trigger]')
-    .on('mouseover', function() {
-      let $this = $(this)
-      $('.hero-image').replaceWith('<div class="hero-image" data-hero-image="' + $this.data('hero-trigger') + '"></div>')
+onLoad(() => {
+    jQuery( function($) {
+    $('[data-hero-trigger]')
+        .on('mouseover', function() {
+        let $this = $(this)
+        $('.hero-image').replaceWith('<div class="hero-image" data-hero-image="' + $this.data('hero-trigger') + '"></div>')
+        })
+        .on('mouseout', function() {
+        $('.hero-image').replaceWith('<div class="hero-image" data-hero-image="home"></div>')
+        })
     })
-    .on('mouseout', function() {
-      $('.hero-image').replaceWith('<div class="hero-image" data-hero-image="home"></div>')
-    })
-})
 
-
-window.onload = () => {
     AOS.init();
     const carousel = document.querySelector('#splide');
     if (carousel) {
@@ -172,7 +176,7 @@ window.onload = () => {
 
     /**
      * Homepage on-hover background image change.
-     * 
+     *
      * @todo add dynamic images support
      */
     const homepageBackgroundImageChange = () => {
@@ -248,7 +252,7 @@ window.onload = () => {
         ];
         preloadImages(shopBackgroundImages);
 
-        const homepageContainer = document.querySelector('.main.homepage');
+        const homepageContainer = document.querySelector('.home #page');
         resetHomepageBackgroundImage(homepageContainer);
         activateOnHoverBackgroundImageChange('compounding', compoundingBackgroundImages, homepageContainer);
         activateOnHoverBackgroundImageChange('hospice', hospiceBackgroundImages, homepageContainer);
@@ -338,7 +342,7 @@ window.onload = () => {
         $checkoutForm = jQuery('form.checkout.woocommerce-checkout');
         if ($checkoutForm.is('.processing')) $checkoutForm.removeClass('processing');
     }
-    
+
     const checkWishlistMessage = () => {
         const wishlistPopMessageContainer = document.querySelector('#yith-wcwl-popup-message');
         if (!wishlistPopMessageContainer) return;
@@ -359,7 +363,7 @@ window.onload = () => {
             });
         });
     }
-    
+
     checkWishlistMessage();
 
     jQuery('form.checkout.woocommerce-checkout').bind('DOMSubtreeModified', () => {
@@ -370,4 +374,4 @@ window.onload = () => {
     jQuery('body').bind('DOMSubtreeModified', () => {
         activateAlertCloseButton();
     });
-}
+});
