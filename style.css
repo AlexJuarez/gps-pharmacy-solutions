@@ -1,0 +1,3406 @@
+/*!
+Theme Name: GPS Pharmacy Solutions
+Theme URI: https://scopicsoftware.com/
+Author: Scopic Software
+Author URI: https://scopicsoftware.com/
+Description: A custom theme for GPS Pharmacy Solutions.
+Version: 1.0.0
+Tested up to: 5.4
+Requires PHP: 5.6
+Text Domain: gps-pharmacy-solutions
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Generic
+	- Box sizing
+# Base
+	- Typography
+	- Elements
+	- Forms
+## Layouts
+# Components
+	- Navigation
+	- Posts and pages
+	- Comments
+	- Widgets
+	- Media
+	- Captions
+	- Galleries
+# plugins
+	- Jetpack infinite scroll
+# Utilities
+	- Accessibility
+	- Alignments
+
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Generic
+--------------------------------------------------------------*/
+
+/* Box sizing
+--------------------------------------------- */
+
+/* Inherit box-sizing to more easily change it's value on a component level.
+@link http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# Base
+--------------------------------------------------------------*/
+
+/* Typography
+--------------------------------------------- */
+
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+	color: #404040;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	clear: both;
+}
+
+p {
+	margin-bottom: 1.5em;
+}
+
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
+}
+
+blockquote {
+	margin: 0 1.5em;
+}
+
+address {
+	margin: 0 0 1.5em;
+}
+
+pre {
+	background: #eee;
+	font-family: "Courier 10 Pitch", courier, monospace;
+	line-height: 1.6;
+	margin-bottom: 1.6em;
+	max-width: 100%;
+	overflow: auto;
+	padding: 1.6em;
+}
+
+code,
+kbd,
+tt,
+var {
+	font-family: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+}
+
+abbr,
+acronym {
+	border-bottom: 1px dotted #666;
+	cursor: help;
+}
+
+mark,
+ins {
+	background: #fff9c0;
+	text-decoration: none;
+}
+
+big {
+	font-size: 125%;
+}
+
+/* Elements
+--------------------------------------------- */
+
+body {
+	background: #fff;
+}
+
+hr {
+	background-color: #ccc;
+	border: 0;
+	height: 1px;
+	margin-bottom: 1.5em;
+}
+
+ul {
+	list-style: disc;
+}
+
+ol {
+	list-style: decimal;
+}
+
+li>ul,
+li>ol {
+	margin-bottom: 0;
+	margin-left: 1.5em;
+}
+
+dt {
+	font-weight: 700;
+}
+
+dd {
+	margin: 0 1.5em 1.5em;
+}
+
+/* Make sure embeds and iframes fit their containers. */
+
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+}
+
+figure {
+	margin: 1em 0;
+}
+
+table {
+	margin: 0 0 1.5em;
+	width: 100%;
+}
+
+/* Forms
+--------------------------------------------- */
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	border: none;
+	border-radius: 0;
+	background: #FB8637;
+	color: #fff;
+	line-height: 1;
+	font-weight: 700;
+	padding: 15px 70px;
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
+	width: fit-content;
+	font-size: 17px;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+	border-color: #ccc #bbb #aaa;
+}
+
+button:active,
+button:focus,
+input[type="button"]:active,
+input[type="button"]:focus,
+input[type="reset"]:active,
+input[type="reset"]:focus,
+input[type="submit"]:active,
+input[type="submit"]:focus {
+	border-color: #aaa #bbb #bbb;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea,
+input[type="file"] {
+	color: #697890;
+	border: none;
+	border-radius: 0;
+	padding: 15px 20px;
+	background-color: #fff;
+	width: 100%;
+}
+
+form select {
+	padding: 15px 20px !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="range"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="color"]:focus,
+textarea:focus {
+	color: #111;
+}
+
+select {
+	border: 1px solid #ccc;
+}
+
+textarea {
+	width: 100%;
+}
+
+/*--------------------------------------------------------------
+# Layouts
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Components
+--------------------------------------------------------------*/
+
+/* Navigation
+--------------------------------------------- */
+
+.site-main .comment-navigation,
+.site-main .posts-navigation,
+.site-main .post-navigation {
+	margin: 0 0 1.5em;
+}
+
+.comment-navigation .nav-links,
+.posts-navigation .nav-links,
+.post-navigation .nav-links {
+	display: flex;
+}
+
+.comment-navigation .nav-previous,
+.posts-navigation .nav-previous,
+.post-navigation .nav-previous {
+	flex: 1 0 50%;
+}
+
+.comment-navigation .nav-next,
+.posts-navigation .nav-next,
+.post-navigation .nav-next {
+	text-align: end;
+	flex: 1 0 50%;
+}
+
+/* Posts and pages
+--------------------------------------------- */
+
+.sticky {
+	display: block;
+}
+
+.post,
+.page {
+	margin: 0 0 0;
+}
+
+.updated:not(.published) {
+	display: none;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+	margin: 1.5em 0 0;
+}
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}
+
+/* Comments
+--------------------------------------------- */
+
+.comment-content a {
+	word-wrap: break-word;
+}
+
+.bypostauthor {
+	display: block;
+}
+
+/* Widgets
+--------------------------------------------- */
+
+.widget {
+	margin: 0 0 1.5em;
+}
+
+.widget select {
+	max-width: 100%;
+}
+
+/* Media
+--------------------------------------------- */
+
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+	border: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
+}
+
+/* Make sure logo link wraps around logo image. */
+
+.custom-logo-link {
+	display: inline-block;
+	margin-right: 1rem;
+}
+
+/* Captions
+--------------------------------------------- */
+
+.wp-caption {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+	margin: 0.8075em 0;
+}
+
+.wp-caption-text {
+	text-align: center;
+}
+
+/* Galleries
+--------------------------------------------- */
+
+.gallery {
+	margin-bottom: 1.5em;
+	display: grid;
+	grid-gap: 1.5em;
+}
+
+.gallery-item {
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+}
+
+.gallery-columns-2 {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.gallery-columns-3 {
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.gallery-columns-4 {
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.gallery-columns-5 {
+	grid-template-columns: repeat(5, 1fr);
+}
+
+.gallery-columns-6 {
+	grid-template-columns: repeat(6, 1fr);
+}
+
+.gallery-columns-7 {
+	grid-template-columns: repeat(7, 1fr);
+}
+
+.gallery-columns-8 {
+	grid-template-columns: repeat(8, 1fr);
+}
+
+.gallery-columns-9 {
+	grid-template-columns: repeat(9, 1fr);
+}
+
+.gallery-caption {
+	display: block;
+}
+
+.site-footer .title-link {
+	color: #ff9d1f;
+}
+
+/*--------------------------------------------------------------
+# Plugins
+--------------------------------------------------------------*/
+
+/* Jetpack infinite scroll
+--------------------------------------------- */
+
+/* Hide the Posts Navigation and the Footer when Infinite Scroll is in use. */
+
+.infinite-scroll .posts-navigation,
+.infinite-scroll.neverending .site-footer {
+	display: none;
+}
+
+/* Re-display the Theme Footer when Infinite Scroll has reached its end. */
+
+.infinity-end.neverending .site-footer {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+# Utilities
+--------------------------------------------------------------*/
+
+/* Accessibility
+--------------------------------------------- */
+
+/* Text meant only for screen readers. */
+
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	-webkit-clip-path: inset(50%);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	-webkit-clip-path: none;
+	clip-path: none;
+	color: #21759b;
+	display: block;
+	font-size: 0.875rem;
+	font-weight: 700;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 999997;
+}
+
+/* Do not show the outline on the skip link target. */
+
+#primary[tabindex="-1"]:focus {
+	outline: 0;
+}
+
+/* Alignments
+--------------------------------------------- */
+
+.alignleft {
+	/*rtl:ignore*/
+	float: left;
+	/*rtl:ignore*/
+	margin-right: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+.alignright {
+	/*rtl:ignore*/
+	float: right;
+	/*rtl:ignore*/
+	margin-left: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 1.5em;
+}
+
+/*--------------------------------------------------------------
+# Multi-step checkout
+--------------------------------------------------------------*/
+
+.wpmc-tabs-wrapper {
+	width: 100%;
+	display: block;
+	margin: 0 auto
+}
+
+.wpmc-tabs-wrapper .wpmc-tabs-list {
+	background: #f9f9f9;
+	margin: 0;
+	padding: 0 !important
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item {
+	font-size: 13px !important;
+	line-height: 13px !important;
+	text-align: center;
+	text-transform: uppercase;
+	position: relative;
+	display: table-cell;
+	float: left;
+	padding-top: 0;
+	padding-bottom: 47px;
+	transition: all .3s ease 0s;
+	width: 25%;
+	margin-left: 0;
+	margin-right: 0
+}
+
+.wpmc-1-tabs .wpmc-tab-item {
+	width: 100%
+}
+
+.wpmc-tabs-list.wpmc-2-tabs .wpmc-tab-item {
+	width: 50%
+}
+
+.wpmc-tabs-list.wpmc-3-tabs .wpmc-tab-item {
+	width: 33%
+}
+
+.wpmc-tabs-list.wpmc-4-tabs .wpmc-tab-item {
+	width: 25%
+}
+
+.wpmc-tabs-list.wpmc-5-tabs .wpmc-tab-item {
+	width: 20%
+}
+
+.wpmc-tabs-list.wpmc-6-tabs .wpmc-tab-item {
+	width: 16.6%
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item:before {
+	display: block;
+	content: "";
+	border-bottom: 6px solid transparent;
+	height: 0;
+	position: absolute;
+	top: -2px;
+	left: 0;
+	right: 0;
+	transition: border-color .3s
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item .wpmc-tab-number {
+	display: inline-block;
+	line-height: 28px;
+	text-align: center;
+	vertical-align: middle;
+	width: 30px;
+	min-width: 30px;
+	min-height: 30px;
+	height: 30px;
+	margin-top: -14px;
+	color: #999;
+	background: #fff;
+	border-radius: 50%;
+	position: relative;
+	transition: color .3s, background .3s;
+	font-size: 16px;
+	font-weight: 400;
+	font-family: Arial, Helvetica, sans-serif
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item .number-text {
+	transition: color .3s
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-text {
+	font-size: 13px;
+	line-height: 1.25;
+	font-weight: normal;
+	letter-spacing: .3px;
+	text-transform: capitalize;
+	padding-top: 8px;
+	white-space: nowrap;
+	position: absolute;
+	top: 15px;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	color: var(--bs-secondary);
+	display: block !important;
+}
+
+label[for="payment_method_paypal"] a,
+label[for="payment_method_paypal"] img {
+	display: none;
+}
+
+#navbar-dropdown-menu-link-273+ul {
+	left: -182px;
+}
+
+nav .cart .items-count {
+	width: 20px;
+	height: 20px;
+	font-size: 12px;
+	top: -10px;
+	right: -5px;
+}
+
+nav .cart {
+	margin-top: 10px;
+}
+
+.dropdown-item {
+	white-space: initial !important;
+}
+
+.wpmc-tab-number img {
+	margin-top: -3px;
+}
+
+.wpmc-tab-item .wpmc-tab-number img {
+	display: none;
+}
+
+.wpmc-tab-item:first-child .wpmc-tab-number img,
+.wpmc-tab-item.current .wpmc-tab-number img,
+.wpmc-tab-item.previous .wpmc-tab-number img {
+	display: inline-block;
+}
+
+.wpmc-tab-item:first-child .wpmc-tab-text {
+	position: absolute
+}
+
+.wpmc-tab-item:last-child .wpmc-tab-text {
+	position: absolute;
+	left: auto;
+	transform: translate(0, 0)
+}
+
+.dropdown-toggle::after {
+	border-top: 0.35em solid !important;
+	margin-bottom: -2.5px;
+}
+
+@media screen and (min-width:767px) {
+	.wpmc-tabs-wrapper .wpmc-tabs-list {
+		display: block
+	}
+
+	.wpmc-tabs-wrapper .wpmc-tab-item {
+		display: block;
+		padding-bottom: 20px
+	}
+
+	.wpmc-tabs-wrapper .wpmc-tab-item .wpmc-tab-text {
+		display: block;
+		position: relative;
+		top: auto;
+		left: auto;
+		right: auto
+	}
+
+	.wpmc-tabs-wrapper .wpmc-tab-item .wpmc-tab-number {
+		margin-top: -14px
+	}
+}
+
+@media screen and (min-width:1200px) {
+	.wpmc-tabs-wrapper .wpmc-tab-text {
+		font-size: 13px
+	}
+}
+
+.wpmc-tabs-wrapper .wpmc-nav-text {
+	color: #555
+}
+
+.wpmc-tabs-wrapper .wpmc-nav-text a {
+	color: #e23636
+}
+
+.wpmc-tabs-wrapper .wpmc-nav-text,
+.wpmc-tabs-wrapper .wpmc-nav-buttons {
+	border-color: #d9d9d9
+}
+
+.woocommerce-checkout .wpmc-tabs-wrapper form label.error {
+	color: #e23636 !important
+}
+
+.wpmc-tabs-wrapper .wpmc-tabs-list {
+	font-weight: 600
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item {
+	color: #aaa
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item .wpmc-tab-number {
+	color: #000;
+	background: #F1F3F6;
+	border: 1px solid #ccc
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item.current {
+	color: #000
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item.current .wpmc-tab-number {
+	color: #000;
+	background: #fff;
+	border: 2px solid #ccc
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item.current .wpmc-tab-text {
+	display: block
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item:before {
+	border-bottom-color: #c9c9c9
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item.visited:before {
+	border-bottom-color: #000
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item .number-text {
+	top: 1px
+}
+
+.wpmc-tabs-wrapper .tab-completed-icon {
+	top: 2px
+}
+
+.wpmc-nav-wrapper {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 1em;
+	width: calc(100% + 4px);
+	clear: both
+}
+
+button#wpmc-back-to-cart,
+.wpmc-no-back-to-cart #wpmc-prev {
+	margin-right: auto
+}
+
+.wpmc-nav-wrapper button.wpmc-nav-button {
+	margin-right: 2px;
+	margin-left: 2px
+}
+
+.wpmc-nav-wrapper button#wpmc-prev,
+.wpmc-nav-wrapper button#wpmc-next,
+.wpmc-nav-wrapper button#wpmc-skip-login {
+	display: none !important
+}
+
+.wpmc-nav-wrapper button#wpmc-prev.current,
+.wpmc-nav-wrapper button#wpmc-next.current,
+.wpmc-nav-wrapper button#wpmc-skip-login.current {
+	display: inline-block !important
+}
+
+.wpmc-step-item {
+	display: none !important
+}
+
+.wpmc-step-item.current {
+	display: block !important
+}
+
+.woocommerce-checkout form.login .wc-social-login {
+	display: block !important
+}
+
+.wpmc-step-item #order_review,
+.wpmc-step-item #order_review_heading {
+	width: 100%
+}
+
+@-moz-document url-prefix() {
+	.sq-input {
+		height: 60px !important
+	}
+
+	input.qty {
+		padding-right: 0 !important;
+	}
+}
+
+/**
+ * Scopic custom styling
+ */
+
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+p a,
+div.ul ul li a {
+	color: #0090c7;
+}
+
+body {
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+nav .custom-logo {
+	width: 245px;
+}
+
+a.dropdown-item:after {
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	content: "";
+	display: block;
+	width: 105%;
+	margin: 15px auto 0 -5%;
+}
+
+.menu-item .nav-item:last-child a.dropdown-item:after {
+	border-color: transparent;
+}
+
+footer .footer-menu {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.wc_payment_methods {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.wc_payment_methods .payment_box p {
+	margin-left: 25px;
+	margin-top: 5px;
+}
+
+.wc_payment_methods .payment_box p,
+.woocommerce-privacy-policy-text {
+	font-style: italic;
+	font-size: 14px;
+}
+
+.woocommerce-privacy-policy-text {
+	margin-top: 50px;
+}
+
+.wc_payment_methods li {
+	margin-bottom: 15px;
+}
+
+.wc_payment_methods label {
+	color: var(--bs-primary);
+	font-family: 'Montserrat', sans-serif;
+}
+
+.wc_payment_methods input[type='radio'] {
+	margin-right: 7.5px;
+}
+
+.wc_payment_methods input[type='radio']:after {
+	width: 15px;
+	height: 15px;
+	border-radius: 15px;
+	top: -2px;
+	left: -1px;
+	position: relative;
+	background-color: #fff;
+	content: '';
+	display: inline-block;
+	visibility: visible;
+	border: 3px solid white;
+	box-shadow: 0 0 0 2px #697891;
+}
+
+.wc_payment_methods input[type='radio']:checked:after {
+	width: 15px;
+	height: 15px;
+	border-radius: 15px;
+	top: -2px;
+	left: -1px;
+	position: relative;
+	background-color: #ffa500;
+	content: '';
+	display: inline-block;
+	visibility: visible;
+	border: 2px solid white;
+	box-shadow: 0 0 0 2px #697891;
+}
+
+.footer-menu .nav-link {
+	&:hover {
+		color: #caedff
+	}
+	color: #eef0f1;
+}
+
+footer .footer-menu a {
+	font-weight: 600;
+	font-size: .875rem;
+	display: grid;
+	grid-template-columns: 20px 1fr;
+	align-items: baseline;
+	padding: .25rem 0 .25rem 1rem;
+}
+
+.footer-col-border-right,
+.contact-col-border-right {
+	position: relative;
+	/* margin-bottom: 35px;
+	padding-bottom: 25px; */
+}
+
+.social-media .social-link {
+	margin-bottom: 20px;
+}
+
+.social-media .social-link .url {
+	margin-left: 15px;
+	font-size: 14px;
+}
+
+.social-media .social-link .url a {
+	text-decoration: none;
+}
+
+footer .social-media .social-link .url {
+	color: #fff;
+}
+
+.social-media .icon {
+	width: 35px;
+	height: 35px;
+	padding: 10px;
+	border-radius: 50%;
+}
+
+.social-media .icon.facebook {
+	background: linear-gradient(0deg, #0851DE 0%, #249CFF 100%);
+}
+
+.social-media .icon.instagram {
+	background: linear-gradient(0deg, #cd3a78 0%, #6a4ccf 100%);
+}
+
+footer .social-media .icon {
+	background: #fff;
+}
+
+.social-media-col {
+	padding-left: 50px !important;
+}
+
+.footer-col-border-right:after {
+	border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.contact-col-border-right:after {
+	border-right: 1px solid #DFE5E9;
+}
+
+.footer-col-border-right:after,
+.contact-col-border-right:after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	bottom: 0;
+	right: 10px;
+	position: absolute;
+	top: 0;
+	pointer-events: none;
+}
+
+footer .footer-menu a:hover {
+	color: #fff;
+}
+
+/* .products-info-box-container {
+	flex-direction: row;
+	display: flex;
+	& .gps-info-box {
+		flex: 1;
+		margin: 0 1.5rem;
+		& .gps-info-box-fbc {
+			position: relative;
+		}
+	}
+} */
+
+.dropdown-toggle.nav-link.show:before {
+	border-bottom: 3px solid #014E6C;
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: -22px;
+	right: 0;
+	left: 0;
+}
+
+.scopic-title,
+.navbar-light .navbar-nav .nav-link,
+.montserrat-font {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.breadcrumb-current {
+	color: #5295ca !important;
+	font-weight: 700;
+}
+
+.breadcrumbs-container.womens-health {
+	background-color: rgb(251, 134, 55, 0.06);
+}
+
+.breadcrumbs-container.womens-health .breadcrumb-current,
+.page-content-wrapper.womens-health .entry-title {
+	color: var(--bs-orange) !important;
+}
+
+.breadcrumbs-container.mens-health {
+	background-color: rgb(0, 111, 183, 0.06);
+}
+
+.breadcrumbs-container.mens .breadcrumb-current,
+.page-content-wrapper.mens-health .entry-title {
+	color: var(--bs-blue) !important;
+}
+
+.breadcrumbs-container.sterile-compounding {
+	background-color: rgb(79, 191, 254, 0.06);
+}
+
+.breadcrumbs-container.sterile-compounding .breadcrumb-current,
+.page-content-wrapper.sterile-compounding .entry-title,
+.hospice-cwm .entry-title,
+.hospice-cwm .breadcrumb-current {
+	color: #4FBFFE !important;
+}
+
+.breadcrumbs-container.sterile-compounding,
+.hospice-cwm.breadcrumbs-container {
+	background-color: rgb(79, 191, 254, 0.06);
+}
+
+.breadcrumbs-container.sterile-compounding .breadcrumb-current,
+.page-content-wrapper.sterile-compounding .entry-title {
+	color: #4FBFFE !important;
+}
+
+.breadcrumbs-container.aesthetics,
+.breadcrumbs-container.shop {
+	background-color: rgb(35, 182, 94, 0.06);
+}
+
+.breadcrumbs-container.aesthetics .breadcrumb-current,
+.page-content-wrapper.aesthetics .entry-title,
+.breadcrumbs-container.shop .breadcrumb-current {
+	color: #23B65E !important;
+}
+
+.breadcrumbs-container.veterinary {
+	background-color: rgba(1, 78, 108, 0.06);
+}
+
+.breadcrumbs-container.veterinary .breadcrumb-current,
+.page-content-wrapper.veterinary .entry-title {
+	color: #014E6C !important;
+}
+
+.dark-blue-bg {
+	background-color: #014E6C;
+}
+
+.product-image-wrapper {
+	border: 1px solid #E6E6E6;
+	height: 300px;
+	padding: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+img.iv-t {
+	height: 100%;
+	object-fit: cover;
+}
+
+.product-description-wrapper .product-description {
+	font-size: 14px;
+}
+
+.breadcrumb-current::before {
+	font-weight: 100;
+}
+
+.breadcrumbs-container {
+	background-color: rgb(1, 76, 106, 0.06);
+	padding: 20px 0;
+}
+
+.hp-copy ul,
+.entry-content ul,
+.product-description ul {
+	list-style: none;
+}
+
+.hp-copy ul li::before,
+.entry-content ul li::before {
+	color: var(--bs-orange);
+}
+
+.product-description ul li::before {
+	color: var(--bs-success);
+}
+
+.product-image-container,
+.woocommerce-product-gallery__image {
+	border: 1px solid #E6E6E6;
+}
+
+.woocommerce-product-gallery__image img {
+	opacity: 0.25;
+	transition: opacity 0.25s ease-in-out;
+}
+
+.woocommerce-product-gallery__image:hover img {
+	opacity: 0.75;
+}
+
+.woocommerce-product-gallery__image:first-child img {
+	opacity: 1;
+}
+
+.woocommerce-product-gallery__image {
+	cursor: pointer;
+	max-height: 96.5px;
+	padding: 10px;
+	text-align: center;
+}
+
+.product-image-container {
+	padding: 25px;
+	margin-bottom: 15px;
+}
+
+.woocommerce-product-gallery__image img {
+	-o-object-fit: contain;
+	object-fit: contain;
+	height: 100%;
+	max-height: 100%;
+}
+
+.product-image-container .wp-post-image {
+	width: 418px;
+	height: 418px;
+	-o-object-fit: contain;
+	object-fit: contain;
+}
+
+.hp-copy ul li::before,
+.entry-content ul li::before,
+.product-description ul li::before {
+	content: "\2022";
+	font-weight: bold;
+	display: inline-block;
+	width: 1em;
+	margin-left: -1em;
+}
+
+.page-id-7 form input:not([type="submit"]),
+.page-id-7 form select,
+.page-id-7 form textarea,
+.entry-content form input:not([type="submit"]),
+.entry-content form select {
+	border: 1px solid #F5F5F5;
+	box-shadow: 0px 4px 28px rgba(0, 0, 0, 0.04);
+}
+
+.entry-content form input[type="submit"] {
+	width: 100%;
+}
+
+footer .contact-details {
+	color: #F1F3F6;
+}
+
+.contact-details p {
+	padding-right: 25px;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.wpcf7-form-control:not([type="submit"]) {
+	padding-left: 25px !important;
+}
+
+.wpcf7-form-control-wrap {
+	display: block;
+	margin-bottom: 1.5rem;
+}
+
+form.wpcf7-form .d-md-flex .wpcf7-form-control-wrap:first-child,
+form.wpcf7-form .d-flex .wpcf7-form-control-wrap:first-child {
+	margin-right: 0.75rem;
+}
+
+form.wpcf7-form p:not(.fw-lighter) {
+	margin-bottom: 0;
+}
+
+.wpcf7-form-control-wrap input {
+	height: 54px;
+}
+
+.wpcf7-form-control-wrap:not(.resume-file):before {
+	content: "*";
+	color: red;
+	position: absolute;
+	top: 17.5px;
+	margin: auto;
+	left: 15px;
+}
+
+form.wpcf7-form br {
+	display: none;
+}
+
+.dropdown-toggle.nav-link.show {
+	font-weight: 700;
+}
+
+.notice p,
+.wpcf7-form {
+	max-width: 999px;
+	margin: 0 auto;
+}
+
+.notice {
+	background-color: #0A80CD;
+}
+
+.hospice-cwm .notice {
+	background-color: var(--bs-blue);
+	padding: 65px 110px;
+}
+
+#wpcf7-f92-o1 input:not([type="submit"]),
+.wpcf7-form-control-wrap {
+	width: 100%;
+}
+
+.wpcf7-form .mb-3 .wpcf7-form-control-wrap:last-child:not(.company-name, .message, .resume-file) {
+	margin-left: 1rem !important;
+}
+
+#gps-logo {
+	display: none;
+}
+
+.show #gps-logo {
+	display: block;
+}
+
+.show #pcca-logo {
+	display: none;
+}
+
+.pcca-logo {
+	border-left: 1px solid #DFE5E9;
+}
+
+img#pcca-logo {
+  max-width: 125px;
+  margin-right: .5rem;
+}
+
+.pcca-logo img {
+	max-width: 185px;
+}
+
+footer .copyright {
+	font-size: 14px;
+	padding: 1.5rem 2rem;
+	margin: 0;
+}
+
+.text-baby-blue {
+	color: #ffffffde;
+}
+
+.text-orange {
+	color: #4e5bab;
+}
+
+.gps-info-box:hover .gps-info-box-back.gps-bg-blue, .gps-bg-blue {
+	background-color: #016FB7;
+}
+
+.wc-notice-close-button {
+	position: absolute;
+	right: 12.5px;
+	top: 0;
+	cursor: pointer;
+}
+
+.compounding-products .product-list {
+	grid-template-columns: repeat(5, 1fr);
+}
+
+.footer-section-container {
+	padding-top: 50px;
+	padding-bottom: 25px;
+}
+
+.footer-section-container .montserrat-font {
+	font-weight: 600;
+}
+
+footer .footer-menu a.nav-link:before {
+	content: "";
+	background-image: url(data:image/svg+xml,%3Csvg%20width%3D%226%22%20height%3D%2210%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M1%201l4%204-4%204%22%20stroke%3D%22%234FBFFE%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E);
+	width: 6px;
+	height: 10px;
+	background-position: center;
+	background-repeat: no-repeat;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+footer .footer-menu a.nav-link:hover:before {
+	background-image: url(data:image/svg+xml,%3Csvg%20width%3D%226%22%20height%3D%2210%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M1%201l4%204-4%204%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E);
+}
+
+.navbar-collapse {
+	z-index: 1;
+}
+
+.gps-info-boxes-container .col-lg-6 .col {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.gps-info-box {
+	perspective: 200rem;
+	transform-style: preserve-3d;
+	position: relative;
+	height: 315px;
+	/* width: 310px; */
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 1400px) {
+	.gps-info-box {
+		height: 380px;
+	}
+}
+
+.gps-info-box.gps-compounding:hover,
+.gps-info-box.gps-hospice:hover,
+.gps-info-box.gps-research:hover,
+.gps-info-box.gps-shop:hover {
+	transform: rotateY(360deg);
+}
+
+.gps-info-box .gps-info-box-fbc {
+	background-color: #fff;
+	padding: 25px;
+	box-shadow: 2.98254px 14.9127px 36.7846px rgba(0, 0, 0, 0.12);
+	height: 100%;
+	transition: all 0.8s ease;
+	position: absolute;
+	top: 0;
+	border-radius: 9px;
+	overflow: hidden;
+	left: 0;
+	width: 100%;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.gps-info-box .gps-info-box-front {
+	cursor: pointer;
+}
+
+.gps-info-box .gps-info-box-back {
+	transform: rotateY(180deg);
+}
+
+.gps-info-box:hover .gps-info-box-back {
+	transform: rotateY(0);
+}
+
+.gps-info-box.gps-compounding:hover .gps-info-box-front,
+.gps-info-box.gps-hospice:hover .gps-info-box-front,
+.gps-info-box.gps-research:hover .gps-info-box-front,
+.gps-info-box.gps-shop:hover .gps-info-box-front {
+	transform: rotateY(-180deg);
+}
+
+.gps-info-box .gps-info-box-back {
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+.gps-info-box-back a {
+	color: #fff;
+	text-decoration: none;
+	padding: 3px 0;
+	font-weight: 600;
+}
+
+.gps-info-box-back a {
+	font-weight: 700;
+}
+
+.gps-hospice .gps-info-box-back>a {
+	padding: 3px 0;
+}
+
+.gps-hospice .gps-info-box-back {
+	padding-top: 27.5px;
+}
+
+.gps-compounding .gps-info-box-back a:hover {
+	color: var(--bs-orange);
+}
+
+.gps-hospice .gps-info-box-back a:hover {
+	color: #AD4E0D;
+}
+
+.gps-info-box .button a {
+	color: #fff;
+	text-decoration: none;
+	padding: 10px 25px;
+	border-radius: 100px;
+	font-weight: 700;
+	font-size: 14.5px;
+	margin-top: 25px;
+	display: block;
+	text-align: center;
+}
+
+.wc.homepage .gps-info-box .button a {
+	position: absolute;
+	bottom: 30px;
+	right: 0;
+	left: 0;
+	width: 155px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.place-order button,
+button.place-order-over-phone {
+	background-color: var(--bs-success);
+	font-family: 'Montserrat', sans-serif;
+	color: #fff;
+	width: 100%;
+	margin-top: 25px;
+	text-transform: capitalize;
+	padding: 15px 10px;
+}
+
+.wpmc-nav-wrapper {
+	display: none;
+}
+
+.gps-info-box.gps-compounding .button a,
+.gps-info-box.gps-cbd .button a {
+	background-color: var(--bs-blue);
+}
+
+.w-fit-content {
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
+	width: fit-content;
+}
+
+.h-fit-content {
+	height: -webkit-fit-content;
+	height: -moz-fit-content;
+	height: fit-content;
+}
+
+.compounding-page .content a.url,
+.hospice-page-content .content a.url,
+.gps-url-button {
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
+	width: fit-content;
+	padding: 11px 45px !important;
+}
+
+.compounding-page .content a.url,
+.hospice-page-content .content a.url {
+	font-weight: 700;
+}
+
+.hospice-page-content .content a.url {
+	margin-top: 35px;
+}
+
+.hospice-page-content .row:nth-child(odd) .content {
+	margin-left: -10px;
+}
+
+.hospice-pbm .card-container {
+	box-shadow: 3px 15px 37px rgba(37, 56, 88, 0.06);
+	max-width: 885px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+tr.woocommerce-shipping-totals.shipping {
+	display: none;
+}
+
+.hospice-pbm .card-container .number {
+	position: absolute;
+	width: 125px;
+	height: 125px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	font-size: 52px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 200;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.hospice-pbm .col-lg-12:nth-child(even) .card-container .number {
+	left: -62.5px;
+}
+
+.hospice-pbm .col-lg-12:nth-child(odd) .card-container .number {
+	right: -62.5px;
+}
+
+.hospice-page-content .row:nth-child(even) .content {
+	margin-right: -10px;
+}
+
+.hospice-page-content .content {
+	box-shadow: 3px 15px 37px rgba(37, 56, 88, 0.06);
+	padding: 50px;
+}
+
+.compounding-page .mens-health.content a.url:hover,
+.compounding-page .womens-health.content a.url:hover,
+.compounding-page .sterile.content a.url:hover {
+	color: #fff !important;
+}
+
+.compounding-page .mens-health.content a.url:hover {
+	background-color: var(--bs-blue);
+}
+
+.compounding-page .womens-health.content a.url:hover {
+	background-color: var(--bs-warning);
+}
+
+.entry-content li {
+	margin: 15px 0;
+}
+
+.hospice-page-content .content a.url {
+	color: #fff;
+	background-color: var(--bs-blue);
+}
+
+.postid-374 span.woocommerce-Price-amount.amount bdi:after,
+.postid-231 span.woocommerce-Price-amount.amount bdi:after,
+.postid-354 span.woocommerce-Price-amount.amount bdi:after {
+	content: " / 3 month supply";
+}
+
+.compounding-page .sterile.content a.url:hover {
+	background-color: var(--bs-info);
+}
+
+.compounding-page .veterinary.content a.url {
+	color: #014E6C;
+	border: 1px solid #014E6C;
+}
+
+.compounding-page .aesthetics.content a.url:hover {
+	background-color: var(--bs-success);
+	color: #fff !important;
+}
+
+.gps-info-box.gps-hospice .button a {
+	background-color: #FB8637;
+}
+
+.gps-info-box.gps-research .button a {
+	background-color: #4FBFFE;
+}
+
+.gps-info-box.gps-shop .button a {
+	background-color: #23B65E;
+}
+
+.gps-info-box .icon img {
+	width: 100%;
+}
+
+.wc .gps-info-box .icon img {
+	height: 100px;
+}
+
+.gps-info-box .icon {
+	width: 130px;
+}
+
+#primary .main.homepage,
+.hospice-cwm-section-bg-cover {
+	background-size: cover;
+	background-repeat: no-repeat;
+	transition: background-image 0.25s ease-in-out;
+}
+
+.hospice-cwm-section-bg-cover {
+	height: 350px;
+	background-color: #014E6C;
+	background-position: center right;
+}
+
+.hospice-thumbnail {
+	min-height: 100vh;
+}
+
+.contact-us .header,
+.company .header,
+.compounding .header,
+.hospice-thumbnail,
+.hospice .header {
+	background-color: #014E6C;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.compounding .header {
+	background-position: 65% center;
+}
+
+.page-id-134 .hospice-thumbnail {
+	background-position: center right;
+}
+
+.company .header,
+.hospice .header {
+	height: 300px;
+}
+
+.contact-us .header {
+	height: 440px;
+	background-position: bottom;
+}
+
+.object-fit-cover {
+	-o-object-fit: cover;
+	object-fit: cover;
+}
+
+.hospice .header {
+	display: none;
+}
+
+.compounding .header {
+	height: 720px;
+	display: flex;
+	align-items: center;
+}
+
+.compounding-page .content,
+.hospice-content-wrapper {
+	max-width: 500px;
+}
+
+.thank-you-wrapper,
+.hp-copy h1,
+.hp-copy h2,
+.hp-copy h3 {
+	max-width: 999px !important;
+}
+
+.hp-copy p,
+.hp-copy .ul {
+	max-width: 767px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.woocommerce-MyAccount-navigation ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.woocommerce-MyAccount-navigation ul li:before {
+	display: none;
+}
+
+.woocommerce-MyAccount-navigation ul li {
+	margin-bottom: 15px;
+	font-family: 'Montserrat', sans-serif;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #F1F3F6;
+}
+
+.woocommerce-MyAccount-navigation ul li:last-child {
+	margin-bottom: 0;
+	border-bottom: none;
+}
+
+.woocommerce-MyAccount-navigation ul li a {
+	text-decoration: none;
+}
+
+.woocommerce-MyAccount-navigation ul li a:hover,
+.woocommerce-MyAccount-navigation ul li.is-active a {
+	color: var(--bs-warning);
+}
+
+.hospice-cwm-section-bg-cover .notice {
+	max-width: 885px;
+	margin-top: 160px !important;
+}
+
+.compounding .page-title {
+	color: #014E6C;
+}
+
+.wpcf7-response-output,
+.wpcf7-not-valid-tip {
+	color: #fff;
+	border: none !important;
+	text-align: center;
+	padding: 10px;
+	margin-bottom: 0 !important;
+}
+
+.entry-content .wpcf7-response-output,
+.entry-content .wpcf7-not-valid-tip,
+.woocommerce form .form-row .required {
+	color: red;
+}
+
+button.accordion-button {
+	box-shadow: 3px 15px 37px rgb(37 56 88 / 6%);
+	margin-top: 25px;
+	margin-bottom: 25px;
+	font-weight: 400;
+	font-size: 22px;
+	padding-right: 60px;
+}
+
+#menu-item-258,
+.page-template-hospice #menu-item-32,
+.page-template-hospice-products #menu-item-32,
+.page-template-hospice-pbm-solutions #menu-item-32 {
+	display: none;
+}
+
+.no-notes .product-note- {
+	display: none;
+}
+
+.page-template-hospice #menu-item-258,
+.page-template-hospice-products #menu-item-258,
+.page-template-hospice-pbm-solutions #menu-item-258 {
+	display: block;
+}
+
+.organization-form {
+	background-color: #014E6C;
+	padding: 45px 30px;
+	text-align: center;
+}
+
+.accordion-body .faq-body-heading {
+	color: #697890;
+	font-weight: 700;
+}
+
+h1.entry-title.page-title {
+	margin-bottom: 50px;
+	position: relative;
+	padding-top: 25px;
+	color: #014E6C;
+}
+
+#primary .page-content-wrapper {
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+#primary .page-content-wrapper-half {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+#primary .entry-content h2,
+#primary .entry-content h3,
+#primary .entry-content h4,
+#primary .entry-content h5,
+#primary .entry-content h6 {
+	color: var(--bs-orange);
+	font-weight: 700;
+	font-size: 18px;
+}
+
+.page-content-wrapper.shop .product-title {
+	font-size: 18px;
+	font-weight: 900;
+	height: 45px;
+}
+
+h1.entry-title.page-title:before {
+	background-color: #4FBFFE;
+}
+
+.hospice-page .hospice-page-content .title {
+	padding-top: 25px;
+	font-size: 35px;
+}
+
+h1.entry-title.page-title:before,
+.hospice-page .hospice-page-content .title:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 1px;
+	width: 35%;
+}
+
+.hospice-content-wrapper h1.entry-title.page-title:before,
+.hospice-page .title:before {
+	background-color: var(--bs-orange);
+}
+
+#primary .page-cover {
+	display: none;
+}
+
+.compounding-page,
+.hospice-page {
+	position: relative;
+}
+
+.hospice-page .title {
+	color: #014E6C;
+}
+
+.compounding-page .popup-contact-form .close-button,
+.hospice-page .popup-contact-form .close-button,
+#popup-order-over-phone .close-button {
+	position: absolute;
+	padding: 10px;
+	height: 40px;
+	width: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	right: -20px;
+	top: -20px;
+	cursor: pointer;
+}
+
+.compounding-page .popup-contact-form .close-button {
+	background-color: var(--bs-blue);
+}
+
+.hospice-page .popup-contact-form .heading {
+	color: var(--bs-blue);
+}
+
+.hospice-page .popup-contact-form input {
+	border: 1px solid #DFE5E9;
+}
+
+.hospice-page .popup-contact-form .wpcf7-response-output,
+.hospice-page .popup-contact-form .wpcf7-not-valid-tip {
+	color: #697890;
+}
+
+.hospice-page .popup-contact-form input[type="submit"] {
+	border: none;
+	background-color: #23B65E;
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
+	width: fit-content;
+}
+
+.hospice-page .popup-contact-form .close-button,
+#popup-order-over-phone .close-button {
+	background-color: var(--bs-orange);
+}
+
+.compounding-page .popup-contact-form,
+.hospice-page .popup-contact-form {
+	max-width: 700px;
+}
+
+.compounding-page-content .c-card,
+.hospice-page-content .c-card {
+	cursor: pointer;
+}
+
+.hospice-page .popup-contact-form {
+	top: 0;
+	height: -webkit-fit-content;
+	height: -moz-fit-content;
+	height: fit-content;
+	display: table;
+}
+
+.compounding-page .popup-contact-form textarea,
+.research.organization-form textarea,
+.organization-form textarea {
+	height: 100px;
+}
+
+#popup-order-over-phone {
+	position: sticky;
+	right: 0;
+	left: 0;
+	margin: auto;
+	bottom: 50px;
+	max-width: 666px;
+	z-index: 999999;
+}
+
+.lock-overlay {
+	opacity: 0;
+	pointer-events: painted;
+}
+
+.lock-overlay.active {
+	position: absolute;
+	width: 100%;
+	min-height: 100vh;
+	background: #010101;
+	opacity: 0.75;
+	transition: opacity 500ms ease-in-out;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 1025;
+}
+
+.add_to_cart_button.loading {
+	opacity: 0.5;
+	cursor: progress;
+}
+
+a.added_to_cart.wc-forward {
+	display: none;
+}
+
+.fw-900 {
+	font-weight: 900;
+}
+
+.breadcrumb-url a {
+	text-decoration: none;
+	color: var(--bs-secondary);
+}
+
+.breadcrumb-url a:hover {
+	color: var(--bs-secondary);
+}
+
+h3.product-note {
+	font-weight: 900 !important;
+	margin: 2rem 0;
+	color: var(--bs-success);
+}
+
+.yith-wcwl-add-to-wishlist {
+	margin-top: 1.5rem;
+}
+
+.yith-wcwl-add-to-wishlist i {
+	color: var(--bs-orange);
+}
+
+.yith-wcwl-add-to-wishlist a.add_to_wishlist {
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.yith-wcwl-add-to-wishlist .yith-wcwl-wishlistexistsbrowse a {
+	text-transform: capitalize;
+}
+
+table.wishlist_table tbody .product-stock-status span {
+	color: var(--bs-success) !important;
+}
+
+.yith-wcwl-add-to-wishlist a:hover {
+	color: var(--bs-orange) !important;
+}
+
+.wishlist_view .wishlist-items-wrapper td {
+	text-align: left;
+}
+
+.wishlist_view .wishlist-items-wrapper td img,
+.cart_item .product-thumbnail img {
+	height: 175px;
+	-o-object-fit: contain;
+	object-fit: contain;
+}
+
+.wishlist_view td.product-thumbnail {
+	width: 150px;
+	height: 150px;
+}
+
+.wishlist_table tr td.product-thumbnail a {
+	max-width: initial;
+}
+
+.container.gps-info-boxes-container {
+	transform: scale(0.83);
+}
+
+@media screen and (min-width: 992px) {
+
+	.wc.homepage,
+	.main.homepage {
+		min-height: 905px;
+	}
+}
+
+@media screen and (min-width: 576px) and (max-width: 991px) {
+	.wc.homepage {
+		min-height: 1100px;
+		position: relative;
+	}
+
+	.main.homepage {
+		min-height: 1200px;
+		position: relative;
+	}
+
+	.main.homepage::before {
+		background-color: rgba(255, 255, 255, .65);
+		content: '';
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 0;
+	}
+
+	.wc.homepage>.container,
+	.main.homepage>.container {
+		z-index: 1;
+	}
+}
+
+@media screen and (max-width: 575px) {
+	.wc.homepage {
+		min-height: 960px;
+		position: relative;
+	}
+
+	.main.homepage {
+		min-height: 1100px;
+		position: relative;
+	}
+
+	.main.homepage::before {
+		background-color: rgba(255, 255, 255, .65);
+		content: '';
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 0;
+	}
+
+	.main.homepage>.container {
+		z-index: 1;
+	}
+}
+
+.main.homepage section {
+	position: relative;
+}
+
+.main.homepage section::before {
+	background-color: #f8f9fa;
+	bottom: 0;
+	content: '';
+	display: block;
+	height: calc(265px/2);
+	left: 0;
+	width: 100%;
+	position: absolute;
+}
+
+.wishlist_table.images_grid li .item-details table.item-details-table td.value,
+.wishlist_table.mobile li .item-details table.item-details-table td.value,
+.wishlist_table.mobile li table.additional-info td.value,
+.wishlist_table.modern_grid li .item-details table.item-details-table td.value {
+	text-align: right !important;
+}
+
+.wishlist_table tr .product-add-to-cart a.add_to_cart {
+	margin: 0 auto !important;
+	padding: 5px 20px !important;
+	display: block !important;
+}
+
+.wishlist_table tr .product-add-to-cart a.remove_from_wishlist {
+	display: block !important;
+	margin-top: 10px !important;
+	padding: 5px 20px !important;
+}
+
+.wishlist_view thead th {
+	font-weight: 900;
+	font-size: 16px;
+	color: var(--bs-primary);
+	text-transform: capitalize;
+}
+
+table.wishlist_table thead th,
+table.wishlist_table tbody tr {
+	border-top: none;
+	border-bottom: 1px solid #F1F3F6;
+}
+
+.woocommerce-cart-form__cart-item .table-border-bottom {
+	border-bottom: 1px solid #F1F3F6;
+	margin-bottom: 3rem;
+	padding-bottom: 3rem;
+}
+
+@-webkit-keyframes hide {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		display: none;
+		visibility: hidden;
+		opacity: 0;
+	}
+}
+
+@keyframes hide {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		display: none;
+		visibility: hidden;
+		opacity: 0;
+	}
+}
+
+.woocommerce-message li,
+.woocommerce-error li {
+	list-style: none;
+}
+
+#yith-wcwl-popup-message {
+	top: initial;
+	left: initial;
+	right: initial;
+	margin: auto !important;
+	box-shadow: none;
+}
+
+.woocommerce-message,
+#yith-wcwl-popup-message {
+	background: #E9F8EF;
+	color: #23B65E;
+}
+
+.woocommerce-error {
+	background: rgb(255 239 239);
+	color: rgb(253 90 90);
+}
+
+.woocommerce-message,
+.woocommerce-error,
+#yith-wcwl-popup-message {
+	display: none;
+	font-weight: 700;
+	line-height: 50px;
+	position: fixed;
+	bottom: 10vh;
+	padding: 20px 40px;
+	z-index: 1025;
+	margin: auto;
+	left: 0;
+	right: 0;
+	text-align: center;
+	max-width: 700px;
+	border-radius: 9px;
+	line-height: 35px;
+	font-size: 18px;
+}
+
+#site-navigation {
+	z-index: 4;
+}
+
+.product-added-btn {
+	width: 160px;
+	height: 40px;
+	margin: auto;
+}
+
+.product-added-btn,
+.woocommerce-message,
+.woocommerce-error,
+#yith-wcwl-popup-message {
+	-webkit-animation-name: hide;
+	animation-name: hide;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-timing-function: ease-out;
+	animation-timing-function: ease-out;
+	-webkit-animation-delay: 10s;
+	animation-delay: 10s;
+	-webkit-animation-iteration-count: 1;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+.woocommerce-notices-wrapper .woocommerce-message:last-of-type,
+.woocommerce-notices-wrapper .woocommerce-error:last-of-type,
+.woocommerce-notices-wrapper #yith-wcwl-popup-message:last-of-type {
+	display: block;
+}
+
+.wishlist_table.mobile {
+	text-align: left;
+}
+
+.splide__slide img {
+	max-height: 342px;
+	max-width: 342px;
+	-o-object-fit: cover;
+	object-fit: cover;
+}
+
+.wishlist_table.mobile li {
+	margin-bottom: 0;
+}
+
+.wishlist_table.mobile .item-details-table .value {
+	text-align: left !important;
+	font-weight: bold;
+	color: var(--bs-success);
+}
+
+.wishlist_table.mobile li {
+	margin-bottom: 50px;
+}
+
+.wishlist_table.mobile li:last-child {
+	margin-bottom: 0;
+}
+
+input.qty {
+	padding: 15px 20px;
+}
+
+.cart-collaterals .cart-subtotal th,
+.cart-collaterals .cart-subtotal td,
+.cart-collaterals .order-tax th,
+.cart-collaterals .order-tax td {
+	border-bottom: 1px solid #F1F3F6;
+	padding: 15px 0;
+}
+
+.cart-collaterals .order-total th,
+.cart-collaterals .order-total td {
+	padding: 15px 0;
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item .wpmc-tab-number {
+	color: #F1F3F6;
+	border: 2px solid #F1F3F6;
+	font-weight: 600;
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item:first-child .wpmc-tab-number,
+.wpmc-tabs-wrapper .wpmc-tab-item.current .wpmc-tab-number,
+.wpmc-tabs-wrapper .wpmc-tab-item.previous .wpmc-tab-number {
+	border-color: var(--bs-success);
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item:first-child .wpmc-tab-number,
+.wpmc-tabs-wrapper .wpmc-tab-item.current .wpmc-tab-number,
+.wpmc-tabs-wrapper .wpmc-tab-item.previous .wpmc-tab-number {
+	background-color: var(--bs-success);
+	color: #fff;
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item:first-child::before,
+.wpmc-tabs-wrapper .wpmc-tab-item.current::before,
+.wpmc-tabs-wrapper .wpmc-tab-item.previous::before {
+	border-bottom-color: var(--bs-success);
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item:before {
+	border-bottom-color: #F1F3F6;
+}
+
+.wpmc-tab-item:first-child:before {
+	width: 50%;
+	left: initial;
+}
+
+.wpmc-tab-item:last-child:before {
+	width: 50%;
+	right: initial;
+}
+
+.wpmc-tabs-wrapper .wpmc-tab-item:before {
+	border-bottom-color: #F1F3F6;
+}
+
+.wpmc-tabs-list:after {
+	display: block;
+	clear: both;
+	content: "";
+}
+
+li.wpmc-tab-item {
+	margin-top: 45px;
+	padding-bottom: 30px !important;
+}
+
+ul.wpmc-tabs-list {
+	background: #fff !important;
+	box-shadow: 0px 13px 44px #f1f3f6;
+	border-radius: 0.3rem;
+	margin: 50px auto;
+}
+
+.wpmc-tabs-wrapper {
+	margin-bottom: 50px;
+}
+
+span.select2-selection.select2-selection--single {
+	border-radius: 0;
+	padding: 15px 20px;
+	height: 55px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+	top: 13px;
+}
+
+.woocommerce input,
+.woocommerce select,
+span.select2-selection.select2-selection--single,
+.woocommerce textarea {
+	border: 1px solid #DFE5E9;
+}
+
+.woocommerce abbr {
+	color: var(--bs-danger);
+}
+
+.wpcf7 .ajax-loader {
+	display: block;
+	position: absolute;
+	right: 10px;
+	top: 0;
+	margin: auto;
+	bottom: 0;
+}
+
+.product-title>a:hover {
+	color: var(--bs-warning) !important;
+}
+
+.cart-item-actions .add-to-wishlist a:hover {
+	background-color: var(--bs-warning);
+	border-color: var(--bs-warning);
+}
+
+.woocommerce-product-gallery__wrapper {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 10px;
+}
+
+abbr {
+	cursor: default !important;
+	text-decoration: none !important;
+	border: none;
+}
+
+footer .tel-no a {
+	color: var(--bs-info);
+	transition: color 0.15s ease-in-out;
+}
+
+footer .tel-no a:hover {
+	color: #fff !important;
+}
+
+.compounding-cover {
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.compounding-cover.wh-cover {
+	background-position: center -150px;
+}
+
+.compounding-cover.mh-cover {
+	background-position: center -100px;
+}
+
+.entry-content .page-template-company:not(.page-id-20) ul {
+	padding: 0;
+	margin: 0 20px;
+}
+
+td.woocommerce-orders-table__cell.woocommerce-orders-table__cell-order-actions a {
+	padding-right: 10px;
+}
+
+td.woocommerce-orders-table__cell.woocommerce-orders-table__cell-order-actions a:last-child {
+	padding-right: 0;
+}
+
+.compounding-cover.veterinary-cover {
+	background-position: center -100px;
+}
+
+.compounding-cover.as-cover {
+	background-position: center -100px;
+}
+
+.woocommerce button[name="update_cart"],
+.woocommerce input[name="update_cart"] {
+	display: none;
+}
+
+.navbar-toggled-overly {
+	display: none;
+}
+
+/* careers page */
+
+.page-id-18 .attachment-post-thumbnail {
+	height: 100%;
+	object-fit: cover;
+}
+
+.object-fit-contain {
+	object-fit: contain;
+}
+
+.hospice-pbm .col-lg-12:nth-child(even) .card-container .content {
+	margin-left: 50px;
+}
+
+.hospice-pbm .col-lg-12:nth-child(odd) .card-container .content {
+	margin-right: 50px;
+}
+
+.breadcrumbs-container li {
+	margin: 0;
+}
+
+.woocommerce-table.woocommerce-table--custom-fields {
+	display: none;
+}
+
+p.product-title.text-center {
+	height: 55px;
+}
+
+.no-notes p.product-title.text-center {
+	height: auto;
+}
+
+@media (max-width: 1399px) {
+	.hospice-thumbnail {
+		min-height: initial;
+		align-self: normal;
+	}
+
+	.gps-info-box {
+		/* width: 265px; */
+	}
+
+	.gps-info-box .gps-info-box-back {
+		padding-top: 25px;
+		padding-left: 25px;
+		padding-right: 25px;
+		overflow-y: none;
+	}
+
+	.gps-hospice .gps-info-box-back {
+		/* padding-top: 100px; */
+	}
+}
+
+@media (max-width: 1199px) {
+	.position-md-static {
+		position: static !important;
+		z-index: initial !important;
+	}
+
+	.compounding-cover.mh-cover {
+		background-position: center;
+	}
+
+	.footer-col-border-right:after {
+		display: none;
+	}
+
+	.hospice-pbm .col-lg-12:nth-child(even) .card-container .number {
+		left: -45px;
+	}
+
+	.hospice-pbm .col-lg-12:nth-child(odd) .card-container .number {
+		right: -45px;
+	}
+
+	.gps-info-box {
+		width: 220px;
+	}
+
+	.dropdown-toggle.nav-link:after,
+	.dropdown-toggle.nav-link.show:after {
+		border: none !important;
+	}
+
+	.dropdown-toggle.nav-link:before,
+	.dropdown-toggle.nav-link.show:before {
+		border-bottom: none;
+		position: absolute;
+		content: "";
+		bottom: initial;
+		left: initial;
+		top: initial;
+		right: 35px;
+		height: 13px;
+		width: 100%;
+		background-image: url(data:image/svg+xml,%3Csvg%20width%3D%229%22%20height%3D%2213%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M1.043%2011.293a1%201%200%20101.414%201.414l-1.414-1.414zM7.25%206.5l.707.707.707-.707-.707-.707-.707.707zM2.457.293a1%201%200%2000-1.414%201.414L2.457.293zm0%2012.414l5.5-5.5-1.414-1.414-5.5%205.5%201.414%201.414zm5.5-6.914l-5.5-5.5-1.414%201.414%205.5%205.5%201.414-1.414z%22%20fill%3D%22%238FA4B1%22%2F%3E%3C%2Fsvg%3E);
+		background-repeat: no-repeat;
+		background-position: right;
+	}
+
+	.dropdown-toggle.nav-link.show:before {
+		background-image: url(data:image/svg+xml,%3Csvg%20width%3D%229%22%20height%3D%2213%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M1.043%2011.293a1%201%200%20101.414%201.414l-1.414-1.414zM7.25%206.5l.707.707.707-.707-.707-.707-.707.707zM2.457.293a1%201%200%2000-1.414%201.414L2.457.293zm0%2012.414l5.5-5.5-1.414-1.414-5.5%205.5%201.414%201.414zm5.5-6.914l-5.5-5.5-1.414%201.414%205.5%205.5%201.414-1.414z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E);
+		transform: rotate(90deg);
+		width: 9px;
+	}
+
+	a.dropdown-item {
+		padding-left: 60px;
+	}
+
+	a.dropdown-item:after {
+		width: calc(100% + 110px);
+		margin: 15px auto 0 -70px;
+	}
+
+	.scopic-title {
+		text-align: center;
+	}
+
+	nav .pcca-logo {
+		border-left: 0;
+		display: grid;
+		grid-template-columns: 1fr 31px;
+		position: relative;
+		padding-bottom: 25px;
+		margin-left: 0 !important;
+	}
+
+	.pcca-logo:after {
+		content: "";
+		width: calc(100% + 70px);
+		position: absolute;
+		bottom: 0;
+		height: 1px;
+		background: #DFE5E9;
+		right: 0;
+		left: -35px;
+	}
+
+	.navbar-light .navbar-nav .nav-link {
+		width: calc(100% + 70px);
+		margin-left: -35px;
+		padding-left: 50px;
+		position: relative;
+		display: flex;
+		align-items: center;
+		padding-top: 15px;
+	}
+
+	.navbar-light .navbar-nav .nav-link.show {
+		color: #FB8637 !important;
+		background-color: #016fb7;
+	}
+
+	.navbar-collapse {
+		position: absolute;
+		width: 285px;
+		margin: auto;
+		background: #fff;
+		padding: 25px 35px;
+		height: 100vh !important;
+		top: 0;
+		overflow: hidden;
+		left: -100%;
+		transition: left 150ms ease-in-out !important;
+	}
+
+	.dropdown ul.dropdown-menu {
+		margin: 0;
+		width: calc(100% + 70px);
+		margin-left: -35px;
+		margin-top: -5px;
+		padding: 0;
+	}
+
+	.navbar-collapse.collapse.show {
+		left: 0;
+		z-index: 99999;
+		overflow: scroll;
+		padding-bottom: 100px;
+	}
+
+	.main-navigation.toggled .navbar-toggled-overly {
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 100vh;
+		background: #131934;
+		opacity: 0.5;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		z-index: 99998;
+	}
+
+	.navbar-collapse .scopic-title {
+		margin: 25px 0 20px 0 !important;
+	}
+
+	.dropdown-menu.show .dropdown-item:hover,
+	.dropdown-menu.show .dropdown-item:focus {
+		font-weight: initial;
+		color: #fff;
+		background-color: rgba(157, 181, 198, 0.12);
+	}
+}
+
+@media (max-width: 991px) {
+
+	p.text-center.ps-4.pe-4.product-note-,
+	p.product-title.text-center {
+		height: initial;
+	}
+
+	.compounding-products .product-list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.container.gps-info-boxes-container {
+		transform: scale(1);
+	}
+
+
+
+	.woocommerce-message,
+	.woocommerce-error,
+	#yith-wcwl-popup-message {
+		margin: 15px;
+		bottom: 0;
+	}
+
+	#primary .wc.homepage {
+		background-image: url('./img/shop/homepage-cover-mob.jpg') !important;
+		background-color: #dbadb4;
+	}
+
+	#primary .main.homepage {
+		background-image: url('./img/homepage/1-mob.jpg') !important;
+		background-color: #e6f0f1;
+		background-position: center -50px !important;
+	}
+
+	.compounding-cover.wh-cover {
+		background-position: center;
+	}
+
+	.compounding-cover.mh-cover {
+		background-position: center;
+	}
+
+	.compounding-cover.as-cover {
+		background-position: center;
+	}
+
+	.gps-info-box:hover .gps-info-box-back,
+	.gps-info-box.gps-compounding:hover,
+	.gps-info-box.gps-hospice:hover,
+	.gps-info-box.gps-research:hover,
+	.gps-info-box.gps-shop:hover,
+	.gps-info-box.gps-compounding:hover .gps-info-box-front,
+	.gps-info-box.gps-hospice:hover .gps-info-box-front,
+	.gps-info-box.gps-research:hover .gps-info-box-front,
+	.gps-info-box.gps-shop:hover .gps-info-box-front {
+		transform: none !important;
+	}
+
+	.gps-info-box .gps-info-box-back {
+		display: none !important;
+	}
+
+	.cart-item-actions .product-remove,
+	.cart-item-actions .product-remove a,
+	.cart-item-actions .add-to-wishlist,
+	.cart-item-actions .add-to-wishlist a {
+		width: 100%;
+	}
+
+	.hospice-page h1.entry-title,
+	.page-template-research h1.page-title {
+		text-align: center;
+	}
+
+	.hospice-page h1.entry-title {
+		font-size: 40px;
+		margin-top: 10px !important;
+		margin-bottom: -15px;
+	}
+
+	a.w-md-100 {
+		width: 100% !important;
+	}
+
+	.footer-col-border-right:after,
+	.contact-col-border-right:after {
+		border-right: none;
+		width: 65%;
+		display: block;
+		margin: auto;
+		left: 0;
+	}
+
+	.hospice .header {
+		display: block;
+	}
+
+	#primary .hospice-thumbnail {
+		display: none !important;
+	}
+
+	.hospice-content-wrapper {
+		max-width: 100%;
+		text-align: center;
+	}
+
+	.compounding-page .header .col {
+		justify-content: center;
+		align-items: center;
+	}
+
+	.compounding-page .header .col .title-image {
+		margin-bottom: -600px !important;
+	}
+
+	#primary .page-content-wrapper .thumbnail {
+		display: none !important;
+	}
+
+	#primary .page-cover {
+		display: block;
+	}
+
+	#primary .page-content-wrapper {
+		margin-top: 50px;
+	}
+
+	#primary .page-content-wrapper .entry-title,
+	#primary .page-content-wrapper .entry-title~p {
+		text-align: center;
+	}
+
+	h1.entry-title.page-title:before {
+		right: 0;
+		width: 50%;
+		margin: auto;
+	}
+
+	.contact-col-border-right:after {
+		border-right: none;
+		border-bottom: 1px solid #DFE5E9;
+	}
+
+	.gps-info-box {
+		width: 325px;
+	}
+
+	.gps-info-box .gps-info-box-fbc {
+		height: 100%;
+	}
+
+	.gps-info-boxes-container .col-lg-6 .col {
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+
+	.main.homepage,
+	.wc.homepage {
+		/* padding-top: 550px; */
+	}
+}
+
+@media (max-width: 855px) {
+	.contact-us .header {
+		height: 300px;
+	}
+
+	.hospice-pbm .col-lg-12:nth-child(odd) .card-container .content {
+		margin-right: 100px;
+	}
+
+	.hospice-pbm .col-lg-12:nth-child(even) .card-container .content {
+		margin-left: 100px;
+	}
+
+	.hospice-pbm .col-lg-12:nth-child(even) .card-container .number {
+		left: -20px;
+	}
+
+	.hospice-pbm .col-lg-12:nth-child(odd) .card-container .number {
+		right: -20px;
+	}
+}
+
+@media (max-width: 767px) {
+	.wc.homepage {
+		padding-top: 450px;
+	}
+
+	.additional-info-wrapper a {
+		width: 100%;
+	}
+
+	.additional-info-wrapper a.remove_from_wishlist {
+		background-color: transparent;
+		border: none;
+		color: #FD5A5A !important;
+	}
+
+	#place_order {
+		padding: 1rem 1.5rem;
+	}
+
+	#place_order_over_phone {
+		padding: 1rem;
+	}
+
+	.hospice-pbm .card-container {
+		text-align: center;
+	}
+
+	.hospice-pbm .card-container .number {
+		width: 100px;
+		height: 100px;
+	}
+
+	a:focus {
+		outline: none;
+	}
+
+	.nav-link {
+		transition: none !important
+	}
+
+	.woocommerce_account_navigation {
+		position: static !important;
+		z-index: 1 !important;
+	}
+
+	.wc.homepage .gps-info-box-front p {
+		font-size: 18px !important;
+	}
+
+	.gps-info-box .gps-info-box-back {
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+
+	.gps-info-box .gps-info-box-back {
+		overflow: none;
+		-webkit-overflow-scrolling: none;
+		z-index: 3;
+	}
+
+	.hospice-cwm .notice {
+		padding: 35px;
+	}
+
+	.hospice-page .popup-contact-form .wpcf7-form .mb-3 .wpcf7-form-control-wrap {
+		margin-left: 0 !important;
+	}
+
+	.research.organization-form input {
+		display: block;
+	}
+
+	.compounding-page-content .row:nth-child(odd) {
+		flex-direction: column-reverse;
+	}
+
+	.page-faq .wpcf7-form .mb-3 .wpcf7-form-control-wrap:last-child:not(.company-name, .message, .resume-file),
+	.page-faq .wpcf7-form .mb-3 {
+		margin: 0 !important;
+	}
+
+	.gps-info-box {
+		width: 250px;
+	}
+
+	.gps-info-box .gps-info-box-fbc {
+		height: 100%;
+	}
+
+	.footer-col-border-right:after {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+	}
+
+	.social-media-col {
+		padding-left: 0 !important;
+	}
+
+	.hospice-pbm .entry-title {
+		margin-bottom: 125px !important;
+	}
+
+	.hospice-pbm .card-container {
+		padding-top: calc(62.5px + 1.5rem) !important;
+		margin-bottom: 125px !important;
+	}
+
+	.hospice-pbm .col-lg-12 .card-container .number {
+		right: 0 !important;
+		left: 0 !important;
+		bottom: initial;
+		top: -62.5px;
+	}
+
+	.hospice-pbm .card-container .content {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
+
+	.compounding-mobile-page-content .col-sm-6 img {
+		width: 100%;
+		-o-object-fit: cover;
+		object-fit: cover;
+		height: 180px;
+	}
+
+	.compounding-page .popup-contact-form .close-button,
+	#popup-order-over-phone .close-button {
+		right: 15px;
+	}
+
+	#primary .main.homepage {
+		background-size: contain;
+		background-position: center -50px !important;
+	}
+
+	#primary .wc.homepage {
+		background-size: contain;
+		background-position: top !important;
+	}
+}
+
+@media (max-width: 576px) {
+	.contact-us .header {
+		height: 200px;
+		background-position: left center;
+	}
+
+	.compounding .header {
+		background-image: url('./img/compounding/cover-mob.jpg') !important;
+		background-position: top;
+		height: 250px;
+	}
+
+	.hospice-cwm-section-bg-cover {
+		background-image: url('./img/hospice/compounding/bg-mob.jpg') !important;
+		background-position: top;
+		height: 500px;
+	}
+
+	.product-image-wrapper {
+		padding: 15px;
+		height: 250px;
+	}
+
+	.product-image-wrapper.hospice-sa {
+		height: fit-content !important;
+	}
+
+	.wc.homepage .gps-info-box-front img {
+		transform: scale(0.75);
+	}
+
+	.wpcf7-form .mb-3 .wpcf7-form-control-wrap:last-child:not(.company-name, .message, .resume-file) {
+		margin: 0 !important;
+	}
+
+	.gps-info-box {
+		/* width: 265px; */
+	}
+
+	.gps-info-box .gps-info-box-fbc {
+		height: 100%;
+		width: calc(100% + 5px);
+	}
+
+	.gps-info-boxes-container .col-lg-6 .col,
+	.gps-info-boxes-container {
+		padding: 2.5px !important;
+	}
+
+	.hospice-cwm-over-cover .px-5 {
+		padding: 0 !important;
+	}
+}
+
+@media (max-width: 565px) {
+
+	.hospice-page .popup-contact-form .close-button,
+	#popup-order-over-phone .close-button {
+		right: 15px;
+	}
+
+	.gps-info-box .gps-info-box-fbc {
+		width: 100%;
+	}
+
+	.gps-info-box {
+		width: 100%;
+	}
+}
+
+@media (max-width: 505px) {
+	.wc.homepage .gps-info-box .button a {
+		padding: 7.5px 12.5px;
+		width: calc(100% - 60px);
+	}
+
+	.main.homepage,
+	.wc.homepage {
+		/* padding-top: 275px; */
+	}
+
+	.gps-info-box .gps-info-box-fbc {
+		height: 100%;
+	}
+
+	.gps-info-box.gps-hospice:hover .gps-info-box-back {
+		padding-top: 100px;
+	}
+
+	.gps-info-boxes-container .col-lg-6:last-child {
+		margin-top: -15px;
+	}
+
+	.veterinary-cover {
+		background-size: contain !important;
+		background-position: center top !important;
+		margin-bottom: -50px;
+	}
+
+	.splide__slide img {
+		width: 100%;
+	}
+
+	.labs-cs {
+		font-size: 18px;
+	}
+}
+
+@media (max-width: 425px) {
+	.wc.homepage .gps-info-box .button a {
+		width: calc(100% - 30px);
+	}
+
+	.splide__arrows .splide__arrow--prev {
+		left: -35px !important;
+	}
+
+	.splide__arrows .splide__arrow--next {
+		right: -35px !important;
+	}
+
+	.accordion-body .container {
+		padding: 0;
+	}
+
+	nav .custom-logo {
+		width: 180px;
+	}
+
+	.scopic-title {
+		font-size: 12px;
+	}
+
+	.gps-info-box .gps-info-box-fbc {
+		padding: 25px 15px;
+	}
+
+	.gps-info-boxes-container .col-lg-6 .col,
+	.gps-info-boxes-container {
+		padding: 0;
+	}
+
+	.compounding-page .catalog-heading {
+		padding: 0 !important;
+	}
+}
+
+@media (max-width: 375px) {
+	.gps-info-box .button a {
+		padding: 7.5px 12.5px;
+		width: 100%;
+	}
+
+	.gps-info-box .icon img {
+		width: 80%;
+		margin: 0 auto;
+		display: block;
+	}
+
+	.gps-info-box .title p {
+		margin-top: 10px;
+	}
+
+	.wc.homepage .gps-info-box-front p,
+	.gps-info-box .title p {
+		font-size: 15px !important;
+	}
+
+	.gps-info-box .gps-info-box-fbc {
+		padding: 25px 5px;
+		height: 100%;
+	}
+
+	.gps-info-box {
+		/* height: 280px; */
+	}
+
+	.product-image-wrapper {
+		padding: 25px 15px;
+		height: 175px;
+	}
+}
+
+@media (max-width: 320px) {
+
+	.main.homepage,
+	.wc.homepage {
+		padding-top: 225px;
+	}
+
+	.wc.homepage .gps-info-box .button a {
+		width: calc(100% - 20px);
+		font-size: 12px;
+		padding: 7.5px 5px;
+	}
+}
+
+@media (max-width: 300px) {}
+
+
+.btn.rounded {
+	border-radius: 50px !important;
+}
+
+.bullet-warning {
+	list-style: none;
+	padding-left: 0;
+}
+
+.bullet-warning li div {
+	padding-left: 1rem;
+	position: relative;
+}
+
+.bullet-warning li div::before {
+	background-color: #FB8637;
+	border-radius: 50%;
+	content: '';
+	display: block;
+	height: 6px;
+	left: 0;
+	position: absolute;
+	top: 1rem;
+	width: 6px;
+}
+
+.hero {
+	/* background-size: cover; */
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 574px;
+	position: relative;
+}
+
+.hero>img {
+	height: 100%;
+	left: 0;
+	object-fit: cover;
+	object-position: top left;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 0;
+}
+
+@media screen and (max-width: 991px) {
+	.hero>img {
+		opacity: 25%;
+	}
+}
+
+.hero>div {
+	z-index: 1;
+}
+
+ul.list-checklist,
+ul.list-dash {
+	list-style: none;
+	margin-bottom: 1rem;
+	padding-left: 0;
+}
+
+ul.list-checklist li {
+	margin-bottom: .5rem;
+	padding-left: 2rem;
+	position: relative;
+}
+
+ul.list-checklist li::before {
+	background-image: url(img/tick-circle.svg );
+	background-repeat: no-repeat;
+	content: '';
+	display: block;
+	height: 22px;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 22px;
+}
+
+ul.list-dash li {
+	padding-left: 1rem;
+	position: relative;
+}
+
+ul.list-dash li::before {
+	content: '-';
+	display: block;
+	height: 22px;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 22px;
+}
+
+.col-count-2 {
+	column-count: 2;
+}
+
+@media screen and (max-width: 991px) {
+	.col-count-2 {
+		column-count: 1;
+	}
+}

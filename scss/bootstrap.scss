@@ -1,0 +1,445 @@
+/*!
+ * Bootstrap v5.0.0-beta3 (https://getbootstrap.com/)
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+
+// scss-docs-start import-stack
+// Configuration
+@import "functions";
+@import "variables";
+@import "mixins";
+@import "utilities";
+
+// Layout & components
+@import "root";
+@import "reboot";
+@import "type";
+@import "images";
+@import "containers";
+@import "grid";
+@import "tables";
+@import "forms";
+@import "buttons";
+@import "transitions";
+@import "dropdown";
+@import "button-group";
+@import "nav";
+@import "navbar";
+@import "card";
+@import "accordion";
+@import "breadcrumb";
+@import "pagination";
+@import "badge";
+@import "alert";
+@import "progress";
+@import "list-group";
+@import "close";
+@import "toasts";
+@import "modal";
+@import "tooltip";
+@import "popover";
+@import "carousel";
+@import "spinners";
+@import "offcanvas";
+
+// Helpers
+@import "helpers";
+
+// Utilities
+@import "utilities/api";
+// scss-docs-end import-stack
+
+.media {
+  &-1-1,
+  &-3-4,
+  &-4-3,
+  &-16-9 {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    &::before {
+      content: '';
+      display: block;
+    }
+
+    > img,
+    > picture,
+    > video,
+    > iframe,
+    > svg {
+      height: 100% !important;
+      left: 0;
+      object-fit: cover;
+      object-position: center;
+      position: absolute;
+      top: 0;
+      width: 100% !important;
+      z-index: 2;
+    }
+  }
+  &-1-1::before {
+    padding-top: 100%;
+  }
+  &-3-4::before {
+    padding-top: 125%;
+  }
+  &-4-3::before {
+    padding-top: 75%;
+  }
+  &-16-9::before {
+    padding-top: 56.25%;
+  }
+
+  @include media-breakpoint-up(md) {
+    &-md-1-1::before { padding-top: 100% !important }
+    &-md-4-3::before { padding-top: 75% !important }
+    &-md-16-9::before { padding-top: 56.25% !important }
+  }
+
+  @include media-breakpoint-up(lg) {
+    &-lg-1-1::before { padding-top: 100% !important }
+    &-lg-4-3::before { padding-top: 75% !important }
+    &-lg-16-9::before { padding-top: 56.25% !important }
+  }
+
+  @include media-breakpoint-up(xl) {
+    &-xl-1-1::before { padding-top: 100% !important }
+    &-xl-4-3::before { padding-top: 75% !important }
+    &-xl-16-9::before { padding-top: 56.25% !important }
+  }
+}
+
+.hero-navigation {
+  margin-top: -250px;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+
+body.page .hero{
+  min-height: 680px;
+}
+
+body.home .hero{
+  .hero-image {
+    animation-name: fade;
+    animation-duration: 1s;
+  }
+}
+
+.hero {
+  min-height: 700px;
+  position: relative;
+  z-index: 0;
+
+  .hero-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+
+    &[data-hero-image="home"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/home-xs.jpg');
+        opacity: .35;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/home-lg.jpg');
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/home-xl.jpg');
+      }
+      background-color: #fff;
+    }
+
+    &[data-hero-image="womens-health"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/womens-health-xs.jpg');
+        background-position: top center;
+        opacity: .35;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/womens-health-lg.jpg');
+        background-position: top left;
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/womens-health-xl.jpg');
+        background-position: top left;
+      }
+      background-color: #f9a7ad;
+    }
+
+    &[data-hero-image="mens-health"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/mens-health-xs.jpg');
+        background-position: top center;
+        opacity: .35;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/mens-health-lg.jpg');
+        background-position: top left;
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/mens-health-xl.jpg');
+        background-position: top left;
+      }
+      background-color: #99d1ff;
+    }
+
+    &[data-hero-image="sterile-compounding"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/sterile-compounding-xs.jpg');
+        opacity: .35;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/sterile-compounding-lg.jpg');
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/sterile-compounding-xl.jpg');
+      }
+      background-color: #4eb8f2;
+    }
+
+    &[data-hero-image="veterinary"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/veterinary-xs.jpg');
+        background-position: bottom left;
+        opacity: .35;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/veterinary-lg.jpg');
+        background-position: bottom left;
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/veterinary-xl.jpg');
+        background-position: bottom left;
+      }
+      background-color: #fff;
+    }
+
+    &[data-hero-image="aesthetics"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/aesthetics-xs.jpg');
+        background-position: bottom center;
+        opacity: .35;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/aesthetics-lg.jpg');
+        background-position: bottom left;
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/aesthetics-xl.jpg');
+        background-position: bottom left;
+      }
+      background-color: #90837d;
+    }
+
+    &[data-hero-image="aesthetics-2"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/aesthetics-xs.jpg');
+        background-position: bottom center;
+        opacity: .35;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/aesthetics-2-lg.jpg');
+        background-position: bottom left;
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/aesthetics-2-xl.jpg');
+        background-position: bottom left;
+      }
+      background-color: #90837d;
+    }
+
+    &[data-hero-image="medication-access"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/medication-access-xs.jpg');
+        opacity: .2;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/medication-access-lg.jpg');
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/medication-access-xl.jpg');
+      }
+      background-color: #8ddff6;
+    }
+
+    &[data-hero-image="clinical-support"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/clinical-support-xs.jpg');
+        opacity: .35;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/clinical-support-lg.jpg');
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/clinical-support-xl.jpg');
+      }
+      background-color: #97ae54;
+    }
+
+    &[data-hero-image="best-pricing"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/best-pricing-xs.jpg');
+        opacity: .35;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/best-pricing-lg.jpg');
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/best-pricing-xl.jpg');
+      }
+      background-color: #d7d8d8;
+    }
+
+    &[data-hero-image="infusion-therapy"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/infusion-therapy-xs.jpg');
+        opacity: .35;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/infusion-therapy-lg.jpg');
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/infusion-therapy-xl.jpg');
+      }
+      background-color: #d7d8d8;
+    }
+
+    &[data-hero-image="compounding"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/compounding-xs.jpg');
+        opacity: .35;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/compounding-lg.jpg');
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/compounding-xl.jpg');
+      }
+      background-color: #d7d8d8;
+    }
+
+    &[data-hero-image="pbm"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/pbm-xs.jpg');
+        opacity: .35;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/pbm-lg.jpg');
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/pbm-xl.jpg');
+      }
+      background-color: #d7d8d8;
+    }
+
+    &[data-hero-image="shop"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/shop-xs.jpg');
+        opacity: .35;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/shop-lg.jpg');
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/shop-xl.jpg');
+      }
+      background-color: #eab1b8;
+    }
+
+    &[data-hero-image="compounding-pharmacy"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/compounding-pharmacy-xs.jpg');
+        background-position: top center;
+        opacity: .25;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/compounding-pharmacy-lg.jpg');
+        background-position: top left;
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/compounding-pharmacy-xl.jpg');
+        background-position: top left;
+      }
+      background-color: #a8d8e6;
+    }
+
+    &[data-hero-image="veterinary-2"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/veterinary-2-xs.jpg');
+        opacity: .35;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/veterinary-2-lg.jpg');
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/veterinary-2-xl.jpg');
+      }
+      background-color: #fff;
+    }
+
+    &[data-hero-image="hospice"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/hospice-xs.jpg');
+        opacity: .35;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/hospice-lg.jpg');
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/hospice-xl.jpg');
+      }
+      background-color: #e9eceb;
+    }
+
+    &[data-hero-image="anti-aging"] {
+      @include media-breakpoint-down(lg) {
+        background-image: url('../img/hero/anti-aging-xs.jpg');
+        opacity: .35;
+      }
+      @include media-breakpoint-up(lg) {
+        background-image: url('../img/hero/anti-aging-lg.jpg');
+        background-position: bottom left;
+      }
+      @include media-breakpoint-up(xl) {
+        background-image: url('../img/hero/anti-aging-xl.jpg');
+        background-position: bottom left;
+      }
+      background-color: #cec4b8;
+    }
+  }
+}
+
+
+.woocommerce-checkout.processing {
+  position: relative;
+
+  &::before {
+    background-color: #fff;
+    content: '';
+    height: 100%;
+    left: 0;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+  }
+}
