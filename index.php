@@ -12,67 +12,6 @@
  * @package GPS_Pharmacy_Solutions
  */
 if (!defined('ABSPATH')) exit;
-//add_action('wp_head', 'preload_images');
-function preload_images() {
-  $images = [
-    get_bloginfo('template_url') . '/img/hero/home-xl.jpg',
-    get_bloginfo('template_url') . '/img/hero/home-lg.jpg',
-    get_bloginfo('template_url') . '/img/hero/home-md.jpg',
-    get_bloginfo('template_url') . '/img/hero/home-xs.jpg',
-    get_bloginfo('template_url') . '/img/hero/womens-health-xl.jpg',
-    get_bloginfo('template_url') . '/img/hero/womens-health-lg.jpg',
-    get_bloginfo('template_url') . '/img/hero/womens-health-md.jpg',
-    get_bloginfo('template_url') . '/img/hero/womens-health-xs.jpg',
-    get_bloginfo('template_url') . '/img/hero/mens-health-xl.jpg',
-    get_bloginfo('template_url') . '/img/hero/mens-health-lg.jpg',
-    get_bloginfo('template_url') . '/img/hero/mens-health-md.jpg',
-    get_bloginfo('template_url') . '/img/hero/mens-health-xs.jpg',
-    get_bloginfo('template_url') . '/img/hero/sterile-compounding-xl.jpg',
-    get_bloginfo('template_url') . '/img/hero/sterile-compounding-lg.jpg',
-    get_bloginfo('template_url') . '/img/hero/sterile-compounding-md.jpg',
-    get_bloginfo('template_url') . '/img/hero/sterile-compounding-xs.jpg',
-    get_bloginfo('template_url') . '/img/hero/veterinary-xl.jpg',
-    get_bloginfo('template_url') . '/img/hero/veterinary-lg.jpg',
-    get_bloginfo('template_url') . '/img/hero/veterinary-md.jpg',
-    get_bloginfo('template_url') . '/img/hero/veterinary-xs.jpg',
-    get_bloginfo('template_url') . '/img/hero/aesthetics-xl.jpg',
-    get_bloginfo('template_url') . '/img/hero/aesthetics-lg.jpg',
-    get_bloginfo('template_url') . '/img/hero/aesthetics-md.jpg',
-    get_bloginfo('template_url') . '/img/hero/aesthetics-xs.jpg',
-    get_bloginfo('template_url') . '/img/hero/medication-access-xl.jpg',
-    get_bloginfo('template_url') . '/img/hero/medication-access-lg.jpg',
-    get_bloginfo('template_url') . '/img/hero/medication-access-md.jpg',
-    get_bloginfo('template_url') . '/img/hero/medication-access-xs.jpg',
-    get_bloginfo('template_url') . '/img/hero/clinical-support-xl.jpg',
-    get_bloginfo('template_url') . '/img/hero/clinical-support-lg.jpg',
-    get_bloginfo('template_url') . '/img/hero/clinical-support-md.jpg',
-    get_bloginfo('template_url') . '/img/hero/clinical-support-xs.jpg',
-    get_bloginfo('template_url') . '/img/hero/best-pricing-xl.jpg',
-    get_bloginfo('template_url') . '/img/hero/best-pricing-lg.jpg',
-    get_bloginfo('template_url') . '/img/hero/best-pricing-md.jpg',
-    get_bloginfo('template_url') . '/img/hero/best-pricing-xs.jpg',
-    get_bloginfo('template_url') . '/img/hero/infusion-therapy-xl.jpg',
-    get_bloginfo('template_url') . '/img/hero/infusion-therapy-lg.jpg',
-    get_bloginfo('template_url') . '/img/hero/infusion-therapy-md.jpg',
-    get_bloginfo('template_url') . '/img/hero/infusion-therapy-xs.jpg',
-    get_bloginfo('template_url') . '/img/hero/compounding-xl.jpg',
-    get_bloginfo('template_url') . '/img/hero/compounding-lg.jpg',
-    get_bloginfo('template_url') . '/img/hero/compounding-md.jpg',
-    get_bloginfo('template_url') . '/img/hero/compounding-xs.jpg',
-    get_bloginfo('template_url') . '/img/hero/pbm-xl.jpg',
-    get_bloginfo('template_url') . '/img/hero/pbm-lg.jpg',
-    get_bloginfo('template_url') . '/img/hero/pbm-md.jpg',
-    get_bloginfo('template_url') . '/img/hero/pbm-xs.jpg',
-    get_bloginfo('template_url') . '/img/hero/shop-xl.jpg',
-    get_bloginfo('template_url') . '/img/hero/shop-lg.jpg',
-    get_bloginfo('template_url') . '/img/hero/shop-md.jpg',
-    get_bloginfo('template_url') . '/img/hero/shop-xs.jpg'
-  ];
-
-  foreach( $images as $image ) {
-    echo '<link rel="preload" as="image" href="' . $image . '">';
-  }
-}
 
 get_header();
 ?>

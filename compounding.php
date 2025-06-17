@@ -307,19 +307,13 @@ get_header();
 
     <script>
         if ((Date.now() - localStorage.getItem('compounding-form')) > 604800000) {
-            document.querySelector('.popup-contact-form')?.classList.remove('d-none');
+            document.querySelector('.popup-contact-form').classList.remove('d-none');
         }
-        document.querySelector('.close-button').addEventListener('click', e => {
-            e.preventDefault();
-            document.querySelector('.popup-contact-form').classList.add('d-none');
-            localStorage.setItem('compounding-form', Date.now());
-        });
 
         const cardRows = document.querySelectorAll('.c-card');
         cardRows.forEach(cardRow => {
             const cardUrl = cardRow.querySelector('a').href;
             cardRow.addEventListener('click', e => {
-                e.preventDefault();
                 location.href = cardUrl;
             });
         });

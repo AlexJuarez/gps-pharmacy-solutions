@@ -4,60 +4,8 @@
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
-async function require(target) {
-    console.log(`Loading ${target}`);
-
-    const loaded = new Set();
-
-    let res, rej;
-    const promise = new Promise((resolve, reject) => {
-        res = resolve;
-        rej = reject;
-     }).catch((err) => {
-        console.error(`Error loading ${target}:`, err);
-     });
-
-    function require(target) {
-        const scripts = document.querySelectorAll('script[src]');
-        for (const script of scripts) {
-            if (loaded.has(script.src))
-                continue;
-
-
-            if (script.readyState === 'complete')
-                loaded.add(script.src);
-
-            if (script.src.toLowerCase().includes(target.toLowerCase()) && window[target] != null) {
-                console.log(`${target} script loaded successfully:`, script.src);
-                res(window[target]);
-                return;
-            }
-        }
-
-        if (window.readyState === 'complete') {
-            rej(new Error(`Failed to load ${target} script`));
-            return;
-        }
-    }
-
-
-    document.addEventListener('DOMContentLoaded', () => {
-        require(target);
-    }, { once: true });
-
-    document.addEventListener('readystatechange', (event) => {
-        require(target);
-    });
-
-    return promise;
-}
-
-const jQuery = await require('jQuery');
-
 function onClick(handler, el = document) {
     function handleClick(event) {
-        event.preventDefault();
-
         handler.call(this, event);
     }
 
@@ -68,19 +16,23 @@ function onClick(handler, el = document) {
 (async function() {
     const $ = await require('jQuery');
 
-    const siteNavigation = $("site-navigation");
+    const siteNavigation = $("#site-navigation");
+    console.log(`found site nav: ${siteNavigation}`);
 
-    if (!siteNavigation.length) return;
+    if (!siteNavigation.length) {
+        console.warn('siteNavigation not found')
+    };
 
-    const button = siteNavigation.find("button");
+    const buttons = $("button.navbar-toggler");
 
-    if (!button.length) return;
+    if (!buttons.length) {
+        console.warn('buttons not found')
+    };
 
     const menu = siteNavigation.find("ul");
 
     if (!menu.length) {
-        button.first().css({ display: "none" });
-        return;
+        buttons.first().css({ display: "none" });
     }
 
     if (!menu.first().hasClass("nav-menu")) {
@@ -89,29 +41,35 @@ function onClick(handler, el = document) {
 
     function handleNavToggle(event) {
         siteNavigation.toggleClass("toggled");
+        siteNavigation.find('.navbar-collapse').toggleClass("show");
 
-        if ($(event.target).attr("aria-expanded") === "true") {
-            $(event.target).attr("aria-expanded", "false");
-        } else {
-            $(event.target).attr("aria-expanded", "true");
-        }
+        buttons.each((i, btn) => {
+            const $btn = $(btn);
+            $btn.attr("aria-expanded", $btn.attr("aria-expanded") === "true" ? "false" : "true");
+        });
     }
 
     // Toggle the .toggled class and the aria-expanded value each time the button is clicked.
-    onClick((event) => handleNavToggle(event), button);
+    buttons.each((i, btn) => {
+        const $btn = $(btn);
+        console.log('Buttons', btn);
+        onClick((event) => handleNavToggle(event), btn);
+    });
 
     // Remove the .toggled class and set aria-expanded to false when the user clicks outside the navigation.
-    function closeNavigation(event) {
-        const isClickInside = siteNavigation.has(event.target) || siteNavigation.has(event.currentTarget);
-
-        if (!isClickInside) {
-            siteNavigation.removeClass("toggled");
-            button.attr("aria-expanded", "false");
+    function closeNavigation(target) {
+        return (event) => {
+            if ($(target).is('.navbar-toggled-overly')) {
+                siteNavigation.removeClass('toggled');
+                $(target).attr("aria-expanded", "false");
+            }
         }
+
     }
 
-    onClick((event) => closeNavigation(event), document);
+    siteNavigation.find('.close-button' ).on('click', (event) => closeNavigation(siteNavigation.find('.close-button' ))(event));
 
+    onClick((event) => closeNavigation($('navbar-toggled-overly'))(event), document)
 
     // Get all the link elements within the menu.
     const links = menu.find("a");

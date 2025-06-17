@@ -8,5 +8,10 @@
 			"path": "../../../../../../gps-old/app/public"
 		}
 	],
-	"settings": {}
+	"settings": {},
+	"extensions": {
+		"recommendations": [
+			"docter60.vscode-terminal-for-ubuntu"
+		]
+	}
 }

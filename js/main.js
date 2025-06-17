@@ -1,25 +1,20 @@
-function onLoad(fn) {
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', fn);
-    }
-    fn();
-}
 
-onLoad(() => {
-    jQuery( function($) {
+(async function () {
+    const $ = await require('jQuery');
+    const Splide = await require('Splide');
+    const AOS = await require('AOS');
+
     $('[data-hero-trigger]')
-        .on('mouseover', function() {
-        let $this = $(this)
-        $('.hero-image').replaceWith('<div class="hero-image" data-hero-image="' + $this.data('hero-trigger') + '"></div>')
+        .on('mouseover', function(event) {
+            $('.hero-image').attr('data-hero-image', $(event.target).data('heroTrigger'))
         })
         .on('mouseout', function() {
-        $('.hero-image').replaceWith('<div class="hero-image" data-hero-image="home"></div>')
+            $('.hero-image').attr('data-hero-image', 'home');
         })
-    })
 
     AOS.init();
-    const carousel = document.querySelector('#splide');
-    if (carousel) {
+    const carousel = $('#splide');
+    if (carousel.length) {
         new Splide('#splide', {
             'type': 'loop',
             'width': '80%',
@@ -31,46 +26,48 @@ onLoad(() => {
         }).mount();
     }
 
-    const pccaLogo = document.querySelector('.navbar-collapse .pcca-logo');
-    const scopicTitle = document.querySelector('.navbar-collapse .scopic-title');
+    const $pccaLogo = $('.navbar-collapse .pcca-logo');
+    const $scopicTitle = $('.navbar-collapse .scopic-title');
 
-    const swapDrawerLogo = () => {
-        if (innerWidth <= 991) {
-
+    const swapDrawerLogo = (event) => {
+        if (event.window.innerWidth <= 991) {
             // swap the logo with the description when the drawer is opened
             // to match the design
-            pccaLogo.parentNode.insertBefore(pccaLogo, pccaLogo.parentNode.firstChild);
+            $pccaLogo.insertBefore($pccaLogo.parent().children().first());
         } else {
-            scopicTitle.parentNode.insertBefore(scopicTitle, scopicTitle.parentNode.firstChild);
+            $scopicTitle.insertBefore($scopicTitle.parent().children().first());
         }
     }
 
     // convert text to date
-    const dateInputField = document.querySelector('[name="date-427"]');
-    if (dateInputField) {
-        dateInputField.addEventListener('focus', e => {
-            if (dateInputField.getAttribute('type') !== 'text') return;
-            dateInputField.setAttribute('type', 'date');
-            document.activeElement.blur();
+    const $dateInputField = $('[name="date-427"]');
+    if ($dateInputField.length) {
+        $dateInputField.on('focus', event => {
+            if ($dateInputField.attr('type') !== 'text') return;
+            $dateInputField.attr('type', 'date');
+            $(document.activeElement).blur();
         });
     }
 
-    swapDrawerLogo();
-
     // on tablets and mobile
-    window.onresize = () => {
-        swapDrawerLogo();
-    }
+    window.addEventListener('resize', (event) => {
+        swapDrawerLogo(event);
+    });
 
-    const navbarToggler = document.querySelector('button.navbar-toggler');
-    navbarToggler.addEventListener('click', () => {
-        document.body.classList.add('overflow-hidden');
+    window.dispatchEvent(new Event('resize'));
+
+    const $navbarToggler = $('.navbar-toggler');
+    $navbarToggler.on('click', (event) => {
+
+        $(document.body).toggleClass('overflow-hidden');
+        const $navMenu = $('.navbar-collapse.collapse.show');
+        $navMenu.addClass('show');
     });
 
     // close the drawer when user clicks outside it
-    document.querySelector('.navbar-toggled-overly').addEventListener('click', e => {
-        const navMenu = document.querySelector('.navbar-collapse.collapse.show');
-        openDrawerCLoseButton.click();
+    $('.navbar-toggled-overly').on('click', e => {
+        const $navMenu = $('.navbar-collapse.collapse.show');
+        $navMenu.removeClass('show');
     });
 
     // handle selecting product images
@@ -97,241 +94,124 @@ onLoad(() => {
             currentActiveProductImage.style.opacity = 0.25;
             currentActiveProductImage = productImageTag;
             productImageTag.style.opacity = 1;
-
-            mainProductImage = productImageContainer.querySelector('img');
-            mainProductImage.src = productImageTag.dataset.large_image;
-            mainProductImage.srcset = '';
         });
     });
 
-    // preload background images
-    const preloadImages = (imagesArray) => {
-        const images = [];
-        for (var i = 0; i < imagesArray.length; i++) {
-            images[i] = new Image();
-            images[i].src = imagesArray[i].url;
-        }
-    }
 
-    // handle close button clicks
-    const openDrawerCLoseButton = document.querySelector('#custom-close-button');
-    openDrawerCLoseButton.addEventListener('click', () => {
-        navbarToggler.click();
-        document.body.classList.remove('overflow-hidden');
-    });
-
-    const addToCartButtons = document.querySelectorAll('.add_to_cart_button');
-    const removeFromCartButtons = document.querySelectorAll('.product-remove .remove');
-    if (addToCartButtons.length) {
-        addToCartButtons.forEach((addToCartButton) => {
-            addToCartButton.addEventListener('click', e => {
-                if (innerWidth <= 991 && location.href.includes('/product/')) window.scroll({
+    const $addToCartButtons = $('.add_to_cart_button');
+    const $removeFromCartButtons = $('.product-remove .remove');
+    if ($addToCartButtons.length) {
+        $addToCartButtons.each(function(i, btn) {
+            $(btn).on('click', e => {
+                if (window.innerWidth <= 991 && window.location.href.includes('/product/')) window.scroll({
                     top: 0,
                     left: 0,
                     behavior: 'smooth'
                 });
                 const path = e.composedPath();
-                let productAddedButton = path[2].querySelector('.product-added-btn');
-                if (!productAddedButton) productAddedButton = document.querySelector('.product-added-btn');
-                productAddedButton.classList.remove('d-none');
+                let productAddedButton = null;
+                if (path[2]) {
+                    productAddedButton = $(path[2]).find('.product-added-btn');
+                }
+                if (!productAddedButton || !productAddedButton.length) {
+                    productAddedButton = $('.product-added-btn');
+                }
+                productAddedButton.removeClass('d-none');
                 setTimeout(() => {
-                    productAddedButton.classList.add('d-none');
+                    productAddedButton.addClass('d-none');
                 }, 10000);
-            })
+            });
         });
-    }
-
-    const resetHomepageBackgroundImage = (homepageContainer) => {
-        homepageContainer.style.backgroundImage = `url(${themeFileUri}/img/homepage/${outerWidth < 705 ? '1-mob' : '1'}.jpg)`;
-        homepageContainer.style.backgroundPosition = 'center';
     }
 
     // fix: GPSWR-4
-    document.querySelectorAll('.menu-item-has-children > a').forEach(item => {
-        item.addEventListener('touchstart', e => {
-            item.click();
+    $('.menu-item-has-children > a').each((i, $item) => {
+        $item.on('touchend', e => {
+            $item.trigger('click');
         });
     });
-
-    const activateOnHoverBackgroundImageChange = (categoryName, backgroundImagesList, homepageContainer) => {
-
-        document.querySelectorAll(`.gps-info-box.gps-${categoryName}`).forEach((infoBox, i) => {
-            infoBox.addEventListener('mouseover', () => {
-                const boxLinks = infoBox.querySelectorAll('.gps-info-box-back > a');
-                boxLinks.forEach((link, j) => {
-                    link.addEventListener('mouseover', e => {
-                        e.stopPropagation();
-                        homepageContainer.style.backgroundImage = `url(${backgroundImagesList[j].url})`;
-                        homepageContainer.style.backgroundPosition = `${backgroundImagesList[j].backgroundPosition}`;
-                    });
-                });
-            });
-
-            // return back to the default background
-            infoBox.addEventListener('mouseover', () => {
-                resetHomepageBackgroundImage(homepageContainer);
-            });
-        });
-    }
-
-    /**
-     * Homepage on-hover background image change.
-     *
-     * @todo add dynamic images support
-     */
-    const homepageBackgroundImageChange = () => {
-        const compoundingBackgroundImages = [
-            {
-                backgroundImage: 'center',
-                url: `${themeFileUri}/img/homepage/compounding-1.jpg`
-            },
-            {
-                backgroundImage: 'center',
-                url: `${themeFileUri}/img/homepage/compounding-2.jpg`
-            },
-            {
-                backgroundImage: 'center',
-                url: `${themeFileUri}/img/homepage/compounding-3.jpg`
-            },
-            {
-                backgroundImage: 'center',
-                url: `${themeFileUri}/img/homepage/compounding-4.jpg`
-            },
-            {
-                backgroundImage: 'center',
-                url: `${themeFileUri}/img/homepage/compounding-5.jpg`
-            }
-        ];
-        preloadImages(compoundingBackgroundImages);
-
-        const hospiceBackgroundImages = [
-            {
-                backgroundImage: 'center',
-                url: `${themeFileUri}/img/homepage/hospice-1.jpg`
-            },
-            {
-                backgroundImage: 'center',
-                url: `${themeFileUri}/img/homepage/hospice-2.jpg`
-            },
-            {
-                backgroundImage: 'center',
-                url: `${themeFileUri}/img/homepage/hospice-3.jpg`
-            },
-            {
-                backgroundImage: 'center',
-                url: `${themeFileUri}/img/homepage/hospice-4.jpg`
-            },
-            {
-                backgroundImage: 'center',
-                url: `${themeFileUri}/img/homepage/hospice-5.jpg`
-            },
-            {
-                backgroundImage: 'center',
-                url: `${themeFileUri}/img/homepage/hospice-6.jpg`
-            }
-        ];
-        preloadImages(hospiceBackgroundImages);
-
-        const shopBackgroundImages = [
-            {
-                backgroundImage: 'center',
-                url: `${themeFileUri}/img/shop/homepage-cover.jpg`
-            },
-            {
-                backgroundImage: 'center',
-                url: `${themeFileUri}/img/shop/homepage-cover.jpg`
-            },
-            {
-                backgroundImage: 'center',
-                url: `${themeFileUri}/img/shop/homepage-cover.jpg`
-            },
-            {
-                backgroundImage: 'center',
-                url: `${themeFileUri}/img/shop/homepage-cover.jpg`
-            },
-        ];
-        preloadImages(shopBackgroundImages);
-
-        const homepageContainer = document.querySelector('.main.homepage');
-        resetHomepageBackgroundImage(homepageContainer);
-        activateOnHoverBackgroundImageChange('compounding', compoundingBackgroundImages, homepageContainer);
-        activateOnHoverBackgroundImageChange('hospice', hospiceBackgroundImages, homepageContainer);
-        activateOnHoverBackgroundImageChange('shop', shopBackgroundImages, homepageContainer);
-    }
 
     // execute this when it's the homepage
     // if (typeof themeFileUri !== 'undefined') homepageBackgroundImageChange();
 
     // make sure the correct message is displayed
-    const wooCommerceMessages = document.querySelectorAll('.woocommerce-message');
+    const wooCommerceMessages = $('.woocommerce-message');
     if (wooCommerceMessages.length) {
-        wooCommerceMessages.forEach(message => {
-            message.style.display = 'none';
+        wooCommerceMessages.each((i, $message) => {
+            $message.css({ display: 'none' });
         });
-        wooCommerceMessages[wooCommerceMessages.length - 1].classList.add('d-block');
+        wooCommerceMessages.last().addClass('d-block');
     }
 
     // add mobile optimized images in compounding page
-    const compoundingMobileContent = document.querySelectorAll('.compounding-mobile-page-content .content');
-    if (compoundingMobileContent.length) {
-        if (innerWidth > 991) return;
-        compoundingMobileContent.forEach(pieceOfContent => {
-            const image = pieceOfContent.querySelector('img');
-            image.style.height = 'auto';
-            image.src = image.src.replace('compounding-', 'compounding-mob-').replace('.png', '.jpg');
+    const $compoundingMobileContent = $('.compounding-mobile-page-content .content');
+    if ($compoundingMobileContent.length) {
+        $compoundingMobileContent.each((i, $el) => {
+            const image = $el.find('img');
+            image.css({height: 'auto'});
+            function updateSrc(src, target, updated, ext) {
+                return src.replace(target, updated).replace(/\.png|\.jpg/, ext);
+            }
+
+            const images = [
+                `${image.attr('src')} 750w`,
+                `${updateSrc(image.attr('src'), 'compounding-', 'compounding-mob-', '.jpg')} 550w`
+            ];
+
+
+            image.attr('srcset', images.join(', '));
+            image.attr('sizes', '(max-width: 550px) 550px, 750px');
+            image.alt('Compounding Pharmacy Solutions');
         });
     }
 
     // auto-update the cart on quantity change
     let timeout;
-    jQuery(function ($) {
-        $('.woocommerce').on('change', 'input.qty', function () {
+    $('.woocommerce').on('change', 'input.qty', function () {
 
-            if (timeout !== undefined) {
-                clearTimeout(timeout);
-            }
+        if (timeout !== undefined) {
+            clearTimeout(timeout);
+        }
 
-            timeout = setTimeout(function () {
-                $("[name='update_cart']").trigger("click");
-            }, 500);
-
-        });
+        timeout = setTimeout(function () {
+            $("[name='update_cart']").trigger("click");
+        }, 500);
     });
 
     // complete order oer the phone
-    const orderOverPhone = document.querySelector('button.place-order-over-phone');
+    const $orderOverPhone = $('button.place-order-over-phone');
 
-    if (orderOverPhone) {
-        const popup = document.querySelector('#popup-order-over-phone');
+    if ($orderOverPhone) {
+        const popup = $('#popup-order-over-phone');
 
-        orderOverPhone.addEventListener('click', e => {
+        $orderOverPhone.on('click', e => {
             e.preventDefault();
-            popup.classList.remove('d-none');
-            popup.dataset.aos = 'fade-up';
+            popup.removeClass('d-none');
+            popup.data('aos', 'fade-up');
             AOS.init();
 
             setTimeout(() => {
-                popup.dataset.aos = '';
-                popup.classList.remove('aos-init');
-                popup.classList.remove('aos-animate');
-                popup.style.pointerEvents = 'all';
+                popup.data('aos', null);
+                popup.removeClass('aos-init');
+                popup.removeClass('aos-animate');
+                popup.css({pointerEvents: 'all'});
             }, 500);
         });
 
-        popup.querySelector('.close-button').addEventListener('click', e => {
+        popup.find('.close-button').on('click', e => {
             e.preventDefault();
-            popup.classList.add('d-none');
+            popup.addClass('d-none');
         });
     }
 
     // make cards clickable
-    const cards = document.querySelectorAll('.gps-info-box');
+    const cards = $('.gps-info-box');
     if (cards.length) {
-        cards.forEach(card => {
-            const pageUrlTag = card.querySelector('.gps-info-box-front .button a');
-            const pageUrl = pageUrlTag.href;
-            if (innerWidth <= 991) card.addEventListener('click', e => {
-                e.preventDefault();
+        cards.each((i, $card) => {
+            const $pageUrlTag = $card.find('.gps-info-box-front .button a');
+            const pageUrl = $pageUrlTag.first().attr('href');
+            if (innerWidth <= 991) $card.on('click', e => {
+                //e.preventDefault();
                 location.href = pageUrl;
             });
         })
@@ -339,39 +219,43 @@ onLoad(() => {
 
     // fix form not submitting after showing error
     const removeProcessingStatus = () => {
-        $checkoutForm = jQuery('form.checkout.woocommerce-checkout');
-        if ($checkoutForm.is('.processing')) $checkoutForm.removeClass('processing');
+        let $checkoutForm = $('form.checkout.woocommerce-checkout');
+        if ($checkoutForm.hasClass('processing')) $checkoutForm.removeClass('processing');
     }
 
     const checkWishlistMessage = () => {
-        const wishlistPopMessageContainer = document.querySelector('#yith-wcwl-popup-message');
-        if (!wishlistPopMessageContainer) return;
-        wishlistPopMessageContainer.innerHTML = '<div class="wc-notice-close-button wish">x</div>' + wishlistPopMessageContainer.innerHTML;
+        const wishlistPopMessageContainer = $('#yith-wcwl-popup-message');
+        if (!wishlistPopMessageContainer.length) return;
+        const html = wishlistPopMessageContainer.html();
+        wishlistPopMessageContainer.addClass(...['wc-notice-close-button', 'wish']);
+        wishlistPopMessageContainer.text(html);
+        wishlistPopMessageContainer.insertAfter($(html));
     }
 
     const activateAlertCloseButton = () => {
-        const wcNoticeCloseButtons = document.querySelectorAll('.wc-notice-close-button');
+        const wcNoticeCloseButtons = $('.wc-notice-close-button');
         if (!wcNoticeCloseButtons.length) return;
-        const isWishList = document.querySelector('.wc-notice-close-button.wish');
-        wcNoticeCloseButtons.forEach((wcNoticeCloseButton, i) => {
+        const isWishList = $('.wc-notice-close-button.wish');
+        wcNoticeCloseButtons.each((i, wcNoticeCloseButton) => {
+            if (i === wcNoticeCloseButtons.length - 1 && !isWishList) wcNoticeCloseButton.parent().addClass('d-block');
 
-            if (i === wcNoticeCloseButtons.length - 1 && !isWishList) wcNoticeCloseButton.parentNode.classList.add('d-block');
-
-            wcNoticeCloseButton.addEventListener('click', e => {
-                const alertContainer = e.currentTarget.parentNode;
-                alertContainer.classList.add('d-none');
+            wcNoticeCloseButton.on('click', e => {
+                const alertContainer = $(e.currentTarget).parent();
+                alertContainer.addClass('d-none');
             });
         });
     }
 
     checkWishlistMessage();
 
-    jQuery('form.checkout.woocommerce-checkout').bind('DOMSubtreeModified', () => {
-        $checkoutForm = jQuery('form.checkout.woocommerce-checkout');
-        setTimeout(removeProcessingStatus, 3500);
+    $('form.checkout.woocommerce-checkout').bind('DOMSubtreeModified', () => {
+        $checkoutForm = $('form.checkout.woocommerce-checkout');
+        setTimeout(() => removeProcessingStatus(), 3500);
     });
 
-    jQuery('body').bind('DOMSubtreeModified', () => {
+    $(window.body).on('DOMSubtreeModified', () => {
         activateAlertCloseButton();
     });
+
 });
+
