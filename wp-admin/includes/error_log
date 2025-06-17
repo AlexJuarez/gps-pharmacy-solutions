@@ -1,0 +1,23 @@
+[28-Oct-2021 11:46:26 UTC] PHP Fatal error:  Uncaught Error: Class 'WP_Filesystem_Base' not found in /home/qh2j4az94uxp/public_html/wp-admin/includes/class-wp-filesystem-ftpsockets.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/qh2j4az94uxp/public_html/wp-admin/includes/class-wp-filesystem-ftpsockets.php on line 16
+[28-Oct-2021 12:53:07 UTC] PHP Warning:  Use of undefined constant ABSPATH - assumed 'ABSPATH' (this will throw an Error in a future version of PHP) in /home/qh2j4az94uxp/public_html/wp-admin/includes/class-wp-privacy-data-export-requests-list-table.php on line 11
+[28-Oct-2021 12:53:07 UTC] PHP Warning:  require_once(ABSPATHwp-admin/includes/class-wp-privacy-requests-table.php): failed to open stream: No such file or directory in /home/qh2j4az94uxp/public_html/wp-admin/includes/class-wp-privacy-data-export-requests-list-table.php on line 11
+[28-Oct-2021 12:53:07 UTC] PHP Fatal error:  require_once(): Failed opening required 'ABSPATHwp-admin/includes/class-wp-privacy-requests-table.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/qh2j4az94uxp/public_html/wp-admin/includes/class-wp-privacy-data-export-requests-list-table.php on line 11
+[29-Oct-2021 03:04:07 UTC] PHP Fatal error:  Uncaught Error: Class 'WP_Privacy_Data_Export_Requests_List_Table' not found in /home/qh2j4az94uxp/public_html/wp-admin/includes/deprecated.php:1530
+Stack trace:
+#0 {main}
+  thrown in /home/qh2j4az94uxp/public_html/wp-admin/includes/deprecated.php on line 1530
+[18-Feb-2024 23:02:17 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function __() in /home/qh2j4az94uxp/public_html/wp-admin/includes/file.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/qh2j4az94uxp/public_html/wp-admin/includes/file.php on line 16
+[02-Mar-2024 07:46:50 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function __() in /home/qh2j4az94uxp/public_html/wp-admin/includes/file.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/qh2j4az94uxp/public_html/wp-admin/includes/file.php on line 16
+[09-Apr-2025 00:35:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_locale() in /home/qh2j4az94uxp/public_html/wp-admin/includes/admin.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/qh2j4az94uxp/public_html/wp-admin/includes/admin.php on line 16
