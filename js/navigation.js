@@ -6,10 +6,11 @@
  */
 function onClick(handler, el = document) {
     function handleClick(event) {
+        event.preventDefault();
         handler.call(this, event);
     }
 
-    el.addEventListener("mouseup", (event) => handleClick(event));
+    el.addEventListener("click", (event) => handleClick(event));
     el.addEventListener("touchend", (event) => handleClick(event));
 }
 
@@ -40,13 +41,13 @@ function onClick(handler, el = document) {
     }
 
     function handleNavToggle(event) {
+        event.preventDefault();
+        event.stopPropagation();
+
         siteNavigation.toggleClass("toggled");
         siteNavigation.find('.navbar-collapse').toggleClass("show");
-
-        buttons.each((i, btn) => {
-            const $btn = $(btn);
-            $btn.attr("aria-expanded", $btn.attr("aria-expanded") === "true" ? "false" : "true");
-        });
+        const $btn = $(event.target);
+        $btn.attr("aria-expanded", $btn.attr("aria-expanded") === "true" ? "false" : "true");
     }
 
     // Toggle the .toggled class and the aria-expanded value each time the button is clicked.
@@ -56,20 +57,6 @@ function onClick(handler, el = document) {
         onClick((event) => handleNavToggle(event), btn);
     });
 
-    // Remove the .toggled class and set aria-expanded to false when the user clicks outside the navigation.
-    function closeNavigation(target) {
-        return (event) => {
-            if ($(target).is('.navbar-toggled-overly')) {
-                siteNavigation.removeClass('toggled');
-                $(target).attr("aria-expanded", "false");
-            }
-        }
-
-    }
-
-    siteNavigation.find('.close-button' ).on('click', (event) => closeNavigation(siteNavigation.find('.close-button' ))(event));
-
-    onClick((event) => closeNavigation($('navbar-toggled-overly'))(event), document)
 
     // Get all the link elements within the menu.
     const links = menu.find("a");

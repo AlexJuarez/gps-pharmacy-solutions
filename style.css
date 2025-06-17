@@ -985,6 +985,7 @@ footer .footer-menu {
 	&:hover {
 		color: #caedff
 	}
+
 	color: #eef0f1;
 }
 
@@ -1365,8 +1366,8 @@ form.wpcf7-form br {
 }
 
 img#pcca-logo {
-  max-width: 125px;
-  margin-right: .5rem;
+	max-width: 125px;
+	margin-right: .5rem;
 }
 
 .pcca-logo img {
@@ -1387,7 +1388,9 @@ footer .copyright {
 	color: #4e5bab;
 }
 
-.gps-info-box:hover .gps-info-box-back.gps-bg-blue, .gps-bg-blue {
+.gps-info-box:hover .gps-info-box-back.gps-bg-blue,
+.gps-info-box:active .gps-info-box-back.gps-bg-blue,
+.gps-bg-blue {
 	background-color: #016FB7;
 }
 
@@ -1434,15 +1437,16 @@ footer .footer-menu a.nav-link:hover:before {
 	padding-left: 5px;
 	padding-right: 5px;
 }
-
+/*
 .gps-info-box {
 	perspective: 200rem;
 	transform-style: preserve-3d;
 	position: relative;
+	transition: 1s ease;
 	height: 315px;
 	/* width: 310px; */
-	margin: 0 auto;
-}
+	//margin: 0 auto;
+} */
 
 @media screen and (max-width: 1400px) {
 	.gps-info-box {
@@ -1450,47 +1454,98 @@ footer .footer-menu a.nav-link:hover:before {
 	}
 }
 
-.gps-info-box.gps-compounding:hover,
-.gps-info-box.gps-hospice:hover,
-.gps-info-box.gps-research:hover,
-.gps-info-box.gps-shop:hover {
-	transform: rotateY(360deg);
+.gps-info-box {
+	transition-delay: .8s, 0s;
+	z-index: 0;
+	transition: z-index, transform 2s ease;
+	transform: rotateY(0);
+	min-height: 380px;
+	min-width: 250px;
+	height: 100%;
+	width: 100%;
+
+	&:hover, &:active {
+		transition-delay: 0s;
+    	z-index: 1;
+		transform: scale(0.975);
+	}
+
+	.gps-info-box-front, .gps-info-box-back {
+		transform-style: preserve-3d;
+		display: flex;
+		align-items: center;
+		background-color: white;
+		box-shadow: 0 5px 10px black;
+		border-radius: 0.25rem;
+		padding: 1.5rem;
+		position: relative;
+		overflow: hidden;
+		height: 100%;
+		width: 100%;
+	}
+
+
+
+	&:active, &:hover {
+		transform: rotateY(-180deg)
+	}
+
+	.gps-info-box-fbc {
+		box-shadow: 2.98254px 14.9127px 36.7846px rgba(0, 0, 0, 0.12);
+		background-color: #fff;
+		height: 100%;
+		border-radius: 9px;
+		width: 100%;
+		overflow: hidden;
+	}
 }
 
-.gps-info-box .gps-info-box-fbc {
-	background-color: #fff;
+/* .gps-info-box.gps-compounding:hover,
+.gps-info-box.gps-compounding:active,
+.gps-info-box.gps-hospice:hover,
+.gps-info-box.gps-hospice:active,
+.gps-info-box.gps-research:hover,
+.gps-info-box.gps-research:active,
+.gps-info-box.gps-shop:hover,
+.gps-info-box.gps-shop:active {
+	transform: rotateY(0);
+}
+ */
+/* .gps-info-box .gps-info-box-fbc {
 	padding: 25px;
-	box-shadow: 2.98254px 14.9127px 36.7846px rgba(0, 0, 0, 0.12);
-	height: 100%;
 	transition: all 0.8s ease;
 	position: absolute;
 	top: 0;
-	border-radius: 9px;
-	overflow: hidden;
+
 	left: 0;
-	width: 100%;
+
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
-}
+} */
 
 .gps-info-box .gps-info-box-front {
 	cursor: pointer;
 }
+/*
+.gps-info-box:hover .gps-info-box-back, .gps-info-box .gps-info-box-back:active {
+	backface-visibility: visible;
+}
 
-.gps-info-box .gps-info-box-back {
+.gps-info-box:hover .gps-info-box-back,
+.gps-info-box:active .gps-info-box-back {
 	transform: rotateY(180deg);
 }
 
-.gps-info-box:hover .gps-info-box-back {
-	transform: rotateY(0);
-}
-
 .gps-info-box.gps-compounding:hover .gps-info-box-front,
+.gps-info-box.gps-compounding:active .gps-info-box-front,
 .gps-info-box.gps-hospice:hover .gps-info-box-front,
+.gps-info-box.gps-hospice:active .gps-info-box-front,
 .gps-info-box.gps-research:hover .gps-info-box-front,
-.gps-info-box.gps-shop:hover .gps-info-box-front {
-	transform: rotateY(-180deg);
-}
+.gps-info-box.gps-research:active .gps-info-box-front,
+.gps-info-box.gps-shop:hover .gps-info-box-front,
+.gps-info-box.gps-shop:active .gps-info-box-front {
+	transform: rotateY(0);
+} */
 
 .gps-info-box .gps-info-box-back {
 	padding-left: 50px;
@@ -2794,7 +2849,6 @@ p.product-title.text-center {
 	}
 
 
-
 	.woocommerce-message,
 	.woocommerce-error,
 	#yith-wcwl-popup-message {
@@ -2825,20 +2879,22 @@ p.product-title.text-center {
 		background-position: center;
 	}
 
-	.gps-info-box:hover .gps-info-box-back,
-	.gps-info-box.gps-compounding:hover,
-	.gps-info-box.gps-hospice:hover,
-	.gps-info-box.gps-research:hover,
-	.gps-info-box.gps-shop:hover,
+/* 	.gps-info-box:hover .gps-info-box-back,
+	.gps-info-box .gps-info-box-back:active,
+	.gps-info-box.gps-compounding .gps-info-box-front:active,
 	.gps-info-box.gps-compounding:hover .gps-info-box-front,
+	.gps-info-box.gps-hospice .gps-info-box-fron:active,
 	.gps-info-box.gps-hospice:hover .gps-info-box-front,
+	.gps-info-box.gps-research .gps-info-box-front:active,
 	.gps-info-box.gps-research:hover .gps-info-box-front,
+	.gps-info-box.gps-shop .gps-info-box-front:active,
 	.gps-info-box.gps-shop:hover .gps-info-box-front {
-		transform: none !important;
-	}
+		transform: translateY(0);
 
+	}
+ */
 	.gps-info-box .gps-info-box-back {
-		display: none !important;
+		display: none;
 	}
 
 	.cart-item-actions .product-remove,

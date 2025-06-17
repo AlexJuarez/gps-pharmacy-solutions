@@ -43,6 +43,9 @@
     const $dateInputField = $('[name="date-427"]');
     if ($dateInputField.length) {
         $dateInputField.on('focus', event => {
+            event.preventDefault();
+
+
             if ($dateInputField.attr('type') !== 'text') return;
             $dateInputField.attr('type', 'date');
             $(document.activeElement).blur();
@@ -56,8 +59,9 @@
 
     window.dispatchEvent(new Event('resize'));
 
-    const $navbarToggler = $('.navbar-toggler');
+    const $navbarToggler = $('button.navbar-toggler');
     $navbarToggler.on('click', (event) => {
+        event.preventDefault();
 
         $(document.body).toggleClass('overflow-hidden');
         const $navMenu = $('.navbar-collapse.collapse.show');
@@ -66,8 +70,12 @@
 
     // close the drawer when user clicks outside it
     $('.navbar-toggled-overly').on('click', e => {
-        const $navMenu = $('.navbar-collapse.collapse.show');
-        $navMenu.removeClass('show');
+        e.preventDefault();
+        if (!$('.navbar-toggled-overly').has(e.currentTarget).length) {
+            const $navMenu = $('.navbar-collapse.collapse.show');
+            $navMenu.removeClass('show');
+        }
+
     });
 
     // handle selecting product images
