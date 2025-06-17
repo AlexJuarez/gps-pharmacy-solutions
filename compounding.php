@@ -307,7 +307,7 @@ get_header();
 
     <script>
         if ((Date.now() - localStorage.getItem('compounding-form')) > 604800000) {
-            document.querySelector('.popup-contact-form').classList.remove('d-none');
+            document.querySelector('.popup-contact-form')?.classList.remove('d-none');
         }
         document.querySelector('.close-button').addEventListener('click', e => {
             e.preventDefault();

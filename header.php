@@ -70,8 +70,7 @@
 							<!-- set PCCA Logo -->
 							<?php $gps_pcca_logo = get_theme_mod('gps_pcca_logo'); ?>
 							<img src="<?php echo empty($gps_pcca_logo) ? get_theme_file_uri() . '/img/PCCA-logo.png' : $gps_pcca_logo; ?>" alt="PCCA logo">
-
-							<button class="navbar-toggler" type="button" id="custom-close-button">
+							<button class="navbar-toggler close-button" type="button" id="custom-">
 								<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path fill-rule="evenodd" clip-rule="evenodd" d="M7.77817 6.63604C7.38765 6.24551 6.75449 6.24551 6.36396 6.63604C5.97344 7.02656 5.97344 7.65973 6.36396 8.05025L11.3137 13L6.36396 17.9497C5.97344 18.3403 5.97344 18.9734 6.36396 19.364C6.75449 19.7545 7.38765 19.7545 7.77817 19.364L12.7279 14.4142L17.6777 19.364C18.0682 19.7545 18.7014 19.7545 19.0919 19.364C19.4824 18.9734 19.4824 18.3403 19.0919 17.9497L14.1421 13L19.0919 8.05025C19.4824 7.65973 19.4824 7.02656 19.0919 6.63604C18.7014 6.24551 18.0682 6.24552 17.6777 6.63604L12.7279 11.5858L7.77817 6.63604Z" fill="#014E6C" />
 								</svg>
