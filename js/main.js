@@ -252,7 +252,7 @@ onLoad(() => {
         ];
         preloadImages(shopBackgroundImages);
 
-        const homepageContainer = document.querySelector('.home #page');
+        const homepageContainer = document.querySelector('.main.homepage');
         resetHomepageBackgroundImage(homepageContainer);
         activateOnHoverBackgroundImageChange('compounding', compoundingBackgroundImages, homepageContainer);
         activateOnHoverBackgroundImageChange('hospice', hospiceBackgroundImages, homepageContainer);
@@ -260,7 +260,7 @@ onLoad(() => {
     }
 
     // execute this when it's the homepage
-    if (typeof themeFileUri !== 'undefined') homepageBackgroundImageChange();
+    // if (typeof themeFileUri !== 'undefined') homepageBackgroundImageChange();
 
     // make sure the correct message is displayed
     const wooCommerceMessages = document.querySelectorAll('.woocommerce-message');
