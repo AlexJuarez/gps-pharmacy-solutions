@@ -31,7 +31,6 @@
 	<meta name="apple-mobile-web-app-title" content="GPSMeds" />
 	<link rel="manifest" href="/icons/site.webmanifest" />
 
-	//Lock Mobile view.
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
@@ -44,7 +43,8 @@
 
 	<?php wp_body_open(); ?>
 	<div id="page" class="site">
-		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'gps-pharmacy-solutions'); ?></a>
+		<a class="skip-link screen-reader-text"
+			href="#primary"><?php esc_html_e('Skip to content', 'gps-pharmacy-solutions'); ?></a>
 
 		<header id="masthead" class="site-header">
 			<!-- .site-branding -->
@@ -52,33 +52,51 @@
 				<div class="container">
 					<div>
 						<?php the_custom_logo(); ?>
-						<p class="scopic-title m-0 text-primary ms-auto mt-2 d-xl-none d-block"><?php echo get_bloginfo('description'); ?></p>
+						<p class="scopic-title m-0 text-primary ms-auto mt-2 d-xl-none d-block">
+							<?php echo get_bloginfo('description'); ?></p>
 					</div>
 					<div class="d-flex">
 						<a href="<?php echo wc_get_cart_url(); ?>" class="d-xl-none d-block me-3">
 							<div class="cart position-relative w-fit-content mt-xxl-0 mt-xl-0">
-								<span id="mini-cart-count-2" class="items-count position-absolute rounded-circle bg-danger text-white text-center d-flex align-items-center justify-content-center montserrat-font"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
-								<img src="<?php echo get_theme_file_uri() . '/img/cart.svg'; ?>" alt="Cart icon" style="width: 24px;">
+								<span id="mini-cart-count-2"
+									class="items-count position-absolute rounded-circle bg-danger text-white text-center d-flex align-items-center justify-content-center montserrat-font"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+								<img src="<?php echo get_theme_file_uri() . '/img/cart.svg'; ?>" alt="Cart icon"
+									style="width: 24px;">
 							</div>
 						</a>
-						<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-nav" aria-controls="navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
+						<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+							data-bs-target="#navbar-nav" aria-controls="navbar-nav" aria-expanded="false"
+							aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
 					</div>
 					<div class="navbar-toggled-overly"></div>
 					<div class="collapse navbar-collapse" id="navbar-nav">
-						<p class="scopic-title m-0 text-primary ms-auto d-none d-xl-block"><?php echo get_bloginfo('description'); ?></p>
+						<p class="scopic-title m-0 text-primary ms-auto d-none d-xl-block">
+							<?php echo get_bloginfo('description'); ?></p>
 						<div class="pcca-logo ms-3 ps-3">
-
 							<!-- set PCCA Logo -->
 							<?php $gps_pcca_logo = get_theme_mod('gps_pcca_logo'); ?>
-							<img src="<?php echo empty($gps_pcca_logo) ? get_theme_file_uri() . '/img/PCCA-logo.png' : $gps_pcca_logo; ?>" alt="PCCA logo">
-							<button class="navbar-toggler close-button" type="button" data-bs-target="#navbar-nav" aria-controls="navbar-nav" aria-expanded="false" id="custom-navbar-close-button" aria-label="Close navigation">
-								<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M7.77817 6.63604C7.38765 6.24551 6.75449 6.24551 6.36396 6.63604C5.97344 7.02656 5.97344 7.65973 6.36396 8.05025L11.3137 13L6.36396 17.9497C5.97344 18.3403 5.97344 18.9734 6.36396 19.364C6.75449 19.7545 7.38765 19.7545 7.77817 19.364L12.7279 14.4142L17.6777 19.364C18.0682 19.7545 18.7014 19.7545 19.0919 19.364C19.4824 18.9734 19.4824 18.3403 19.0919 17.9497L14.1421 13L19.0919 8.05025C19.4824 7.65973 19.4824 7.02656 19.0919 6.63604C18.7014 6.24551 18.0682 6.24552 17.6777 6.63604L12.7279 11.5858L7.77817 6.63604Z" fill="#014E6C" />
+							<img src="<?php echo empty($gps_pcca_logo) ? get_theme_file_uri() . '/img/PCCA-logo.png' : $gps_pcca_logo; ?>"
+								alt="PCCA logo">
+						</div>
+						<div class="d-flex">
+							<div class="site-logo">
+								<?php the_custom_logo(); ?>
+							</div>
+							<button class="navbar-toggler close-button" type="button" data-bs-target="#navbar-nav"
+								aria-controls="navbar-nav" aria-expanded="false" id="custom-navbar-close-button"
+								aria-label="Close navigation">
+								<svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" clip-rule="evenodd"
+										d="M7.77817 6.63604C7.38765 6.24551 6.75449 6.24551 6.36396 6.63604C5.97344 7.02656 5.97344 7.65973 6.36396 8.05025L11.3137 13L6.36396 17.9497C5.97344 18.3403 5.97344 18.9734 6.36396 19.364C6.75449 19.7545 7.38765 19.7545 7.77817 19.364L12.7279 14.4142L17.6777 19.364C18.0682 19.7545 18.7014 19.7545 19.0919 19.364C19.4824 18.9734 19.4824 18.3403 19.0919 17.9497L14.1421 13L19.0919 8.05025C19.4824 7.65973 19.4824 7.02656 19.0919 6.63604C18.7014 6.24551 18.0682 6.24552 17.6777 6.63604L12.7279 11.5858L7.77817 6.63604Z"
+										fill="#014E6C" />
 								</svg>
 							</button>
 						</div>
+
+
 						<?php
 						wp_nav_menu(array(
 							'theme_location' => 'menu-1',
@@ -102,7 +120,7 @@
 								'fallback_cb' => 'WP_Bootstrap_Navwalker::fallback',
 								'walker' => new WP_Bootstrap_Navwalker(),
 							));
-						?>
+							?>
 							<script>
 								const accountMenuContainer = document.querySelector('#navbar-dropdown-menu-link-273');
 								if (accountMenuContainer) {

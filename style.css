@@ -531,7 +531,7 @@ textarea {
 	text-decoration: none;
 	top: 5px;
 	width: auto;
-	z-index: 999997;
+	z-index: 10;
 }
 
 /* Do not show the outline on the skip link target. */
@@ -1361,17 +1361,18 @@ form.wpcf7-form br {
 	display: none;
 }
 
-.pcca-logo {
-	border-left: 1px solid #DFE5E9;
-}
-
 img#pcca-logo {
 	max-width: 125px;
 	margin-right: .5rem;
 }
 
 .pcca-logo img {
-	max-width: 185px;
+	max-width: 95px;
+	margin-right: 2rem;
+}
+
+.site-logo {
+	display: none;
 }
 
 footer .copyright {
@@ -1437,6 +1438,7 @@ footer .footer-menu a.nav-link:hover:before {
 	padding-left: 5px;
 	padding-right: 5px;
 }
+
 /*
 .gps-info-box {
 	perspective: 200rem;
@@ -1445,49 +1447,74 @@ footer .footer-menu a.nav-link:hover:before {
 	transition: 1s ease;
 	height: 315px;
 	/* width: 310px; */
-	//margin: 0 auto;
-} */
+/* margin: 0 auto;
+}
 
-@media screen and (max-width: 1400px) {
+*/ @media screen and (max-width: 1400px) {
 	.gps-info-box {
 		height: 380px;
 	}
 }
 
-.gps-info-box {
-	transition-delay: .8s, 0s;
-	z-index: 0;
-	transition: z-index, transform 2s ease;
-	transform: rotateY(0);
-	min-height: 380px;
-	min-width: 250px;
-	height: 100%;
+.container {
+	max-width: 880px;
+	margin: 0 auto;
 	width: 100%;
+}
+.info-card-container {
+	display: flex;
+	flex-direction: row;
+	max-width: 880px;
+	text-align: center;
 
 	&:hover, &:active {
-		transition-delay: 0s;
-    	z-index: 1;
-		transform: scale(0.975);
+		.gps-info-box {
+			transform: rotateY(180deg);
+		}
+
+		.gps-info-box-back {
+			transform: rotateY(-180deg);
+		}
+
 	}
 
-	.gps-info-box-front, .gps-info-box-back {
-		transform-style: preserve-3d;
-		display: flex;
-		align-items: center;
-		background-color: white;
-		box-shadow: 0 5px 10px black;
-		border-radius: 0.25rem;
-		padding: 1.5rem;
-		position: relative;
-		overflow: hidden;
+}
+.gps-info-box {
+	transition: transform 1s ease-in;
+	transform-style: preserve-3d;
+	position: relative;
+	box-sizing: border-box;
+	width: 300px;
+	height: 320px;
+	padding-bottom: 30px;
+
+	&:hover,
+	&:active {
+		box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.2);
+		cursor: pointer;
+	}
+
+	.gps-info-box-back:active {
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+
+	.gps-info-box-front:active {
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+
+	.gps-info-box-front,
+	.gps-info-box-back {
+		position: absolute;
 		height: 100%;
 		width: 100%;
-	}
-
-
-
-	&:active, &:hover {
-		transform: rotateY(-180deg)
+		top: 0;
+		left: 0;
+		box-sizing: border-box;
+		transform: rotateY(0deg) translateZ(1px);]
 	}
 
 	.gps-info-box-fbc {
@@ -1526,6 +1553,7 @@ footer .footer-menu a.nav-link:hover:before {
 .gps-info-box .gps-info-box-front {
 	cursor: pointer;
 }
+
 /*
 .gps-info-box:hover .gps-info-box-back, .gps-info-box .gps-info-box-back:active {
 	backface-visibility: visible;
@@ -2086,7 +2114,7 @@ h1.entry-title.page-title:before,
 	margin: auto;
 	bottom: 50px;
 	max-width: 666px;
-	z-index: 999999;
+	z-index: 10;
 }
 
 .lock-overlay {
@@ -2105,7 +2133,7 @@ h1.entry-title.page-title:before,
 	bottom: 0;
 	right: 0;
 	left: 0;
-	z-index: 1025;
+	z-index: 10;
 }
 
 .add_to_cart_button.loading {
@@ -2358,7 +2386,7 @@ table.wishlist_table tbody tr {
 	position: fixed;
 	bottom: 10vh;
 	padding: 20px 40px;
-	z-index: 1025;
+	z-index: 15;
 	margin: auto;
 	left: 0;
 	right: 0;
@@ -2741,12 +2769,18 @@ p.product-title.text-center {
 	}
 
 	nav .pcca-logo {
-		border-left: 0;
-		display: grid;
-		grid-template-columns: 1fr 31px;
-		position: relative;
-		padding-bottom: 25px;
-		margin-left: 0 !important;
+		display: none;
+	}
+
+	nav .site-logo {
+		+ button {
+			transform: translateY(-3px);
+		}
+		img {
+			margin: 0 auto;
+			max-width: 125px;
+		}
+		display: inline-block;
 	}
 
 	.pcca-logo:after {
@@ -2799,7 +2833,7 @@ p.product-title.text-center {
 
 	.navbar-collapse.collapse.show {
 		left: 0;
-		z-index: 99999;
+		z-index: 20;
 		overflow: scroll;
 		padding-bottom: 100px;
 	}
@@ -2879,20 +2913,7 @@ p.product-title.text-center {
 		background-position: center;
 	}
 
-/* 	.gps-info-box:hover .gps-info-box-back,
-	.gps-info-box .gps-info-box-back:active,
-	.gps-info-box.gps-compounding .gps-info-box-front:active,
-	.gps-info-box.gps-compounding:hover .gps-info-box-front,
-	.gps-info-box.gps-hospice .gps-info-box-fron:active,
-	.gps-info-box.gps-hospice:hover .gps-info-box-front,
-	.gps-info-box.gps-research .gps-info-box-front:active,
-	.gps-info-box.gps-research:hover .gps-info-box-front,
-	.gps-info-box.gps-shop .gps-info-box-front:active,
-	.gps-info-box.gps-shop:hover .gps-info-box-front {
-		transform: translateY(0);
 
-	}
- */
 	.gps-info-box .gps-info-box-back {
 		display: none;
 	}
@@ -3076,7 +3097,8 @@ p.product-title.text-center {
 	.gps-info-box .gps-info-box-back {
 		overflow: none;
 		-webkit-overflow-scrolling: none;
-		z-index: 3;
+		z-index: inherit
+		;
 	}
 
 	.hospice-cwm .notice {

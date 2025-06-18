@@ -3,15 +3,13 @@
 		{
 			"name": "gps-pharmacy-solutions",
 			"path": "."
-		},
-		{
-			"path": "../../../../../../gps-old/app/public"
 		}
 	],
 	"settings": {},
 	"extensions": {
 		"recommendations": [
-			"docter60.vscode-terminal-for-ubuntu"
+			"docter60.vscode-terminal-for-ubuntu",
+			"google.geminicodeassist"
 		]
 	}
 }
