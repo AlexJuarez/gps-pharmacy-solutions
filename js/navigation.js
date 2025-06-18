@@ -59,16 +59,14 @@ function onClick(handler, el = document) {
         onClick((event) => handleNavToggle(event), btn);
     });
 
-    // Get all the link elements within the menu.
-    const links = menu.find("a");
-
     // Get all the link elements with children within the menu.
     const $dropdown = $(".nav-item.dropdown");
 
     function toggleFocus(event) {
-        event.preventDefault();
+        if ($dropdown.has('.focus') && !$dropdown.find('.focus').first().is(event.target)) {
+            $dropdown.filter('.focus').each((i, el) => $(el).removeClass('focus'));
+        }
 
-        $dropdown.filter('.focus').each((i, el) => $(el).removeClass('focus'));
         $(event.target).addClass('focus');
     }
 
