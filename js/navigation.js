@@ -73,8 +73,7 @@ function onClick(handler, el = document) {
     }
 
     $dropdown.each((i, el) => {
-        const $el = $(el);
-        onClick((event) => toggleFocus(event), $el);
+        onClick((event) => toggleFocus(event), el);
     });
 
     /**
