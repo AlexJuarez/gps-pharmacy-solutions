@@ -68,7 +68,7 @@
     // close the drawer when user clicks outside it
     $('.navbar-toggled-overly').on('mouseup', el => {
         $el = $(el.target);
-        if (!$el.is('.navbar-toggled-overly')) return false;
+        if (!$el.is('.navbar-toggled-overly')) return true;
 
         $(document.body).removeClass('overflow-hidden');
         const $navMenu = $('.navbar-collapse.show');

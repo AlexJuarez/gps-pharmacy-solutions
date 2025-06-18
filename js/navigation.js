@@ -60,9 +60,7 @@
 
     // Toggle the .toggled class and the aria-expanded value each time the button is clicked.
     buttons.each((i, btn) => {
-        const $btn = $(btn);
-        $btn.on('click', (event) => handleNavToggle(event), { capture: false });
-        $btn.on('touchend',(event) => handleNavToggle(event), { capture: false });
+        onClick((event) => handleNavToggle(event), btn);
     });
 
     // Get all the link elements with children within the menu.
