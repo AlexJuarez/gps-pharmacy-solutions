@@ -1070,18 +1070,6 @@ footer .footer-menu a:hover {
 	color: #fff;
 }
 
-/* .products-info-box-container {
-	flex-direction: row;
-	display: flex;
-	& .gps-info-box {
-		flex: 1;
-		margin: 0 1.5rem;
-		& .gps-info-box-fbc {
-			position: relative;
-		}
-	}
-} */
-
 .dropdown-toggle.nav-link.show:before {
 	border-bottom: 3px solid #014E6C;
 	content: "";
@@ -1439,18 +1427,7 @@ footer .footer-menu a.nav-link:hover:before {
 	padding-right: 5px;
 }
 
-/*
-.gps-info-box {
-	perspective: 200rem;
-	transform-style: preserve-3d;
-	position: relative;
-	transition: 1s ease;
-	height: 315px;
-	/* width: 310px; */
-/* margin: 0 auto;
-}
-
-*/ @media screen and (max-width: 1400px) {
+@media screen and (max-width: 1400px) {
 	.gps-info-box {
 		height: 380px;
 	}
@@ -1465,6 +1442,8 @@ footer .footer-menu a.nav-link:hover:before {
 	display: flex;
 	flex-direction: row;
 	max-width: 880px;
+	width: 100%;
+	flex-grow: 1;
 	text-align: center;
 
 	&:hover, &:active {
@@ -1484,8 +1463,8 @@ footer .footer-menu a.nav-link:hover:before {
 	transform-style: preserve-3d;
 	position: relative;
 	box-sizing: border-box;
-	width: 300px;
-	height: 320px;
+	min-width: calc(100% - 15px);
+	min-height: 320px;
 	padding-bottom: 30px;
 
 	&:hover,
@@ -1527,53 +1506,11 @@ footer .footer-menu a.nav-link:hover:before {
 	}
 }
 
-/* .gps-info-box.gps-compounding:hover,
-.gps-info-box.gps-compounding:active,
-.gps-info-box.gps-hospice:hover,
-.gps-info-box.gps-hospice:active,
-.gps-info-box.gps-research:hover,
-.gps-info-box.gps-research:active,
-.gps-info-box.gps-shop:hover,
-.gps-info-box.gps-shop:active {
-	transform: rotateY(0);
-}
- */
-/* .gps-info-box .gps-info-box-fbc {
-	padding: 25px;
-	transition: all 0.8s ease;
-	position: absolute;
-	top: 0;
-
-	left: 0;
-
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-} */
 
 .gps-info-box .gps-info-box-front {
 	cursor: pointer;
 }
 
-/*
-.gps-info-box:hover .gps-info-box-back, .gps-info-box .gps-info-box-back:active {
-	backface-visibility: visible;
-}
-
-.gps-info-box:hover .gps-info-box-back,
-.gps-info-box:active .gps-info-box-back {
-	transform: rotateY(180deg);
-}
-
-.gps-info-box.gps-compounding:hover .gps-info-box-front,
-.gps-info-box.gps-compounding:active .gps-info-box-front,
-.gps-info-box.gps-hospice:hover .gps-info-box-front,
-.gps-info-box.gps-hospice:active .gps-info-box-front,
-.gps-info-box.gps-research:hover .gps-info-box-front,
-.gps-info-box.gps-research:active .gps-info-box-front,
-.gps-info-box.gps-shop:hover .gps-info-box-front,
-.gps-info-box.gps-shop:active .gps-info-box-front {
-	transform: rotateY(0);
-} */
 
 .gps-info-box .gps-info-box-back {
 	padding-left: 50px;
@@ -2774,7 +2711,7 @@ p.product-title.text-center {
 
 	nav .site-logo {
 		+ button {
-			transform: translateY(-3px);
+			margin-left: 30px;
 		}
 		img {
 			margin: 0 auto;

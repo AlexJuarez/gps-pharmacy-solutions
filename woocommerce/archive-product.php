@@ -11,67 +11,59 @@ get_header('shop');
 			<div class="col">
 				<div class="container gps-info-boxes-container">
 					<div class="row">
-						<div class="col-lg-6">
-							<div class="row row-cols-2">
-								<div class="col">
-									<div class="gps-info-box gps-ag">
-										<div
-											class="gps-info-box-front gps-info-box-fbc d-flex flex-column align-items-center justify-content-center">
-											<div class="icon mb-md-3 mb-0">
-												<img src="<?php echo get_theme_file_uri() . '/img/shop/ag.svg'; ?>"
-													alt="Anti-aging">
-											</div>
-											<div class="title montserrat-font text-center mb-5">
-												<p class="fs-xl-4 fs-5">Anti-aging for Women and Men</p>
-											</div>
-											<div class="button montserrat-font">
-												<a class="bg-warning"
-													href="<?php echo get_category_link(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Anti-aging for Women and Men']); ?>">Explore
-													Now</a>
-											</div>
-										</div>
+						<div class="m-auto mt-4 mb-4 g-4 col-xs-12 col-sm-10 col-md-8 col-lg-4">
+							<div class="gps-info-box gps-ag">
+								<div
+									class="gps-info-box-front gps-info-box-fbc d-flex flex-column align-items-center justify-content-center">
+									<div class="icon mb-md-3 mb-0">
+										<img src="<?php echo get_theme_file_uri() . '/img/shop/ag.svg'; ?>"
+											alt="Anti-aging">
+									</div>
+									<div class="title montserrat-font text-center mb-5">
+										<p class="fs-xl-4 fs-5">Anti-aging for Women and Men</p>
+									</div>
+									<div class="button montserrat-font">
+										<a class="bg-warning"
+											href="<?php echo get_category_link(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Anti-aging for Women and Men']); ?>">Explore
+											Now</a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-6">
-							<div class="row row-cols-2">
-								<div class="col">
-									<div class="gps-info-box gps-lashes">
-										<div
-											class="gps-info-box-front gps-info-box-fbc d-flex flex-column align-items-center justify-content-center">
-											<div class="icon mb-md-3 mb-0">
-												<img src="<?php echo get_theme_file_uri() . '/img/shop/lashes.svg'; ?>"
-													alt="Lashes">
-											</div>
-											<div class="title montserrat-font text-center mb-5">
-												<p class="fs-xl-4 fs-5" style="margin-top: 20px !important;">Lashes</p>
-											</div>
-											<div class="button montserrat-font">
-												<a class="bg-info"
-													href="<?php echo get_category_link(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Lashes']); ?>">Explore
-													Now</a>
-											</div>
-										</div>
+						<div class="m-auto mt-4 mb-4 g-4 col-xs-12 col-sm-10 col-md-8 col-lg-4">
+							<div class="gps-info-box gps-lashes">
+								<div
+									class="gps-info-box-front gps-info-box-fbc d-flex flex-column align-items-center justify-content-center">
+									<div class="icon mb-md-3 mb-0">
+										<img src="<?php echo get_theme_file_uri() . '/img/shop/lashes.svg'; ?>"
+											alt="Lashes">
+									</div>
+									<div class="title montserrat-font text-center mb-5">
+										<p class="fs-xl-4 fs-5" style="margin-top: 20px !important;">Lashes</p>
+									</div>
+									<div class="button montserrat-font">
+										<a class="bg-info"
+											href="<?php echo get_category_link(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Lashes']); ?>">Explore
+											Now</a>
 									</div>
 								</div>
-								<div class="col">
-									<div class="gps-info-box gps-hr">
-										<div
-											class="gps-info-box-front gps-info-box-fbc d-flex flex-column align-items-center justify-content-center">
-											<div class="icon mb-md-3 mb-0">
-												<img src="<?php echo get_theme_file_uri() . '/img/shop/hr.svg'; ?>"
-													alt="Hair Restoration">
-											</div>
-											<div class="title montserrat-font text-center mb-5">
-												<p class="fs-xl-4 fs-5">Hair Restoration for Women and Men</p>
-											</div>
-											<div class="button montserrat-font">
-												<a class="bg-success"
-													href="<?php echo get_category_link(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Hair Restoration for Women and Men']); ?>">Explore
-													Now</a>
-											</div>
-										</div>
+							</div>
+						</div>
+						<div class="m-auto mt-4 mb-4 g-4 col-xs-12 col-sm-10 col-md-8 col-lg-4">
+							<div class="gps-info-box gps-hr">
+								<div
+									class="gps-info-box-front gps-info-box-fbc d-flex flex-column align-items-center justify-content-center">
+									<div class="icon mb-md-3 mb-0">
+										<img src="<?php echo get_theme_file_uri() . '/img/shop/hr.svg'; ?>"
+											alt="Hair Restoration">
+									</div>
+									<div class="title montserrat-font text-center mb-5">
+										<p class="fs-xl-4 fs-5">Hair Restoration for Women and Men</p>
+									</div>
+									<div class="button montserrat-font">
+										<a class="bg-success"
+											href="<?php echo get_category_link(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Hair Restoration for Women and Men']); ?>">Explore
+											Now</a>
 									</div>
 								</div>
 							</div>
