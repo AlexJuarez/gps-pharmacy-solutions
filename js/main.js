@@ -1,16 +1,44 @@
-
 (async function () {
+    if(window.mainLoaded != null) return false;
+    window.mainLoaded = true;
+
+    function onClick(handler, el = document) {
+        function handleClick(event) {
+            event.preventDefault();
+            handler.call(this, event);
+        }
+
+        el.addEventListener("mouseup", (event) => handleClick(event));
+        el.addEventListener("touchend", (event) => handleClick(event));
+    }
+
     const $ = await require('jQuery');
     const Splide = await require('Splide');
     const AOS = await require('AOS');
 
-    $('[data-hero-trigger]')
-        .on('mouseover', function(event) {
-            $('.hero-image').attr('data-hero-image', $(event.target).data('heroTrigger'))
-        })
-        .on('mouseout', function() {
-            $('.hero-image').attr('data-hero-image', 'home');
-        })
+     $('#page.site').on('mouseover', (event) => {
+        if(!event.target.hasAttribute('data-hero-trigger')) return true;
+
+        $tar = $(event.target);
+        const data = $tar.attr('data-hero-trigger');
+        if (!$tar.is('a') || !data || !data.length)  return true;
+        $page = $(event.currentTarget);
+
+        $img = $page.find('.hero-image').first();
+        $img.attr('data-hero-image', data);
+    }).on('mouseout', (event) => {
+        if(!event.target.hasAttribute('data-hero-trigger')) return true;
+
+        $tar = $(event.target);
+
+        const data = $tar.attr('data-hero-trigger');
+        if (!$tar.is('a') || !data || !data.length)  return true;
+        $page = $(event.currentTarget);
+
+        setTimeout(() => {
+            $page.find('.hero-image').first().attr('data-hero-image', 'home');
+        }, 500);
+    });
 
     AOS.init();
     const carousel = $('#splide');
@@ -26,61 +54,29 @@
         }).mount();
     }
 
-    const $pccaLogo = $('.navbar-collapse .pcca-logo');
-    const $scopicTitle = $('.navbar-collapse .scopic-title');
-
-    const swapDrawerLogo = (event) => {
-        if (event.window.innerWidth <= 991) {
-            // swap the logo with the description when the drawer is opened
-            // to match the design
-            $pccaLogo.insertBefore($pccaLogo.parent().children().first());
-        } else {
-            $scopicTitle.insertBefore($scopicTitle.parent().children().first());
-        }
-    }
-
     // convert text to date
     const $dateInputField = $('[name="date-427"]');
     if ($dateInputField.length) {
         $dateInputField.on('focus', event => {
             event.preventDefault();
 
-
             if ($dateInputField.attr('type') !== 'text') return;
             $dateInputField.attr('type', 'date');
             $(document.activeElement).blur();
         });
     }
-
-    // on tablets and mobile
-    window.addEventListener('resize', (event) => {
-        swapDrawerLogo(event);
-    });
-
-    window.dispatchEvent(new Event('resize'));
-
-    const $navbarToggler = $('button.navbar-toggler');
-    $navbarToggler.on('click', (event) => {
-        event.preventDefault();
-
-        $(document.body).toggleClass('overflow-hidden');
-        const $navMenu = $('.navbar-collapse.collapse.show');
-        $navMenu.addClass('show');
-    });
-
     // close the drawer when user clicks outside it
-    $('.navbar-toggled-overly').on('click', e => {
-        e.preventDefault();
-        if (!$('.navbar-toggled-overly').has(e.currentTarget).length) {
-            const $navMenu = $('.navbar-collapse.collapse.show');
-            $navMenu.removeClass('show');
-        }
+    $('.navbar-toggled-overly').on('mouseup', el => {
+        $el = $(el.target);
+        if (!$el.is('.navbar-toggled-overly')) return false;
 
+        $(document.body).removeClass('overflow-hidden');
+        const $navMenu = $('.navbar-collapse.show');
+        $navMenu.removeClass('show');
     });
 
     // handle selecting product images
     const productImages = document.querySelectorAll('.woocommerce-product-gallery__image');
-    const productImageContainer = document.querySelector('.product-image-container');
     let currentActiveProductImage = null;
     productImages.forEach((productImage, i) => {
         if (productImages.length === 1) {
@@ -107,7 +103,6 @@
 
 
     const $addToCartButtons = $('.add_to_cart_button');
-    const $removeFromCartButtons = $('.product-remove .remove');
     if ($addToCartButtons.length) {
         $addToCartButtons.each(function(i, btn) {
             $(btn).on('click', e => {
@@ -133,10 +128,13 @@
     }
 
     // fix: GPSWR-4
-    $('.menu-item-has-children > a').each((i, $item) => {
-        $item.on('touchend', e => {
-            $item.trigger('click');
-        });
+    $('.menu-item-has-children > a').each((i, item) => {
+        function handleClick(event) {
+            const $link = $(event.target);
+            $link.trigger('click');
+        }
+
+        onClick((event) => handleClick(event), item);
     });
 
     // execute this when it's the homepage
@@ -215,7 +213,8 @@
     // make cards clickable
     const cards = $('.gps-info-box');
     if (cards.length) {
-        cards.each((i, $card) => {
+        cards.each((i, card) => {
+            const $card = $(card);
             const $pageUrlTag = $card.find('.gps-info-box-front .button a');
             const pageUrl = $pageUrlTag.first().attr('href');
             if (innerWidth <= 991) $card.on('click', e => {
@@ -265,5 +264,5 @@
         activateAlertCloseButton();
     });
 
-});
+})();
 

@@ -4,17 +4,20 @@
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
-function onClick(handler, el = document) {
-    function handleClick(event) {
-        event.preventDefault();
-        handler.call(this, event);
+(async function () {
+    if(window.navLoaded != null) return false;
+    window.navLoaded = true;
+
+    function onClick(handler, el = document) {
+        function handleClick(event) {
+            event.preventDefault();
+            handler(event);
+        }
+
+        el.addEventListener("mouseup", (event) => handleClick(event));
+        el.addEventListener("touchend", (event) => handleClick(event));
     }
 
-    el.addEventListener("click", (event) => handleClick(event));
-    el.addEventListener("touchend", (event) => handleClick(event));
-}
-
-(async function () {
     const $ = await require("jQuery");
 
     const siteNavigation = $("#site-navigation");
@@ -42,10 +45,12 @@ function onClick(handler, el = document) {
 
     function handleNavToggle(event) {
         event.preventDefault();
-        event.stopPropagation();
 
-        siteNavigation.toggleClass("toggled");
-        siteNavigation.find(".navbar-collapse").toggleClass("show");
+        console.log('nav menu toggled');
+
+        $('.main-navigation').toggleClass("toggled");
+        $('.navbar-collapse.collapse').toggleClass('show');
+        $(document.body).toggleClass('overflow-hidden');
         const $btn = $(event.target);
         $btn.attr(
             "aria-expanded",
@@ -55,17 +60,16 @@ function onClick(handler, el = document) {
 
     // Toggle the .toggled class and the aria-expanded value each time the button is clicked.
     buttons.each((i, btn) => {
-        console.log("Buttons", btn);
-        onClick((event) => handleNavToggle(event), btn);
+        const $btn = $(btn);
+        $btn.on('click', (event) => handleNavToggle(event), { capture: false });
+        $btn.on('touchend',(event) => handleNavToggle(event), { capture: false });
     });
 
     // Get all the link elements with children within the menu.
     const $dropdown = $(".nav-item.dropdown");
 
     function toggleFocus(event) {
-        if ($dropdown.has('.focus') && !$dropdown.find('.focus').first().is(event.target)) {
-            $dropdown.filter('.focus').each((i, el) => $(el).removeClass('focus'));
-        }
+        $dropdown.each((i, el) => $(el).removeClass('focus'));
 
         $(event.target).addClass('focus');
     }
@@ -73,8 +77,4 @@ function onClick(handler, el = document) {
     $dropdown.each((i, el) => {
         onClick((event) => toggleFocus(event), el);
     });
-
-    /**
-     * Sets or removes .focus class on an element.
-     */
-})(jQuery);
+})();

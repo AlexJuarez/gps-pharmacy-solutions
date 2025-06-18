@@ -7,11 +7,11 @@ get_header('shop');
 <main id="primary" class="site-main">
 	<div class="container-fluid wc homepage d-flex"
 		style="background-image: url('<?php echo get_theme_file_uri() . '/img/shop/homepage-cover.jpg'; ?>'); background-position: top center; background-repeat: no-repeat; background-size: cover;">
-		<div class="row align-items-end mt-auto w-100">
+		<div class="row align-items-end mx-auto w-100">
 			<div class="col">
 				<div class="container gps-info-boxes-container">
 					<div class="row">
-						<div class="m-auto mt-4 mb-4 g-4 col-xs-12 col-sm-10 col-md-8 col-lg-4">
+						<div class="mx-auto mt-4 mb-4 g-0 g-lg-4 col-12 col-lg-4">
 							<div class="gps-info-box gps-ag">
 								<div
 									class="gps-info-box-front gps-info-box-fbc d-flex flex-column align-items-center justify-content-center">
@@ -30,7 +30,7 @@ get_header('shop');
 								</div>
 							</div>
 						</div>
-						<div class="m-auto mt-4 mb-4 g-4 col-xs-12 col-sm-10 col-md-8 col-lg-4">
+						<div class="mx-auto mt-4 mb-4 g-0 g-lg-4 col-12 col-lg-4">
 							<div class="gps-info-box gps-lashes">
 								<div
 									class="gps-info-box-front gps-info-box-fbc d-flex flex-column align-items-center justify-content-center">
@@ -49,7 +49,7 @@ get_header('shop');
 								</div>
 							</div>
 						</div>
-						<div class="m-auto mt-4 mb-4 g-4 col-xs-12 col-sm-10 col-md-8 col-lg-4">
+						<div class="mx-auto mt-4 mb-4 g-0 g-lg-4 col-12 col-lg-4">
 							<div class="gps-info-box gps-hr">
 								<div
 									class="gps-info-box-front gps-info-box-fbc d-flex flex-column align-items-center justify-content-center">
@@ -82,7 +82,7 @@ get_header('shop');
 				<p class="text-center">GPS Pharmacy specializes in medical grade cosmetics and beauty products with free
 					delivery to your door. Just use our beauty care products online shopping portal and our drivers will
 					be dispatched directly to you!</p>
-				<div class="row m-auto ul">
+				<div class="row mx-auto ul">
 					<div class="col">
 						<ul>
 							<li>Our medical grade <a
