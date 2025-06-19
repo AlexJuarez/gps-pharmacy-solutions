@@ -46,8 +46,11 @@
     function handleNavToggle(event) {
         siteNavigation.is('.toggled') ? siteNavigation.removeClass("toggled") : siteNavigation.addClass("toggled");
         const navBar = siteNavigation.find('.navbar-collapse.collapse');
-        navBar.has(':not(.show)').show();
-        navBar.has('.show') ? navBar.removeClass('show') : navBar.addClass('show');
+        if (navBar.is('.show')) {
+            navBar.removeClass('show');
+        } else {
+            navBar.show().addClass('show');
+        }
         $(document.body).toggleClass('overflow-hidden');
         const $btn = $(event.target);
         $btn.attr(

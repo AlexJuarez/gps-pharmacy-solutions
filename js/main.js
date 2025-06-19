@@ -66,17 +66,19 @@
         });
     }
     // close the drawer when user clicks outside it
-    $('.navbar-toggled-overly').on('click', event => {
+    overlay = $('.navbar-toggled-overly').get(0);
+
+    function handleCloseOverlay(event) {
         event.preventDefault();
-        event.stopPropagation();
 
-
-        if ($('.navbar-collapse.show').find($(event.target)).length) return true;
-
-        $(document.body).removeClass('overflow-hidden');
         const $navMenu = $('.navbar-collapse.show');
-        $navMenu.removeClass('show');
-    });
+        if ($(event.target).is(overlay) && $navMenu.is('.show')) {
+            $(document.body).removeClass('overflow-hidden');
+            $navMenu.removeClass('show');
+        }
+    };
+
+    onClick((event) => handleCloseOverlay(event), overlay);
 
     // handle selecting product images
     const productImages = document.querySelectorAll('.woocommerce-product-gallery__image');
