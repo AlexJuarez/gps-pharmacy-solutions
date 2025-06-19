@@ -1,7 +1,7 @@
+const loaded = new Set();
+
 async function require(target) {
     console.log(`Loading ${target}`);
-
-    const loaded = new Set();
 
     let res, rej;
     const promise = new Promise((resolve, reject) => {
@@ -24,14 +24,10 @@ async function require(target) {
             if (script.src.toLowerCase().includes(target.toLowerCase()) && window[target] != null) {
                 console.log(`${target} script loaded successfully:`, script.src);
                 res(window[target]);
-                return;
             }
         }
 
-        if (window.readyState === 'complete') {
-            rej(new Error(`Failed to load ${target} script`));
-            return;
-        }
+        window.readyState === 'complete' && rej(`Failed to load ${target} script`);
     }
 
 

@@ -9,7 +9,7 @@
         }
 
         el.addEventListener("mouseup", (event) => handleClick(event));
-        el.addEventListener("touchend", (event) => handleClick(event));
+        el.addEventListener("touchstart", (event) => handleClick(event));
     }
 
     const $ = await require('jQuery');
@@ -66,9 +66,12 @@
         });
     }
     // close the drawer when user clicks outside it
-    $('.navbar-toggled-overly').on('mouseup', el => {
-        $el = $(el.target);
-        if (!$el.is('.navbar-toggled-overly')) return true;
+    $('.navbar-toggled-overly').on('click', event => {
+        event.preventDefault();
+        event.stopPropagation();
+
+
+        if ($('.navbar-collapse.show').find($(event.target)).length) return true;
 
         $(document.body).removeClass('overflow-hidden');
         const $navMenu = $('.navbar-collapse.show');
@@ -130,6 +133,7 @@
     // fix: GPSWR-4
     $('.menu-item-has-children > a').each((i, item) => {
         function handleClick(event) {
+            event.preventDefault();
             const $link = $(event.target);
             $link.trigger('click');
         }

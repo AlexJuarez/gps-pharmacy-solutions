@@ -1419,7 +1419,7 @@ footer .footer-menu a.nav-link:hover:before {
 }
 
 .navbar-collapse {
-	position: absolute;
+	position: relative;
 	z-index: 25;
 }
 

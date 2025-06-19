@@ -11,16 +11,16 @@
     function onClick(handler, el = document) {
         function handleClick(event) {
             event.preventDefault();
-            handler(event);
+            handler.call(this, event);
         }
 
         el.addEventListener("mouseup", (event) => handleClick(event));
-        el.addEventListener("touchend", (event) => handleClick(event));
+        el.addEventListener("touchstart", (event) => handleClick(event));
     }
 
     const $ = await require("jQuery");
 
-    const siteNavigation = $("#site-navigation");
+    const siteNavigation = $('.main-navigation');
     console.log(`found site nav: ${siteNavigation}`);
 
     if (!siteNavigation.length) {
@@ -44,12 +44,10 @@
     }
 
     function handleNavToggle(event) {
-        event.preventDefault();
-
-        console.log('nav menu toggled');
-
-        $('.main-navigation').toggleClass("toggled");
-        $('.navbar-collapse.collapse').toggleClass('show');
+        siteNavigation.is('.toggled') ? siteNavigation.removeClass("toggled") : siteNavigation.addClass("toggled");
+        const navBar = siteNavigation.find('.navbar-collapse.collapse');
+        navBar.has(':not(.show)').show();
+        navBar.has('.show') ? navBar.removeClass('show') : navBar.addClass('show');
         $(document.body).toggleClass('overflow-hidden');
         const $btn = $(event.target);
         $btn.attr(

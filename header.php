@@ -49,10 +49,10 @@
 		<header id="masthead" class="site-header">
 			<!-- .site-branding -->
 			<nav id="site-navigation" class="main-navigation navbar navbar-expand-xl navbar-light bg-white">
-				<div class="container">
+				<div class="container h-100 me-auto ms-auto">
 					<div>
 						<?php the_custom_logo(); ?>
-						<p class="scopic-title m-0 text-primary ms-auto mt-2 d-xl-none d-block">
+						<p class="scopic-title m-0 text-primary d-xl-none d-block">
 							<?php echo get_bloginfo('description'); ?></p>
 					</div>
 					<div class="d-flex">
