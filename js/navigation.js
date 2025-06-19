@@ -61,16 +61,18 @@
 
     // Toggle the .toggled class and the aria-expanded value each time the button is clicked.
     buttons.each((i, btn) => {
-        onClick((event) => handleNavToggle(event), btn);
+        onClick(handleNavToggle.bind(this), btn);
     });
 
     // Get all the link elements with children within the menu.
-    const $dropdown = $(".nav-item.dropdown");
 
     function toggleFocus(event) {
-        $dropdown.each((i, el) => $(el).removeClass('focus'));
-
-        $(event.target).addClass('focus');
+        $el = $(event.target);
+        if ($el.is('.dropdown:not(.focus)')) {
+            const $dropdown = $(".nav-item.dropdown");
+            $dropdown.each((i, el) => $(el).removeClass('focus'));
+            $(event.target).addClass('focus');
+        }
     }
 
     $dropdown.each((i, el) => {

@@ -4,7 +4,6 @@
 
     function onClick(handler, el = document) {
         function handleClick(event) {
-            event.preventDefault();
             handler.call(this, event);
         }
 
@@ -17,27 +16,22 @@
     const AOS = await require('AOS');
 
      $('#page.site').on('mouseover', (event) => {
-        if(!event.target.hasAttribute('data-hero-trigger')) return true;
-
         $tar = $(event.target);
-        const data = $tar.attr('data-hero-trigger');
-        if (!$tar.is('a') || !data || !data.length)  return true;
-        $page = $(event.currentTarget);
-
-        $img = $page.find('.hero-image').first();
-        $img.attr('data-hero-image', data);
+        if ($tar.is('[data-hero-trigger]')) {
+            const data = $tar.attr('data-hero-trigger');
+            $page = $(event.currentTarget);
+            $img = $page.find('.hero-image').first();
+            $img.attr('data-hero-image', data);
+        }
     }).on('mouseout', (event) => {
-        if(!event.target.hasAttribute('data-hero-trigger')) return true;
-
         $tar = $(event.target);
-
-        const data = $tar.attr('data-hero-trigger');
-        if (!$tar.is('a') || !data || !data.length)  return true;
-        $page = $(event.currentTarget);
-
-        setTimeout(() => {
-            $page.find('.hero-image').first().attr('data-hero-image', 'home');
-        }, 500);
+        if ($tar.is('[data-hero-trigger]')) {
+            $page = $(event.currentTarget);
+            const timeout = setTimeout(() => {
+                $page.find('.hero-image').first().attr('data-hero-image', 'home');
+                clearTimeout(timeout);
+            }, 500);
+        }
     });
 
     AOS.init();
@@ -66,13 +60,12 @@
         });
     }
     // close the drawer when user clicks outside it
-    overlay = $('.navbar-toggled-overly').get(0);
+    const overlay = $('.navbar-toggled-overly').get(0);
 
     function handleCloseOverlay(event) {
-        event.preventDefault();
-
-        const $navMenu = $('.navbar-collapse.show');
+        const $navMenu = $('.navbar-collapse');
         if ($(event.target).is(overlay) && $navMenu.is('.show')) {
+            event.preventDefault();
             $(document.body).removeClass('overflow-hidden');
             $navMenu.removeClass('show');
         }
@@ -132,15 +125,16 @@
         });
     }
 
+    function handleClick($item) {
+        return (event) => {
+            $item.trigger('click');
+        }
+    }
+
     // fix: GPSWR-4
     $('.menu-item-has-children > a').each((i, item) => {
-        function handleClick(event) {
-            event.preventDefault();
-            const $link = $(event.target);
-            $link.trigger('click');
-        }
-
-        onClick((event) => handleClick(event), item);
+        const $item = $(item);
+        onClick(handleClick.bind(this, $item), item);
     });
 
     // execute this when it's the homepage
@@ -180,7 +174,6 @@
     // auto-update the cart on quantity change
     let timeout;
     $('.woocommerce').on('change', 'input.qty', function () {
-
         if (timeout !== undefined) {
             clearTimeout(timeout);
         }
