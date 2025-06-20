@@ -5,110 +5,82 @@
  * navigation support for dropdown menus.
  */
 (async function () {
-    if (window.navLoaded != null) return false;
-    window.navLoaded = true;
+    const $ = await require('jQuery');
+
 
     function onClick(handler, el = document) {
         const handleClick = ((event) => {
-            event.preventDefault();
-            handler.call(this, event);
+            handler(event);
         }).bind(this);
 
-        let loaded = false;
-
-        $(document).on('DOMNodeInserted', (e) => {
-            if ($(e.target).is(el) && !loaded) {
-                el.addEventListener("mouseup", handleClick);
-                el.addEventListener("touchstart", handleClick);
-                loaded = true;
-            }
-        })
-
-        $(document).on('DOMNodeRemoved', (e) => {
-            if ($(e.target).is(el) && !loaded) {
-                el.removeEventListener("mouseup", handleClick);
-                el.removeEventListener("touchstart", handleClick);
-                loaded = false;
-            }
-        })
-
-        el.addEventListener("mouseup", handleClick);
-        el.addEventListener("touchstart", handleClick);
-        loaded = true;
+        el.addEventListener('mouseup', handleClick);
+        el.addEventListener('touchstart', handleClick);
     }
 
-    const $ = await require("jQuery");
 
-    const siteNavigation = $(".main-navigation");
-    console.log(`found site nav: ${siteNavigation}`);
+    const $siteNavigation = $('.main-navigation');
 
-    if (!siteNavigation.length) {
-        console.warn("siteNavigation not found");
+    if (!$siteNavigation.length) {
+        console.warn($siteNavigation, 'site navigation not found');
     }
 
-    const menu = siteNavigation.find("ul");
+    const $menu = $siteNavigation.find('.navbar-nav > li');
 
-    if (!menu.length) {
-        $('.navbar-toggler').first().hide();
+    if (!$menu.length) {
+        console.warn($menu, 'menu items not found, navbar-toggler hidden');
+        $('.navbar-toggler.collapsed').hide();
     }
 
-    if (!menu.find(".nav-menu").length) {
-        menu.first().addClass("nav-menu");
-    }
-
-    function isOpen() {
-        return siteNavigation.hasClass("toggled");
-    }
-
-    function handleNavOpen(event) {
-        siteNavigation.addClass("toggled");
-
-        const navBar = siteNavigation.find(".navbar-collapse.collapse");
-        navBar.show();
-        navBar.addClass('show');
-
-        $(document.body).addClass("overflow-hidden");
-
-        $btn.attr("aria-expanded", "true");
-    }
-
-    function handleNavClose(event) {
-        siteNavigation.removeClass("toggled");
-
-        const navBar = siteNavigation.find(".navbar-collapse.collapse");
-        navBar.hide();
-        navBar.removeClass('show')
-
-        $(document.body).removeClass("overflow-hidden");
-
-        $btn.attr("aria-expanded", "false");
-    }
-
-    function toggleNav(event) {
-        if ($(event.target).is('.navbar-toggler')){
-            if (isOpen()) {
-                handleNavClose(event);
+    function toggleNav (event) {
+        if (event.target.matches('button.navbar-toggler')) {
+            event.preventDefault();
+            const $target = $(event.target);
+            const $navBar = $('.navbar-collapse.collapse');
+            const isOpen = $navBar.hasClass('show');
+            if (isOpen) {
+                console.info(`${event.target} nav closed`);
+                $siteNavigation.removeClass('toggled');
+                $navBar.hide('slow', () => {
+                    $navBar.removeClass('show');
+                });
+                $('body.home').removeClass('overflow-hidden');
+                $target.attr('aria-expanded', 'false');
             } else {
-                handleNavOpen(event);
+                console.info(`${event.target} nav opened`);
+                $siteNavigation.addClass('toggled');
+                $navBar.show('fast', () => {
+                    $navBar.addClass('show');
+                });
+                $('body.home').addClass('overflow-hidden');
+                $target.attr('aria-expanded', 'true');
             }
         }
     }
 
-    // Toggle the .toggled class and the aria-expanded value each time the button is clicked.
     onClick((event) => toggleNav(event), document);
 
     // Get all the link elements with children within the menu.
 
     function toggleFocus(event) {
-        $el = $(event.target);
-        if ($el.is(".dropdown:not(.focus)")) {
-            const $dropdown = $(".nav-item.dropdown");
-            $dropdown.each((i, el) => $(el).removeClass("focus"));
-            $(event.target).addClass("focus");
+        if (event.target.matches('.nav-item.dropdown')) {
+            event.preventDefault();
+            $target = $(event.target);
+            console.info(`${target} dropdown clicked`);
+            const $dropdown = $('.nav-item.dropdown');
+            $dropdown.filter('.focus').each((i, el) => {
+                $el = $(el);
+                if (!$el.is($target)) {
+                    $el.removeClass('focus');
+                }
+            });
+
+            if (!$target.hasClass('focus')) {
+                $target.addClass('focus');
+            }
         }
     }
 
-    $dropdown.each((i, el) => {
-        onClick((event) => toggleFocus(event), el);
-    });
-})();
+    onClick((event) => toggleFocus(event), document);
+
+
+})().catch((err) => console.warn(`Error loading navigation.js: ${err}`));

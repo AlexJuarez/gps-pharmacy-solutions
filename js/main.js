@@ -1,63 +1,47 @@
-(async function () {
-    if (window.mainLoaded != null) return false;
-    window.mainLoaded = true;
 
+(async function () {
     const $ = await require("jQuery");
     const Splide = await require("Splide");
     const AOS = await require("AOS");
 
+
     function onClick(handler, el = document) {
         const handleClick = ((event) => {
-            event.preventDefault();
-            handler.call(this, event);
+            handler(event);
         }).bind(this);
 
-        let loaded = false;
-
-        $(document).on('DOMNodeInserted', (e) => {
-            if ($(e.target).is(el) && !loaded) {
-                el.addEventListener("mouseup", handleClick);
-                el.addEventListener("touchstart", handleClick);
-                loaded = true;
-            }
-        })
-
-        $(document).on('DOMNodeRemoved', (e) => {
-            if ($(e.target).is(el) && !loaded) {
-                el.removeEventListener("mouseup", handleClick);
-                el.removeEventListener("touchstart", handleClick);
-                loaded = false;
-            }
-        })
-
-        el.addEventListener("mouseup", handleClick);
-        el.addEventListener("touchstart", handleClick);
-        loaded = true;
+        el.addEventListener('mouseup', handleClick);
+        el.addEventListener('touchstart', handleClick);
     }
 
-    $("#page.site")
-        .on("mouseover", (event) => {
-            $tar = $(event.target);
-            if ($tar.is("[data-hero-trigger]")) {
-                const data = $tar.attr("data-hero-trigger");
-                $page = $(event.currentTarget);
-                $img = $page.find(".hero-image").first();
-                $img.attr("data-hero-image", data);
-            }
-        })
-        .on("mouseout", (event) => {
-            $tar = $(event.target);
-            if ($tar.is("[data-hero-trigger]")) {
-                $page = $(event.currentTarget);
-                const timeout = setTimeout(() => {
-                    $page
+    const $page = $("#page.site");
+
+    const handleMouseOver = ((event) => {
+        if (event.target.matches("[data-hero-trigger]")) {
+            const $tar = $(event.target);
+            const data = $tar.attr("data-hero-trigger");
+            $img = $page.find(".hero-image").first();
+            $img.attr("data-hero-image", data);
+        }
+    }).bind(this);
+
+    let mouseTimeout;
+    const handleMouseOut = ((event) => {
+        if (event.target.matches("[data-hero-trigger]") && mouseTimeout == null) {
+            mouseTimeout = setTimeout(() => {
+                const $img = $page
                         .find(".hero-image")
-                        .first()
-                        .attr("data-hero-image", "home");
-                    clearTimeout(timeout);
-                }, 500);
-            }
-        });
+                        .first();
+                $img.attr("data-hero-image", "home");
+                clearTimeout(mouseTimeout);
+                mouseTimeout = null;
+            }, 500);
+        }
+    }).bind(this);
+
+    $page
+        .on("mouseover", handleMouseOver)
+        .on("mouseout", handleMouseOut);
 
     AOS.init();
     const carousel = $("#splide");
@@ -117,52 +101,51 @@
     });
 
     const $addToCartButtons = $(".add_to_cart_button");
-    if ($addToCartButtons.length) {
-        $addToCartButtons.each(function (i, btn) {
-            $(btn).on("click", (e) => {
-                if (
-                    window.innerWidth <= 991 &&
-                    window.location.href.includes("/product/")
-                )
-                    window.scroll({
-                        top: 0,
-                        left: 0,
-                        behavior: "smooth"
-                    });
-                const path = e.composedPath();
-                let productAddedButton = null;
-                if (path[2]) {
-                    productAddedButton = $(path[2]).find(".product-added-btn");
-                }
-                if (!productAddedButton || !productAddedButton.length) {
-                    productAddedButton = $(".product-added-btn");
-                }
-                productAddedButton.removeClass("d-none");
-                setTimeout(() => {
-                    productAddedButton.addClass("d-none");
+    let timeouts = {};
+    function addToCart(event) {
+        if (event.target.matches(".add_to_cart_button")) {
+            if (
+                window.innerWidth <= 991 &&
+                window.location.href.includes("/product/")
+            ) {
+                window.scroll({
+                    top: 0,
+                    left: 0,
+                    behavior: "smooth"
+                });
+            }
+
+            const $btn = $(event.target);
+            const $productBtn = $btn.parents('.product-added-btn');
+            $productBtn.removeClass('d-none')
+            const id = event.composedPath().map((e) => e.nodeName).join(':');
+            console.log(`${id} btn path for add to cart`);
+            if (timeouts[id] != null) {
+                timeouts[id] = setTimeout(() => {
+                    $productBtn.addClass('d-none');
+                    delete timeouts[id];
                 }, 10000);
-            });
-        });
+            }
+        }
     }
 
-    function handleClick($item) {
-        return (event) => {
-            $item.trigger("click");
-        };
+    onClick((event) => addToCart(event), document);
+
+    function handleClick(event) {
+        const $tar = $(event.target);
+        if($.is('a') && $tar.parents('.menu-item-has-children').length) {
+            $tar.click();
+            console.info($tar, 'triggered click');
+        }
     }
 
-    // fix: GPSWR-4
-    $(".menu-item-has-children > a").each((i, item) => {
-        onClick(handleClick.bind(this), item);
-    });
-
-    // execute this when it's the homepage
-    // if (typeof themeFileUri !== 'undefined') homepageBackgroundImageChange();
+    onClick((event) => handleClick(event), document);
 
     // make sure the correct message is displayed
     const wooCommerceMessages = $(".woocommerce-message");
     if (wooCommerceMessages.length) {
-        wooCommerceMessages.each((i, $message) => {
+        wooCommerceMessages.each((i, message) => {
+            const $message = $(message);
             $message.css({ display: "none" });
         });
         wooCommerceMessages.last().addClass("d-block");
@@ -199,12 +182,13 @@
     // auto-update the cart on quantity change
     let timeout;
     $(".woocommerce").on("change", "input.qty", function () {
-        if (timeout !== undefined) {
+        if (timeout == null) {
             clearTimeout(timeout);
         }
 
         timeout = setTimeout(function () {
             $("[name='update_cart']").trigger("click");
+            timeout = null;
         }, 500);
     });
 
@@ -214,42 +198,48 @@
     if ($orderOverPhone) {
         const popup = $("#popup-order-over-phone");
 
-        $orderOverPhone.on("click", (e) => {
-            e.preventDefault();
-            popup.removeClass("d-none");
-            popup.data("aos", "fade-up");
-            AOS.init();
+        let popTimeout;
 
-            setTimeout(() => {
-                popup.data("aos", null);
-                popup.removeClass("aos-init");
-                popup.removeClass("aos-animate");
-                popup.css({ pointerEvents: "all" });
-            }, 500);
+        $orderOverPhone.on("click", (e) => {
+            if (popTimeout == null) {
+                e.preventDefault();
+                popup.removeClass("d-none");
+                popup.data("aos", "fade-up");
+                AOS.init();
+
+                popTimeout = setTimeout(() => {
+                    popup.data("aos", null);
+                    popup.removeClass("aos-init");
+                    popup.removeClass("aos-animate");
+                    popup.css({ pointerEvents: "all" });
+                    clearTimeout(popTimeout);
+                    popTimeout = null;
+                }, 500);
+            }
         });
 
         popup.find(".close-button").on("click", (e) => {
-            if ($(e.currentTarget).is(taget.current)) {
+            if ($(e.currentTarget).is($(e.target.current))) {
             }
-            eX.preventDefault();
+            e.preventDefault();
             popup.addClass("d-none");
         });
     }
 
     // make cards clickable
-    const cards = $(".gps-info-box");
-    if (cards.length) {
-        cards.each((i, card) => {
-            const $card = $(card);
-            const $pageUrlTag = $card.find(".gps-info-box-front .button a");
-            const pageUrl = $pageUrlTag.first().attr("href");
-            if (innerWidth <= 991)
-                $card.on("click", (e) => {
-                    //e.preventDefault();
-                    location.href = pageUrl;
-                });
-        });
+    function cardHandler(event) {
+        if (window.innerWidth <= 991 && event.target.matches('.gps-info-box')) {
+            const $card = $(event.target);
+            const $pageUrlTag = $card.find('.button a[href]').first();
+            const pageUrl = $pageUrlTag.attr('href');
+            event.preventDefault();
+            location.assign(pageUrl);
+        }
     }
+
+    onClick((event) => cardHandler(event), document);
+
+
 
     // fix form not submitting after showing error
     const removeProcessingStatus = () => {
@@ -283,14 +273,14 @@
         });
     };
 
-    checkWishlistMessage();
-
     $("form.checkout.woocommerce-checkout").bind("DOMSubtreeModified", () => {
         $checkoutForm = $("form.checkout.woocommerce-checkout");
         setTimeout(() => removeProcessingStatus(), 3500);
     });
 
-    $(window.body).on("DOMSubtreeModified", () => {
+    var observer = new MutationObserver(function(mutations, observer) {
+        checkWishlistMessage();
         activateAlertCloseButton();
+
     });
-})();
+})().catch((err) => console.warn(`Error loading main.js: ${err}`));
