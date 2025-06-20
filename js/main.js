@@ -1,96 +1,113 @@
 (async function () {
-    if(window.mainLoaded != null) return false;
+    if (window.mainLoaded != null) return false;
     window.mainLoaded = true;
 
-    function onClick(handler, el = document) {
-        function handleClick(event) {
-            handler.call(this, event);
-        }
+    const $ = await require("jQuery");
+    const Splide = await require("Splide");
+    const AOS = await require("AOS");
 
-        el.addEventListener("mouseup", (event) => handleClick(event));
-        el.addEventListener("touchstart", (event) => handleClick(event));
+    function onClick(handler, el = document) {
+        const handleClick = ((event) => {
+            event.preventDefault();
+            handler.call(this, event);
+        }).bind(this);
+
+        let loaded = false;
+
+        $(document).on('DOMNodeInserted', (e) => {
+            if ($(e.target).is(el) && !loaded) {
+                el.addEventListener("mouseup", handleClick);
+                el.addEventListener("touchstart", handleClick);
+                loaded = true;
+            }
+        })
+
+        $(document).on('DOMNodeRemoved', (e) => {
+            if ($(e.target).is(el) && !loaded) {
+                el.removeEventListener("mouseup", handleClick);
+                el.removeEventListener("touchstart", handleClick);
+                loaded = false;
+            }
+        })
+
+        el.addEventListener("mouseup", handleClick);
+        el.addEventListener("touchstart", handleClick);
+        loaded = true;
     }
 
-    const $ = await require('jQuery');
-    const Splide = await require('Splide');
-    const AOS = await require('AOS');
-
-     $('#page.site').on('mouseover', (event) => {
-        $tar = $(event.target);
-        if ($tar.is('[data-hero-trigger]')) {
-            const data = $tar.attr('data-hero-trigger');
-            $page = $(event.currentTarget);
-            $img = $page.find('.hero-image').first();
-            $img.attr('data-hero-image', data);
-        }
-    }).on('mouseout', (event) => {
-        $tar = $(event.target);
-        if ($tar.is('[data-hero-trigger]')) {
-            $page = $(event.currentTarget);
-            const timeout = setTimeout(() => {
-                $page.find('.hero-image').first().attr('data-hero-image', 'home');
-                clearTimeout(timeout);
-            }, 500);
-        }
-    });
+    $("#page.site")
+        .on("mouseover", (event) => {
+            $tar = $(event.target);
+            if ($tar.is("[data-hero-trigger]")) {
+                const data = $tar.attr("data-hero-trigger");
+                $page = $(event.currentTarget);
+                $img = $page.find(".hero-image").first();
+                $img.attr("data-hero-image", data);
+            }
+        })
+        .on("mouseout", (event) => {
+            $tar = $(event.target);
+            if ($tar.is("[data-hero-trigger]")) {
+                $page = $(event.currentTarget);
+                const timeout = setTimeout(() => {
+                    $page
+                        .find(".hero-image")
+                        .first()
+                        .attr("data-hero-image", "home");
+                    clearTimeout(timeout);
+                }, 500);
+            }
+        });
 
     AOS.init();
-    const carousel = $('#splide');
+    const carousel = $("#splide");
     if (carousel.length) {
-        new Splide('#splide', {
-            'type': 'loop',
-            'width': '80%',
-            'perPage': 3,
-            'breakpoints': {
-                991: { 'perPage': 1 }
+        new Splide("#splide", {
+            type: "loop",
+            width: "80%",
+            perPage: 3,
+            breakpoints: {
+                991: { perPage: 1 }
             },
-            'arrowPath': 'M1.75 36.388L31 19.5 1.75 2.613v33.775z'
+            arrowPath: "M1.75 36.388L31 19.5 1.75 2.613v33.775z"
         }).mount();
     }
 
     // convert text to date
     const $dateInputField = $('[name="date-427"]');
     if ($dateInputField.length) {
-        $dateInputField.on('focus', event => {
+        $dateInputField.on("focus", (event) => {
             event.preventDefault();
 
-            if ($dateInputField.attr('type') !== 'text') return;
-            $dateInputField.attr('type', 'date');
+            if ($dateInputField.attr("type") !== "text") return;
+            $dateInputField.attr("type", "date");
             $(document.activeElement).blur();
         });
     }
-    // close the drawer when user clicks outside it
-    const overlay = $('.navbar-toggled-overly').get(0);
-
-    function handleCloseOverlay(event) {
-        const $navMenu = $('.navbar-collapse');
-        if ($(event.target).is(overlay) && $navMenu.is('.show')) {
-            event.preventDefault();
-            $(document.body).removeClass('overflow-hidden');
-            $navMenu.removeClass('show');
-        }
-    };
-
-    onClick((event) => handleCloseOverlay(event), overlay);
 
     // handle selecting product images
-    const productImages = document.querySelectorAll('.woocommerce-product-gallery__image');
+    const productImages = document.querySelectorAll(
+        ".woocommerce-product-gallery__image"
+    );
     let currentActiveProductImage = null;
     productImages.forEach((productImage, i) => {
         if (productImages.length === 1) {
-            document.querySelector('.woocommerce-product-gallery__wrapper').style.display = 'none';
+            document.querySelector(
+                ".woocommerce-product-gallery__wrapper"
+            ).style.display = "none";
             return;
         }
 
-        if (i === 0) currentActiveProductImage = productImage.querySelector('img');
+        if (i === 0)
+            currentActiveProductImage = productImage.querySelector("img");
 
-        const productImageAnchor = productImage.querySelector('a');
-        const productImageTag = productImageAnchor.querySelector('img');
+        const productImageAnchor = productImage.querySelector("a");
+        const productImageTag = productImageAnchor.querySelector("img");
 
-        productImageTag.srcset = '';
-        productImageTag.src = productImageTag.src.replace('-100x100', '');
+        productImageTag.srcset = "";
+        productImageTag.src = productImageTag.src.replace("-100x100", "");
 
-        productImage.addEventListener('click', e => {
+        productImage.addEventListener("click", (e) => {
             e.preventDefault();
 
             currentActiveProductImage.style.opacity = 0.25;
@@ -99,27 +116,30 @@
         });
     });
 
-
-    const $addToCartButtons = $('.add_to_cart_button');
+    const $addToCartButtons = $(".add_to_cart_button");
     if ($addToCartButtons.length) {
-        $addToCartButtons.each(function(i, btn) {
-            $(btn).on('click', e => {
-                if (window.innerWidth <= 991 && window.location.href.includes('/product/')) window.scroll({
-                    top: 0,
-                    left: 0,
-                    behavior: 'smooth'
-                });
+        $addToCartButtons.each(function (i, btn) {
+            $(btn).on("click", (e) => {
+                if (
+                    window.innerWidth <= 991 &&
+                    window.location.href.includes("/product/")
+                )
+                    window.scroll({
+                        top: 0,
+                        left: 0,
+                        behavior: "smooth"
+                    });
                 const path = e.composedPath();
                 let productAddedButton = null;
                 if (path[2]) {
-                    productAddedButton = $(path[2]).find('.product-added-btn');
+                    productAddedButton = $(path[2]).find(".product-added-btn");
                 }
                 if (!productAddedButton || !productAddedButton.length) {
-                    productAddedButton = $('.product-added-btn');
+                    productAddedButton = $(".product-added-btn");
                 }
-                productAddedButton.removeClass('d-none');
+                productAddedButton.removeClass("d-none");
                 setTimeout(() => {
-                    productAddedButton.addClass('d-none');
+                    productAddedButton.addClass("d-none");
                 }, 10000);
             });
         });
@@ -127,53 +147,58 @@
 
     function handleClick($item) {
         return (event) => {
-            $item.trigger('click');
-        }
+            $item.trigger("click");
+        };
     }
 
     // fix: GPSWR-4
-    $('.menu-item-has-children > a').each((i, item) => {
-        const $item = $(item);
-        onClick(handleClick.bind(this, $item), item);
+    $(".menu-item-has-children > a").each((i, item) => {
+        onClick(handleClick.bind(this), item);
     });
 
     // execute this when it's the homepage
     // if (typeof themeFileUri !== 'undefined') homepageBackgroundImageChange();
 
     // make sure the correct message is displayed
-    const wooCommerceMessages = $('.woocommerce-message');
+    const wooCommerceMessages = $(".woocommerce-message");
     if (wooCommerceMessages.length) {
         wooCommerceMessages.each((i, $message) => {
-            $message.css({ display: 'none' });
+            $message.css({ display: "none" });
         });
-        wooCommerceMessages.last().addClass('d-block');
+        wooCommerceMessages.last().addClass("d-block");
     }
 
     // add mobile optimized images in compounding page
-    const $compoundingMobileContent = $('.compounding-mobile-page-content .content');
+    const $compoundingMobileContent = $(
+        ".compounding-mobile-page-content .content"
+    );
     if ($compoundingMobileContent.length) {
         $compoundingMobileContent.each((i, $el) => {
-            const image = $el.find('img');
-            image.css({height: 'auto'});
+            const image = $el.find("img");
+            image.css({ height: "auto" });
             function updateSrc(src, target, updated, ext) {
                 return src.replace(target, updated).replace(/\.png|\.jpg/, ext);
             }
 
             const images = [
-                `${image.attr('src')} 750w`,
-                `${updateSrc(image.attr('src'), 'compounding-', 'compounding-mob-', '.jpg')} 550w`
+                `${image.attr("src")} 750w`,
+                `${updateSrc(
+                    image.attr("src"),
+                    "compounding-",
+                    "compounding-mob-",
+                    ".jpg"
+                )} 550w`
             ];
 
-
-            image.attr('srcset', images.join(', '));
-            image.attr('sizes', '(max-width: 550px) 550px, 750px');
-            image.alt('Compounding Pharmacy Solutions');
+            image.attr("srcset", images.join(", "));
+            image.attr("sizes", "(max-width: 550px) 550px, 750px");
+            image.alt("Compounding Pharmacy Solutions");
         });
     }
 
     // auto-update the cart on quantity change
     let timeout;
-    $('.woocommerce').on('change', 'input.qty', function () {
+    $(".woocommerce").on("change", "input.qty", function () {
         if (timeout !== undefined) {
             clearTimeout(timeout);
         }
@@ -184,84 +209,88 @@
     });
 
     // complete order oer the phone
-    const $orderOverPhone = $('button.place-order-over-phone');
+    const $orderOverPhone = $("button.place-order-over-phone");
 
     if ($orderOverPhone) {
-        const popup = $('#popup-order-over-phone');
+        const popup = $("#popup-order-over-phone");
 
-        $orderOverPhone.on('click', e => {
+        $orderOverPhone.on("click", (e) => {
             e.preventDefault();
-            popup.removeClass('d-none');
-            popup.data('aos', 'fade-up');
+            popup.removeClass("d-none");
+            popup.data("aos", "fade-up");
             AOS.init();
 
             setTimeout(() => {
-                popup.data('aos', null);
-                popup.removeClass('aos-init');
-                popup.removeClass('aos-animate');
-                popup.css({pointerEvents: 'all'});
+                popup.data("aos", null);
+                popup.removeClass("aos-init");
+                popup.removeClass("aos-animate");
+                popup.css({ pointerEvents: "all" });
             }, 500);
         });
 
-        popup.find('.close-button').on('click', e => {
-            e.preventDefault();
-            popup.addClass('d-none');
+        popup.find(".close-button").on("click", (e) => {
+            if ($(e.currentTarget).is(taget.current)) {
+            }
+            eX.preventDefault();
+            popup.addClass("d-none");
         });
     }
 
     // make cards clickable
-    const cards = $('.gps-info-box');
+    const cards = $(".gps-info-box");
     if (cards.length) {
         cards.each((i, card) => {
             const $card = $(card);
-            const $pageUrlTag = $card.find('.gps-info-box-front .button a');
-            const pageUrl = $pageUrlTag.first().attr('href');
-            if (innerWidth <= 991) $card.on('click', e => {
-                //e.preventDefault();
-                location.href = pageUrl;
-            });
-        })
+            const $pageUrlTag = $card.find(".gps-info-box-front .button a");
+            const pageUrl = $pageUrlTag.first().attr("href");
+            if (innerWidth <= 991)
+                $card.on("click", (e) => {
+                    //e.preventDefault();
+                    location.href = pageUrl;
+                });
+        });
     }
 
     // fix form not submitting after showing error
     const removeProcessingStatus = () => {
-        let $checkoutForm = $('form.checkout.woocommerce-checkout');
-        if ($checkoutForm.hasClass('processing')) $checkoutForm.removeClass('processing');
-    }
+        let $checkoutForm = $("form.checkout.woocommerce-checkout");
+        if ($checkoutForm.hasClass("processing"))
+            $checkoutForm.removeClass("processing");
+    };
 
     const checkWishlistMessage = () => {
-        const wishlistPopMessageContainer = $('#yith-wcwl-popup-message');
+        const wishlistPopMessageContainer = $("#yith-wcwl-popup-message");
         if (!wishlistPopMessageContainer.length) return;
         const html = wishlistPopMessageContainer.html();
-        wishlistPopMessageContainer.addClass(...['wc-notice-close-button', 'wish']);
-        wishlistPopMessageContainer.text(html);
-        wishlistPopMessageContainer.insertAfter($(html));
-    }
+        wishlistPopMessageContainer.addClass(
+            ...["wc-notice-close-button", "wish"]
+        );
+        wishlistPopMessageContainer.text(html).insertAfter($(html));
+    };
 
     const activateAlertCloseButton = () => {
-        const wcNoticeCloseButtons = $('.wc-notice-close-button');
+        const wcNoticeCloseButtons = $(".wc-notice-close-button");
         if (!wcNoticeCloseButtons.length) return;
-        const isWishList = $('.wc-notice-close-button.wish');
+        const isWishList = $(".wc-notice-close-button.wish");
         wcNoticeCloseButtons.each((i, wcNoticeCloseButton) => {
-            if (i === wcNoticeCloseButtons.length - 1 && !isWishList) wcNoticeCloseButton.parent().addClass('d-block');
+            if (i === wcNoticeCloseButtons.length - 1 && !isWishList)
+                wcNoticeCloseButton.parent().addClass("d-block");
 
-            wcNoticeCloseButton.on('click', e => {
+            wcNoticeCloseButton.on("click", (e) => {
                 const alertContainer = $(e.currentTarget).parent();
-                alertContainer.addClass('d-none');
+                alertContainer.addClass("d-none");
             });
         });
-    }
+    };
 
     checkWishlistMessage();
 
-    $('form.checkout.woocommerce-checkout').bind('DOMSubtreeModified', () => {
-        $checkoutForm = $('form.checkout.woocommerce-checkout');
+    $("form.checkout.woocommerce-checkout").bind("DOMSubtreeModified", () => {
+        $checkoutForm = $("form.checkout.woocommerce-checkout");
         setTimeout(() => removeProcessingStatus(), 3500);
     });
 
-    $(window.body).on('DOMSubtreeModified', () => {
+    $(window.body).on("DOMSubtreeModified", () => {
         activateAlertCloseButton();
     });
-
 })();
-

@@ -70,7 +70,6 @@
 							<span class="navbar-toggler-icon"></span>
 						</button>
 					</div>
-					<div class="navbar-toggled-overly"></div>
 					<div class="collapse navbar-collapse" id="navbar-nav">
 						<p class="scopic-title m-0 text-primary ms-auto d-none d-xl-block">
 							<?php echo get_bloginfo('description'); ?></p>
