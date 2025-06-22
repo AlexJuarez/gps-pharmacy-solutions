@@ -1494,7 +1494,7 @@ footer .footer-menu a.nav-link:hover:before {
 		top: 0;
 		left: 0;
 		box-sizing: border-box;
-		transform: rotateY(0deg) translateZ(1px);]
+		transform: rotateY(0deg) translateZ(1px);
 	}
 
 	.gps-info-box-fbc {
@@ -2636,7 +2636,9 @@ p.product-title.text-center {
 	}
 
 	.gps-hospice .gps-info-box-back {
-		/* padding-top: 100px; */
+		display: flex;
+		flex-direction: column;
+		margin: auto 0;
 	}
 }
 
@@ -3207,7 +3209,9 @@ p.product-title.text-center {
 	}
 
 	.gps-info-box.gps-hospice:hover .gps-info-box-back {
-		padding-top: 100px;
+		display: flex;
+		flex-direction: column;
+		margin: auto 0;
 	}
 
 	.gps-info-boxes-container .col-lg-6:last-child {

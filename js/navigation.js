@@ -4,17 +4,18 @@
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
-(async function () {
+async function navigation() {
     const $ = await require('jQuery');
 
+    console.debug(`Loading navigation`);
 
     function onClick(handler, el = document) {
-        const handleClick = ((event) => {
+        const handleClick = (handler) => (event) => {
             handler(event);
-        }).bind(this);
+        };
 
-        el.addEventListener('mouseup', handleClick);
-        el.addEventListener('touchstart', handleClick);
+        el.addEventListener('mouseup', handleClick(handler));
+        el.addEventListener('touchstart', handleClick(handler));
     }
 
 
@@ -32,26 +33,25 @@
     }
 
     function toggleNav (event) {
-        if (event.target.matches('button.navbar-toggler')) {
-            event.preventDefault();
-            const $target = $(event.target);
+        const $target = $(event.target).closest('.navbar-toggler');
+        if ($target.hasClass('navbar-toggler')) {
             const $navBar = $('.navbar-collapse.collapse');
-            const isOpen = $navBar.hasClass('show');
+            const isOpen = $navBar.is('.show');
             if (isOpen) {
-                console.info(`${event.target} nav closed`);
+                console.info(`${$target} nav closed`);
                 $siteNavigation.removeClass('toggled');
                 $navBar.hide('slow', () => {
                     $navBar.removeClass('show');
                 });
-                $('body.home').removeClass('overflow-hidden');
+                $(document.body).removeClass('overflow-hidden');
                 $target.attr('aria-expanded', 'false');
             } else {
-                console.info(`${event.target} nav opened`);
+                console.info(`${$target} nav opened`);
                 $siteNavigation.addClass('toggled');
                 $navBar.show('fast', () => {
                     $navBar.addClass('show');
                 });
-                $('body.home').addClass('overflow-hidden');
+                $(document.body).addClass('overflow-hidden');
                 $target.attr('aria-expanded', 'true');
             }
         }
@@ -83,4 +83,7 @@
     onClick((event) => toggleFocus(event), document);
 
 
-})().catch((err) => console.warn(`Error loading navigation.js: ${err}`));
+}
+
+navigation(this).catch((err) => console.warn(`Error loading navigation: ${err.msg}`));
+

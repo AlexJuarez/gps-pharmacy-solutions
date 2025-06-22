@@ -119,7 +119,7 @@
             const $productBtn = $btn.parents('.product-added-btn');
             $productBtn.removeClass('d-none')
             const id = event.composedPath().map((e) => e.nodeName).join(':');
-            console.log(`${id} btn path for add to cart`);
+            console.debug(`${id} btn path for add to cart`);
             if (timeouts[id] != null) {
                 timeouts[id] = setTimeout(() => {
                     $productBtn.addClass('d-none');
@@ -133,9 +133,9 @@
 
     function handleClick(event) {
         const $tar = $(event.target);
-        if($.is('a') && $tar.parents('.menu-item-has-children').length) {
+        if($tar.is('.menu-item-has-children > a')) {
+            console.debug($tar, 'triggered click');
             $tar.click();
-            console.info($tar, 'triggered click');
         }
     }
 
@@ -228,18 +228,15 @@
 
     // make cards clickable
     function cardHandler(event) {
-        if (window.innerWidth <= 991 && event.target.matches('.gps-info-box')) {
-            const $card = $(event.target);
-            const $pageUrlTag = $card.find('.button a[href]').first();
+        const $target = $(event.target)
+        if (window.innerWidth <= 991 && $target.is('.gps-info-box')) {
+            const $pageUrlTag = $target.find('.button a[href]').first();
             const pageUrl = $pageUrlTag.attr('href');
-            event.preventDefault();
             location.assign(pageUrl);
         }
     }
 
     onClick((event) => cardHandler(event), document);
-
-
 
     // fix form not submitting after showing error
     const removeProcessingStatus = () => {
@@ -281,6 +278,11 @@
     var observer = new MutationObserver(function(mutations, observer) {
         checkWishlistMessage();
         activateAlertCloseButton();
+    });
 
+    observer.observe(document, {
+        childList: true,
+        subtree: true,
+        attributes: true
     });
 })().catch((err) => console.warn(`Error loading main.js: ${err}`));
