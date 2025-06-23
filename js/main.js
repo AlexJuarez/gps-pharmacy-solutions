@@ -1,23 +1,24 @@
 
-(async function () {
+async function main() {
     const $ = await require("jQuery");
     const Splide = await require("Splide");
     const AOS = await require("AOS");
 
-
     function onClick(handler, el = document) {
-        const handleClick = ((event) => {
+        const handleClick = (event) => {
             handler(event);
-        }).bind(this);
+        };
 
-        el.addEventListener('mouseup', handleClick);
-        el.addEventListener('touchstart', handleClick);
+        el.addEventListener("mousedown", (event) => handleClick(event));
+        el.addEventListener("touchend", (event) => handleClick(event));
     }
 
     const $page = $("#page.site");
 
     const handleMouseOver = ((event) => {
+
         if (event.target.matches("[data-hero-trigger]")) {
+             $target = $(event.target.closest(''));
             const $tar = $(event.target);
             const data = $tar.attr("data-hero-trigger");
             $img = $page.find(".hero-image").first();
@@ -40,7 +41,7 @@
     }).bind(this);
 
     $page
-        .on("mouseover", handleMouseOver)
+        .on("mouseenter", handleMouseOver)
         .on("mouseout", handleMouseOut);
 
     AOS.init();
@@ -285,4 +286,6 @@
         subtree: true,
         attributes: true
     });
-})().catch((err) => console.warn(`Error loading main.js: ${err}`));
+}
+
+main().catch((err) => console.warn(`Error loading main.js: ${err}`));

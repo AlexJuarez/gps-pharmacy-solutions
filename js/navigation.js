@@ -5,54 +5,79 @@
  * navigation support for dropdown menus.
  */
 async function navigation() {
-    const $ = await require('jQuery');
+    const $ = await require("jQuery");
 
     console.debug(`Loading navigation`);
 
-    function onClick(handler, el = document) {
-        const handleClick = (handler) => (event) => {
+    function debouce (fn, ts = 250) {
+        let timer;
+        return (event) => {
+            if (timer == null) {
+                timer = setTimeout(() => {
+                    fn.call(this, event);
+                    clearTimeout(timer);
+                    timer = null;
+                }, ts);
+            } else {
+                fn.call(this, event)
+            }
+        };
+    }
+
+    function onClick(handler, el = document, opts = {}) {
+
+        const handleClick = (event) => {
             handler(event);
         };
 
-        el.addEventListener('mouseup', handleClick(handler));
-        el.addEventListener('touchstart', handleClick(handler));
+        const fn = debouce(handleClick, 250);
+
+        el.addEventListener("click", fn, opts);
     }
 
-
-    const $siteNavigation = $('.main-navigation');
+    const $siteNavigation = $(".main-navigation");
 
     if (!$siteNavigation.length) {
-        console.warn($siteNavigation, 'site navigation not found');
+        console.warn($siteNavigation, "site navigation not found");
     }
 
-    const $menu = $siteNavigation.find('.navbar-nav > li');
+    const $menu = $siteNavigation.find(".navbar-nav > li");
 
     if (!$menu.length) {
-        console.warn($menu, 'menu items not found, navbar-toggler hidden');
-        $('.navbar-toggler.collapsed').hide();
+        console.warn($menu, "menu items not found, navbar-toggler hidden");
+        $(".navbar-toggler.collapsed").css({ display: "none" });
     }
 
-    function toggleNav (event) {
-        const $target = $(event.target).closest('.navbar-toggler');
-        if ($target.hasClass('navbar-toggler')) {
-            const $navBar = $('.navbar-collapse.collapse');
-            const isOpen = $navBar.is('.show');
-            if (isOpen) {
-                console.info(`${$target} nav closed`);
-                $siteNavigation.removeClass('toggled');
-                $navBar.hide('slow', () => {
-                    $navBar.removeClass('show');
-                });
-                $(document.body).removeClass('overflow-hidden');
-                $target.attr('aria-expanded', 'false');
-            } else {
-                console.info(`${$target} nav opened`);
-                $siteNavigation.addClass('toggled');
-                $navBar.show('fast', () => {
-                    $navBar.addClass('show');
-                });
-                $(document.body).addClass('overflow-hidden');
-                $target.attr('aria-expanded', 'true');
+    let toggling = Date.now();
+    function toggleNav(event) {
+        const $target = $(event.target);
+
+        if ($target.is('a[href]').length) {
+            window.loading = true;
+            window.addEventListener('beforeunload', (event) => {
+                window.loading = false;
+             });
+        } else if (Date.now() > toggling) {
+            const $toggler = $target.closest(".navbar-toggler");
+            if ($toggler.length) {
+                const $navBar = $(".navbar-collapse.collapse");
+                const isOpen = $siteNavigation.hasClass("toggled");
+                if (isOpen) {
+                    console.info(`${$toggler} nav closed`);
+                    $siteNavigation.removeClass("toggled");
+                    $navBar.removeClass("show");
+                    $(document.body).removeClass("overflow-hidden");
+                    $toggler.attr("aria-expanded", "false");
+                } else {
+                    toggling = Date.now() + 500;
+                    console.info(`${$toggler} nav opened`);
+                    $navBar.addClass("show");
+                    $siteNavigation.addClass("toggled");
+                    $toggler.attr("aria-expanded", "true");
+                    $navBar.show("slow", () => {
+                        $(document.body).addClass("overflow-hidden");
+                    });
+                }
             }
         }
     }
@@ -62,28 +87,29 @@ async function navigation() {
     // Get all the link elements with children within the menu.
 
     function toggleFocus(event) {
-        if (event.target.matches('.nav-item.dropdown')) {
-            event.preventDefault();
-            $target = $(event.target);
-            console.info(`${target} dropdown clicked`);
-            const $dropdown = $('.nav-item.dropdown');
-            $dropdown.filter('.focus').each((i, el) => {
+        if (window.loading) {
+            return;
+        }
+
+        $target = $(event.target);
+        $dropdown = $(event.target).parents(".nav-item.dropdown");
+        if ($dropdown.length) {
+            console.info($dropdown, `dropdown clicked`);
+            $('.nav-item.dropdown').filter(".focus").each((i, el) => {
                 $el = $(el);
-                if (!$el.is($target)) {
-                    $el.removeClass('focus');
+                if (!$el.is($dropdown)) {
+                    $el.removeClass("focus");
                 }
             });
 
-            if (!$target.hasClass('focus')) {
-                $target.addClass('focus');
-            }
+            $dropdown.is(":not(.focus)") && $dropdown.addClass("focus");
         }
+
     }
 
     onClick((event) => toggleFocus(event), document);
-
-
 }
 
-navigation(this).catch((err) => console.warn(`Error loading navigation: ${err.msg}`));
-
+navigation(this).catch((err) =>
+    console.log(`Error loading navigation: ${err.msg}`)
+);
