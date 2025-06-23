@@ -9,7 +9,7 @@ async function navigation() {
 
     console.debug(`Loading navigation`);
 
-    function debouce (fn, ts = 250) {
+    function debounce (fn, ts = 250) {
         let timer;
         return (event) => {
             if (timer == null) {
@@ -30,7 +30,7 @@ async function navigation() {
             handler(event);
         };
 
-        const fn = debouce(handleClick, 250);
+        const fn = debounce(handleClick, 250);
 
         el.addEventListener("click", fn, opts);
     }

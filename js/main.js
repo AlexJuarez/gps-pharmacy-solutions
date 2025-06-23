@@ -227,18 +227,6 @@ async function main() {
         });
     }
 
-    // make cards clickable
-    function cardHandler(event) {
-        const $target = $(event.target)
-        if (window.innerWidth <= 991 && $target.is('.gps-info-box')) {
-            const $pageUrlTag = $target.find('.button a[href]').first();
-            const pageUrl = $pageUrlTag.attr('href');
-            location.assign(pageUrl);
-        }
-    }
-
-    onClick((event) => cardHandler(event), document);
-
     // fix form not submitting after showing error
     const removeProcessingStatus = () => {
         let $checkoutForm = $("form.checkout.woocommerce-checkout");
