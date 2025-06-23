@@ -76,6 +76,10 @@ textarea {
 	line-height: 1.5;
 }
 
+a {
+    touch-action: manipulation;
+}
+
 h1,
 h2,
 h3,
@@ -1436,17 +1440,18 @@ footer .footer-menu a.nav-link:hover:before {
 .container {
 	width: 100%;
 }
+
 .info-card-container {
 	display: inline-block;
 	display: flex;
 	flex-direction: row;
 	column-gap: 2rem;
- 	max-width: 880px;
+	max-width: 880px;
 
 	&:hover .gps-info-box,
 	&:active .gps-info-box {
 		cursor: pointer;
-		transform: perspective(300px) rotateY(180deg);
+		transform: perspective(500px) rotateY(180deg);
 	}
 }
 
@@ -1455,11 +1460,11 @@ footer .footer-menu a.nav-link:hover:before {
 	position: relative;
 	box-sizing: border-box;
 	display: flex;
-	min-height: calc(320px + 4rem);
+	min-height: calc(320px + 2rem);
 	height: 100%;
 	column-gap: 2rem;
-	width: calc(100% - 2rem);
-	text-align: center;
+	width: 100%;
+ 	scale: .90;
 	transition: 1s ease-in;
 	margin: 0 auto;
 
@@ -1469,17 +1474,19 @@ footer .footer-menu a.nav-link:hover:before {
 
 	.gps-info-box-front,
 	.gps-info-box-back {
-		display: flex;
 		border-radius: 9px;
 		position: absolute;
 		top: 0;
+		min-height: calc(320px + 2rem);
 		height: 100%;
-		max-width: calc(320px - 2rem);
+		min-width: max(calc(100vw / 4 * .8 - (4 * 2rem)), 220px);
+		max-width: calc(100vw / 4);
 		bottom: 0;
 		margin: 0 auto;
-		min-height: 100%;
+		min-height: 220px;
+		flex: 1 1;
 		width: 100%;
-		flex: 1 0;
+		text-align: center;
 		backface-visibility: hidden;
 		-webkit-backface-visibility: hidden;
 		-moz-backface-visibility: hidden;
@@ -2692,13 +2699,15 @@ p.product-title.text-center {
 	}
 
 	nav .site-logo {
-		+ button {
+		+button {
 			margin-left: 30px;
 		}
+
 		img {
 			margin: 0 auto;
 			max-width: 125px;
 		}
+
 		display: inline-block;
 	}
 
@@ -2730,13 +2739,12 @@ p.product-title.text-center {
 
 	.navbar-collapse {
 		position: fixed;
+		top: 0;
 		width: 285px;
 		margin: auto;
 		background: #fff;
 		padding: 25px 35px;
-		height: 100%;
-		min-height: fit-content;
-		top: 0;
+		height: calc(max(100vh, 100%));
 		overflow: hidden;
 		left: -100%;
 		transition: left 150ms ease-in-out;
@@ -3018,8 +3026,7 @@ p.product-title.text-center {
 	.gps-info-box .gps-info-box-back {
 		overflow: none;
 		-webkit-overflow-scrolling: none;
-		z-index: inherit
-		;
+		z-index: inherit;
 	}
 
 	.hospice-cwm .notice {
