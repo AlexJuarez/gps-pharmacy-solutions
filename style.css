@@ -1459,7 +1459,7 @@ footer .footer-menu a.nav-link:hover:before {
     box-sizing: border-box;
     display: flex;
     min-height: calc(320px + 2rem);
-    min-width: calc(50% - 2rem);
+    min-width: calc(100% - 2rem);
     height: 100%;
     column-gap: 2rem;
     width: 100%;
