@@ -11,7 +11,7 @@ get_header('shop');
 			<div class="col">
 				<div class="container gps-info-boxes-container">
 					<div class="row">
-						<div class="mx-auto mt-4 mb-2 g-0 col-12 col-lg-4">
+						<div class="mx-auto mt-2 mb-2 g-0 col-12 col-lg-4">
 							<div class="gps-info-box gps-ag">
 								<div
 									class="gps-info-box-front gps-info-box-fbc d-flex flex-column align-items-center justify-content-center">
@@ -49,7 +49,7 @@ get_header('shop');
 								</div>
 							</div>
 						</div>
-						<div class="mx-auto mt-2 mb-4 g-0 col-12 col-lg-4">
+						<div class="mx-auto mt-2 mb-2 g-0 col-12 col-lg-4">
 							<div class="gps-info-box gps-hr">
 								<div
 									class="gps-info-box-front gps-info-box-fbc d-flex flex-column align-items-center justify-content-center">
