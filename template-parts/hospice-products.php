@@ -2,7 +2,7 @@
 
 /**
  * Template Name: Hospice: Products
- * 
+ *
  * @package GPS_Pharmacy_Solutions
  */
 
@@ -31,7 +31,7 @@ get_header();
         <div class="row page-content-wrapper hospice-cwm mt-5">
             <div class="col-12">
                 <?php the_title('<h1 class="entry-title montserrat-font mb-5">', '</h1>'); ?>
-                <p class="mt-4 mb-5 notice text-white text-center fs-5 fw-bold">
+                <p class="mt-4 mb-5 notice text-white text-center fs-5">
                     We house a full service compounding lab onsite, available to deliver and ship compounded hospice preparations to your patient. We make suppositories, SL drops, multi drug capsules, and more.
                     <br><br>
                     Learn about our most popular preparations (Atropine, ABH, ABHR, BARPH etc.).
@@ -101,10 +101,10 @@ get_header();
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="mx-auto notice text-white text-center fs-5 p-5 gps-bg-blue hospice-cwm-over-cover" style="margin-top: -200px; max-width: 850px">
-                    <p class="fs-2 fw-bold montserrat-font">Wound Management is our Specialty</p>
+                <div class="mx-auto notice text-white text-center fs-5 p-5 gps-bg-blue hospice-cwm-over-cover" style="margin-top: -200px;">
+                    <p class="fs-2 montserrat-font">Wound Management is our Specialty</p>
                     <p class="mt-5 mb-5 text-baby-blue px-5">We have medicated powders, ointments, and sprays to alleviate pain, infection, bleeding, and odor. We have 24/7 consultant pharmacist available to create a custom order for your patient for their specific wound.</p>
-                    <p class="fs-4 fw-bold montserrat-font">View below our compounded hospice preparations:</p>
+                    <p class="fs-4 montserrat-font">View below our compounded hospice preparations:</p>
                 </div>
             </div>
         </div>
@@ -120,13 +120,13 @@ get_header();
                     <p class="product-description">Powder<br>Jelly Powder (jellies on contact with drainage)<br>Gels<br>Sprays</p>
                 </div>
                 <div class="product-title-wrapper">
-                    <p class="product-title fw-bold mb-2">Non-Healing, Infected Wounds, and Painful Wounds:</p>
+                    <p class="product-title mb-2">Non-Healing, Infected Wounds, and Painful Wounds:</p>
                 </div>
                 <div class="product-description-wrapper">
                     <p class="product-description">Gentamicin<br>Flagyl<br>Lidocaine<br>Custom Strengths</p>
                 </div>
                 <div class="product-title-wrapper">
-                    <p class="product-title fw-bold mb-2">Bleeding Wounds/Cancers:</p>
+                    <p class="product-title mb-2">Bleeding Wounds/Cancers:</p>
                 </div>
                 <div class="product-description-wrapper">
                     <p class="product-description">Epinephrine<br>Lidocaine</p>
