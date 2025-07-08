@@ -2,7 +2,7 @@
 
 /**
  * Template Name: Hospice: Solutions
- * 
+ *
  * @package GPS_Pharmacy_Solutions
  */
 
@@ -33,8 +33,8 @@ get_header();
         <div class="row align-items-center">
             <div class="col-lg-6 py-5 px-sm-5 px-4 d-flex justify-content-end">
                 <div class="hospice-content-wrapper">
-                    <?php the_title('<h1 class="entry-title montserrat-font page-title" data-aos="fade-right" data-aos-duration="1000">', '</h1>'); ?>
-                    <div class="entry-content" data-aos="fade-in" data-aos-duration="1000">
+                    <?php the_title('<h1 class="entry-title montserrat-font page-title"', '</h1>'); ?>
+                    <div class="entry-content">
                         <?php
                         the_content(
                             sprintf(

@@ -1467,9 +1467,8 @@ footer .footer-menu a.nav-link:hover:before {
     transition: 1s ease-in;
     margin: 0 auto;
     @media screen and (max-width: 1400px) {
-            height: 380px;
+        height: 380px;
     }
-
 
     .gps-info-box-back {
         transform: rotateY(180deg);
@@ -1491,11 +1490,8 @@ footer .footer-menu a.nav-link:hover:before {
         border-radius: 9px;
         position: absolute;
         top: 0;
-
 		min-height: calc(320px + 2rem);
 		height: 100%;
-		min-width: max(calc(100%), 220px);
-		max-width: min(calc(100%), 420px);
         bottom: 0;
         margin: 0 auto;
         flex: 1 1;
@@ -2613,9 +2609,6 @@ p.product-title.text-center {
         align-self: normal;
     }
 
-    .gps-info-box {
-        /* width: 265px; */
-    }
 
     .gps-info-box .gps-info-box-back {
         padding-top: 25px;
@@ -3053,10 +3046,6 @@ p.product-title.text-center {
         margin: 0 !important;
     }
 
-    .gps-info-box {
-        width: 250px;
-    }
-
     .gps-info-box .gps-info-box-fbc {
         height: 100%;
     }
@@ -3146,10 +3135,6 @@ p.product-title.text-center {
 
     .wpcf7-form .mb-3 .wpcf7-form-control-wrap:last-child:not(.company-name, .message, .resume-file) {
         margin: 0 !important;
-    }
-
-    .gps-info-box {
-        /* width: 265px; */
     }
 
     .gps-info-box .gps-info-box-fbc {
@@ -3302,8 +3287,6 @@ p.product-title.text-center {
         padding: 7.5px 5px;
     }
 }
-
-@media (max-width: 300px) {}
 
 
 .btn.rounded {

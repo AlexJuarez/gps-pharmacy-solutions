@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Hospice: Main Page
- * 
+ *
  * @package GPS_Pharmacy_Solutions
  */
 
@@ -99,12 +99,12 @@ get_header();
             <div class="container hospice-page-content d-none d-lg-block d-xl-block d-xxl-block mb-5">
                 <div class="row c-card">
                     <div class="col-md-6">
-                        <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-1.png'; ?>" alt="Pills" data-aos="fade-right" data-aos-duration="1000">
+                        <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-1.png'; ?>" alt="Pills">
                     </div>
                     <div class="col-md-6 ps-0 d-flex justify-content-start align-items-center">
                         <div class="content">
-                            <h2 class="title position-relative montserrat-font" data-aos="fade-left" data-aos-duration="1000">Medication Access</h2>
-                            <p class="description mt-3 mb-3" data-aos="fade-in" data-aos-duration="1000">We deliver more than medications and clinical support, we deliver care.</p>
+                            <h2 class="title position-relative montserrat-font">Medication Access</h2>
+                            <p class="description mt-3 mb-3">We deliver more than medications and clinical support, we deliver care.</p>
                             <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Medication Access']); ?>" class="url text-decoration-none d-block montserrat-font">Learn More</a>
                         </div>
                     </div>
@@ -112,23 +112,23 @@ get_header();
                 <div class="row c-card">
                     <div class="col-md-6 pe-0 d-flex justify-content-end align-items-center">
                         <div class="content">
-                            <h2 class="title position-relative montserrat-font" data-aos="fade-right" data-aos-duration="1000">Clinical Support</h2>
-                            <p class="description mt-3 mb-3" data-aos="fade-in" data-aos-duration="1000">From formulary customization, medication consulting, wound management, IDG’s and more, our pharmacists become a part of your team.</p>
+                            <h2 class="title position-relative montserrat-font">Clinical Support</h2>
+                            <p class="description mt-3 mb-3">From formulary customization, medication consulting, wound management, IDG’s and more, our pharmacists become a part of your team.</p>
                             <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Clinical Support']); ?>" class="url text-decoration-none d-block montserrat-font">Learn More</a>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-2.png'; ?>" alt="Elderly holding hands" data-aos="fade-left" data-aos-duration="1000">
+                        <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-2.png'; ?>" alt="Elderly holding hands">
                     </div>
                 </div>
                 <div class="row c-card">
                     <div class="col-md-6">
-                        <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-3.png'; ?>" alt="Piggy bank" data-aos="fade-right" data-aos-duration="1000">
+                        <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-3.png'; ?>" alt="Piggy bank">
                     </div>
                     <div class="col-md-6 ps-0 d-flex justify-content-start align-items-center">
                         <div class="content">
-                            <h2 class="title position-relative montserrat-font" data-aos="fade-left" data-aos-duration="1000">Best in Industry Pricing</h2>
-                            <p class="description mt-3 mb-3" data-aos="fade-in" data-aos-duration="1000">If you find lower pricing, we will match it. We are here to offer the best pricing nationwide.</p>
+                            <h2 class="title position-relative montserrat-font">Best in Industry Pricing</h2>
+                            <p class="description mt-3 mb-3">If you find lower pricing, we will match it. We are here to offer the best pricing nationwide.</p>
                             <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Best in Industry Pricing']); ?>" class="url text-decoration-none d-block montserrat-font">Learn More</a>
                         </div>
                     </div>
@@ -136,23 +136,23 @@ get_header();
                 <div class="row c-card">
                     <div class="col-md-6 pe-0 d-flex justify-content-end align-items-center">
                         <div class="content">
-                            <h2 class="title position-relative montserrat-font" data-aos="fade-right" data-aos-duration="1000">Infusion Therapy</h2>
-                            <p class="description mt-3 mb-3" data-aos="fade-in" data-aos-duration="1000">We deliver pumps to your patients, we compound the medications needed, we provide 24/7 emergency pump line consultants, and provide pump pick ups.</p>
+                            <h2 class="title position-relative montserrat-font">Infusion Therapy</h2>
+                            <p class="description mt-3 mb-3">We deliver pumps to your patients, we compound the medications needed, we provide 24/7 emergency pump line consultants, and provide pump pick ups.</p>
                             <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Infusion Therapy']); ?>" class="url text-decoration-none d-block montserrat-font">Learn More</a>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-4.png'; ?>" alt="Infusion therapy" data-aos="fade-left" data-aos-duration="1000">
+                        <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-4.png'; ?>" alt="Infusion therapy">
                     </div>
                 </div>
                 <div class="row c-card">
                     <div class="col-md-6">
-                        <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-5.png'; ?>" alt="Hospice compounding & wound management" data-aos="fade-right" data-aos-duration="1000">
+                        <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-5.png'; ?>" alt="Hospice compounding & wound management">
                     </div>
                     <div class="col-md-6 ps-0 d-flex justify-content-start align-items-center">
                         <div class="content">
-                            <h2 class="title position-relative montserrat-font" data-aos="fade-left" data-aos-duration="1000">Hospice Compounding & Wound Management</h2>
-                            <p class="description mt-3 mb-3" data-aos="fade-in" data-aos-duration="1000">We own and operate our own compounding labs, making all of your compound needs attainable.</p>
+                            <h2 class="title position-relative montserrat-font">Hospice Compounding & Wound Management</h2>
+                            <p class="description mt-3 mb-3">We own and operate our own compounding labs, making all of your compound needs attainable.</p>
                             <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Hospice Compounding & Wound Management']); ?>" class="url text-decoration-none d-block montserrat-font">Learn More</a>
                         </div>
                     </div>
@@ -160,20 +160,20 @@ get_header();
                 <div class="row c-card">
                     <div class="col-md-6 pe-0 d-flex justify-content-end align-items-center">
                         <div class="content">
-                            <h2 class="title position-relative montserrat-font" data-aos="fade-right" data-aos-duration="1000">PBM Solutions</h2>
-                            <p class="description mt-3 mb-3" data-aos="fade-in" data-aos-duration="1000">Real time solutions for EMR integration, Reporting & Analytics, Regulatory Compliance, Continuing Education, and E-prescribing.</p>
+                            <h2 class="title position-relative montserrat-font">PBM Solutions</h2>
+                            <p class="description mt-3 mb-3">Real time solutions for EMR integration, Reporting & Analytics, Regulatory Compliance, Continuing Education, and E-prescribing.</p>
                             <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['PBM Solutions with PDCRx']); ?>" class="url text-decoration-none d-block montserrat-font">Learn More</a>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-6.png'; ?>" alt="PBM solutions" data-aos="fade-left" data-aos-duration="1000">
+                        <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-6.png'; ?>" alt="PBM solutions">
                     </div>
                 </div>
             </div>
             <div class="container hospice-mobile-page-content me-auto ms-auto mt-5 mb-5 d-lg-none d-xl-none d-xxl-none d-md-block d-sm-block">
                 <div class="row">
                     <div class="col-sm-6 mb-3 w-50">
-                        <div class="content text-center" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="content text-center">
                             <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Medication Access']); ?>" class="text-decoration-none">
                                 <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-1.png'; ?>" alt="Pills">
                                 <h2 class="title pt-2">Medication Access</h2>
@@ -181,7 +181,7 @@ get_header();
                         </div>
                     </div>
                     <div class="col-sm-6 mb-3 w-50">
-                        <div class="content text-center" data-aos="fade-left" data-aos-duration="1000">
+                        <div class="content text-center">
                             <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Clinical Support']); ?>" class="text-decoration-none">
                                 <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-2.png'; ?>" alt="Elderly holding hands">
                                 <h2 class="title pt-2">Clinical Support</h2>
@@ -189,7 +189,7 @@ get_header();
                         </div>
                     </div>
                     <div class="col-sm-6 mb-3 w-50">
-                        <div class="content text-center" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="content text-center">
                             <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Best in Industry Pricing']); ?>" class="text-decoration-none">
                                 <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-3.png'; ?>" alt="Piggy bank">
                                 <h2 class="title pt-2">Best in Industry Pricing</h2>
@@ -197,7 +197,7 @@ get_header();
                         </div>
                     </div>
                     <div class="col-sm-6 mb-3 w-50">
-                        <div class="content text-center" data-aos="fade-left" data-aos-duration="1000">
+                        <div class="content text-center">
                             <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Infusion Therapy']); ?>" class="text-decoration-none">
                                 <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-4.png'; ?>" alt="Infusion therapy">
                                 <h2 class="title pt-2">Infusion Therapy</h2>
@@ -205,7 +205,7 @@ get_header();
                         </div>
                     </div>
                     <div class="col-sm-6 mb-3 w-50">
-                        <div class="content text-center" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="content text-center">
                             <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Hospice Compounding & Wound Management']); ?>" class="text-decoration-none">
                                 <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-5.png'; ?>" alt="Hospice compounding & wound management">
                                 <h2 class="title pt-2">Hospice Compounding & Wound Management</h2>
@@ -213,7 +213,7 @@ get_header();
                         </div>
                     </div>
                     <div class="col-sm-6 mb-3 w-50">
-                        <div class="content text-center" data-aos="fade-left" data-aos-duration="1000">
+                        <div class="content text-center">
                             <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['PBM Solutions with PDCRx']); ?>" class="text-decoration-none">
                                 <img class="w-100" src="<?php echo get_theme_file_uri() . '/img/hospice/hospice-6.png'; ?>" alt="PBM solutions">
                                 <h2 class="title pt-2">PBM Solutions</h2>

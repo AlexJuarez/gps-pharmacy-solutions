@@ -188,23 +188,23 @@ get_header();
         <div class="row c-card">
             <div class="col-md-6 p-5 d-flex justify-content-end align-items-center">
                 <div class="womens-health content">
-                    <h2 class="title text-warning" data-aos="fade-right" data-aos-duration="1000">Women's Health</h2>
-                    <p class="description mt-3 mb-3" data-aos="fade-in" data-aos-duration="1000">Women's health prescriptions range from hormone replacement therapy, infertility, sexual health, to hair regrowth, weight loss and aesthetics. Every woman should feel great at any age. We work with women's health clinics and have pharmacist consultants on site who specialize in women's health with up to date studies on ageing, infertility, menopause, and much more. Our hormone products are free of fillers, preservatives, allergens, and dyes. Feel as good about your products as you do about your health.</p>
+                    <h2 class="title text-warning">Women's Health</h2>
+                    <p class="description mt-3 mb-3">Women's health prescriptions range from hormone replacement therapy, infertility, sexual health, to hair regrowth, weight loss and aesthetics. Every woman should feel great at any age. We work with women's health clinics and have pharmacist consultants on site who specialize in women's health with up to date studies on ageing, infertility, menopause, and much more. Our hormone products are free of fillers, preservatives, allergens, and dyes. Feel as good about your products as you do about your health.</p>
                     <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Women\'s Health']); ?>" class="url text-decoration-none d-block text-warning border border-warning">View Products</a>
                 </div>
             </div>
             <div class="col-md-6 p-0">
-                <img src="<?php echo get_theme_file_uri() . '/img/compounding/compounding-1.png'; ?>" alt="A women" data-aos="fade-left" data-aos-duration="1000">
+                <img src="<?php echo get_theme_file_uri() . '/img/compounding/compounding-1.png'; ?>" alt="A women">
             </div>
         </div>
         <div class="row c-card">
             <div class="col-md-6 p-0 text-end">
-                <img src="<?php echo get_theme_file_uri() . '/img/compounding/compounding-2.png'; ?>" alt="A man" data-aos="fade-right" data-aos-duration="1000">
+                <img src="<?php echo get_theme_file_uri() . '/img/compounding/compounding-2.png'; ?>" alt="A man">
             </div>
             <div class="col-md-6 p-5 d-flex justify-content-start align-items-center">
                 <div class="mens-health content">
-                    <h2 class="title text-blue" data-aos="fade-left" data-aos-duration="1000">Men's Health</h2>
-                    <p class="description mt-3 mb-3" data-aos="fade-in" data-aos-duration="1000">Men's health prescriptions range from hormone replacement therapy, erectile dysfunction, sexual health, hair restoration solutions, growth hormone therapy, weight loss, and much more. Our sexual health products are compounded to provide faster onset and better results than traditional therapies. Our doses are individualized to each male, providing maximum benefits.</p>
+                    <h2 class="title text-blue">Men's Health</h2>
+                    <p class="description mt-3 mb-3">Men's health prescriptions range from hormone replacement therapy, erectile dysfunction, sexual health, hair restoration solutions, growth hormone therapy, weight loss, and much more. Our sexual health products are compounded to provide faster onset and better results than traditional therapies. Our doses are individualized to each male, providing maximum benefits.</p>
                     <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Men\'s Health']); ?>" class="url text-decoration-none d-block text-blue border border-blue">View Products</a>
                 </div>
             </div>
@@ -212,23 +212,23 @@ get_header();
         <div class="row c-card">
             <div class="col-md-6 p-5 d-flex justify-content-end align-items-center">
                 <div class="sterile content">
-                    <h2 class="title text-info" data-aos="fade-right" data-aos-duration="1000">Sterile Compounding</h2>
-                    <p class="description mt-3 mb-3" data-aos="fade-in" data-aos-duration="1000">GPS sterile compounding <em>(coming soon)</em> labs specialize in ophthalmics, PCA pumps, sexual health, womens and mens hormone replacement injections, vitamin IV therapy, investigational drugs and much more. Our USP <797> and <800> facilities uphold the highest standards of the United States Pharmacopeia. As a PCCA certified pharmacy our ingredients provide the highest grade and purest forms for each compounded product.</p>
+                    <h2 class="title text-info">Sterile Compounding</h2>
+                    <p class="description mt-3 mb-3">GPS sterile compounding <em>(coming soon)</em> labs specialize in ophthalmics, PCA pumps, sexual health, womens and mens hormone replacement injections, vitamin IV therapy, investigational drugs and much more. Our USP <797> and <800> facilities uphold the highest standards of the United States Pharmacopeia. As a PCCA certified pharmacy our ingredients provide the highest grade and purest forms for each compounded product.</p>
                     <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Sterile Compounding']); ?>" class="url text-decoration-none d-block text-info border border-info">View Products</a>
                 </div>
             </div>
             <div class="col-md-6 p-0">
-                <img src="<?php echo get_theme_file_uri() . '/img/compounding/compounding-3.png'; ?>" alt="Sterile compounding" data-aos="fade-left" data-aos-duration="1000">
+                <img src="<?php echo get_theme_file_uri() . '/img/compounding/compounding-3.png'; ?>" alt="Sterile compounding">
             </div>
         </div>
         <div class="row c-card">
             <div class="col-md-6 p-0 text-end">
-                <img src="<?php echo get_theme_file_uri() . '/img/compounding/compounding-4.png'; ?>" alt="A young girl holding a dog" data-aos="fade-right" data-aos-duration="1000">
+                <img src="<?php echo get_theme_file_uri() . '/img/compounding/compounding-4.png'; ?>" alt="A young girl holding a dog"">
             </div>
             <div class="col-md-6 p-5 d-flex justify-content-start align-items-center">
                 <div class="mens-health content">
-                    <h2 class="title text-primary" data-aos="fade-left" data-aos-duration="1000">Veterinary</h2>
-                    <p class="description mt-3 mb-3" data-aos="fade-in" data-aos-duration="1000">Veterinary compounding for your pet begins with a custom prescription to meet each species’ needs. We specialize in canine, feline, reptile, avian, and exotic species. Our formulations are designed to offer your pet a tasty treat filled with the medications prescribed to them by your veterinarian. Tiny chews, flavored liquids, transdermal creams, wound puffers, and much more. We specialize in preparations free of proteins and other allergens for our sensitive patients or those on specific diets.</p>
+                    <h2 class="title text-primary">Veterinary</h2>
+                    <p class="description mt-3 mb-3">Veterinary compounding for your pet begins with a custom prescription to meet each species’ needs. We specialize in canine, feline, reptile, avian, and exotic species. Our formulations are designed to offer your pet a tasty treat filled with the medications prescribed to them by your veterinarian. Tiny chews, flavored liquids, transdermal creams, wound puffers, and much more. We specialize in preparations free of proteins and other allergens for our sensitive patients or those on specific diets.</p>
                     <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Veterinary']); ?>" class="url text-decoration-none d-block text-primary border border-primary">View Products</a>
                 </div>
             </div>
@@ -236,13 +236,13 @@ get_header();
         <div class="row c-card">
             <div class="col-md-6 p-5 d-flex justify-content-end align-items-center">
                 <div class="aesthetics content">
-                    <h2 class="title text-success" data-aos="fade-right" data-aos-duration="1000">Aesthetics</h2>
-                    <p class="description mt-3 mb-3" data-aos="fade-in" data-aos-duration="1000">GPS specializes in providing patients with skin and hair restoration solutions and compounds for aesthetic procedures. We have bases specifically designed for lasers, PRP procedures, Vampire facials, hair removal, and plastic surgery procedures. We specialize in custom creams for skin regeneration, turnover and tightening, working with estriols, retinols, hyaluronic acid and more.</p>
+                    <h2 class="title text-success">Aesthetics</h2>
+                    <p class="description mt-3 mb-3">GPS specializes in providing patients with skin and hair restoration solutions and compounds for aesthetic procedures. We have bases specifically designed for lasers, PRP procedures, Vampire facials, hair removal, and plastic surgery procedures. We specialize in custom creams for skin regeneration, turnover and tightening, working with estriols, retinols, hyaluronic acid and more.</p>
                     <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Aesthetics']); ?>" class="url text-decoration-none d-block text-success border border-success">View Products</a>
                 </div>
             </div>
             <div class="col-md-6 p-0">
-                <img src="<?php echo get_theme_file_uri() . '/img/compounding/compounding-5.png'; ?>" alt="A women" data-aos="fade-left" data-aos-duration="1000">
+                <img src="<?php echo get_theme_file_uri() . '/img/compounding/compounding-5.png'; ?>" alt="A women">
             </div>
         </div>
     </div>
@@ -250,7 +250,7 @@ get_header();
     <div class="container compounding-mobile-page-content me-auto ms-auto mt-5 d-lg-none d-xl-none d-xxl-none d-md-block d-sm-block">
         <div class="row">
             <div class="col-sm-6 mb-3 w-50">
-                <div class="womens-health content text-center" data-aos="fade-right" data-aos-duration="1000">
+                <div class="womens-health content text-center" >
                     <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Women\'s Health']); ?>" class="text-decoration-none text-warning">
                         <img src="<?php echo get_theme_file_uri() . '/img/compounding/compounding-1.png'; ?>" alt="A women">
                         <h2 class="title pt-2">Women's Health</h2>
@@ -258,7 +258,7 @@ get_header();
                 </div>
             </div>
             <div class="col-sm-6 mb-3 w-50">
-                <div class="mens-health content text-center" data-aos="fade-left" data-aos-duration="1000">
+                <div class="mens-health content text-center" >
                     <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Men\'s Health']); ?>" class="text-decoration-none text-blue">
                         <img src="<?php echo get_theme_file_uri() . '/img/compounding/compounding-2.png'; ?>" alt="A man">
                         <h2 class="title pt-2">Men's Health</h2>
@@ -266,7 +266,7 @@ get_header();
                 </div>
             </div>
             <div class="col-sm-6 mb-3 w-50">
-                <div class="sterile content text-center" data-aos="fade-right" data-aos-duration="1000">
+                <div class="sterile content text-center">
                     <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Sterile Compounding']); ?>" class="text-decoration-none text-info">
                         <img src="<?php echo get_theme_file_uri() . '/img/compounding/compounding-3.png'; ?>" alt="Sterile compounding">
                         <h2 class="title pt-2">Sterile Compounding <em>(coming soon)</em></h2>
@@ -274,7 +274,7 @@ get_header();
                 </div>
             </div>
             <div class="col-sm-6 mb-3 w-50">
-                <div class="mens-health content text-center" data-aos="fade-left" data-aos-duration="1000">
+                <div class="mens-health content text-center">
                     <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Veterinary']); ?>" class="text-decoration-none text-primary">
                         <img src="<?php echo get_theme_file_uri() . '/img/compounding/compounding-4.png'; ?>" alt="A young girl holding a dog">
                         <h2 class="title pt-2">Veterinary</h2>
@@ -282,7 +282,7 @@ get_header();
                 </div>
             </div>
             <div class="col-sm-6 mb-3 w-50">
-                <div class="aesthetics content text-center" data-aos="fade-right" data-aos-duration="1000">
+                <div class="aesthetics content text-center">
                     <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Aesthetics']); ?>" class="text-decoration-none text-success">
                         <img src="<?php echo get_theme_file_uri() . '/img/compounding/compounding-5.png'; ?>" alt="A women">
                         <h2 class="title pt-2">Aesthetics</h2>
