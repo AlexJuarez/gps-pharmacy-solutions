@@ -1,4 +1,5 @@
-const loaded = new Set();
+(function() {
+    const loaded = new Set();
 
 function require(target) {
     console.log(`Loading ${target}`);
@@ -45,3 +46,4 @@ function require(target) {
 }
 
 window.require = require;
+})();

@@ -1,3 +1,4 @@
+(function() {
 
 async function main() {
     const $ = await require("jQuery");
@@ -277,3 +278,5 @@ async function main() {
 }
 
 main().catch((err) => console.warn(`Error loading main.js: ${err}`));
+
+})();

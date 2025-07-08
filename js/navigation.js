@@ -4,6 +4,10 @@
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
+(function() {
+
+
+
 async function navigation() {
     const $ = await require("jQuery");
 
@@ -113,3 +117,4 @@ async function navigation() {
 navigation(this).catch((err) =>
     console.log(`Error loading navigation: ${err.msg}`)
 );
+})();
