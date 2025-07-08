@@ -2647,7 +2647,7 @@ p.product-title.text-center {
     }
 
     .gps-info-box {
-        width: 220px;
+        width: 100%;
     }
 
     .dropdown-toggle.nav-link:after,

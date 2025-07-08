@@ -37,7 +37,7 @@ get_header();
     <div class="container">
       <div class="gps-info-boxes-container">
         <div class="g-0 mx-n1 row">
-          <div class="col-6 col-lg-3 mb-3 mb-lg-0 px-1">
+          <div class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
             <div class="info-card-container">
               <div class="gps-info-box gps-compounding">
                 <div class="gps-info-box-back gps-info-box-fbc d-flex flex-column justify-content-center gps-bg-blue">
@@ -78,7 +78,7 @@ get_header();
               </div>
             </div>
           </div>
-          <div class="col-6 col-lg-3 mb-3 mb-lg-0 px-1">
+          <div class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
             <div class="info-card-container">
               <div class="gps-info-box gps-hospice">
                 <div class="gps-info-box-back gps-info-box-fbc d-flex flex-column justify-content-center bg-warning">
@@ -122,7 +122,7 @@ get_header();
               </div>
             </div>
           </div>
-          <div class="col-6 col-lg-3 mb-3 mb-lg-0 px-1">
+          <div class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
             <div class="info-card-container">
               <div class="gps-info-box gps-research">
                 <div class="gps-info-box-back gps-info-box-fbc d-flex flex-column justify-content-center bg-info">
@@ -153,7 +153,7 @@ get_header();
               </div>
             </div>
           </div>
-          <div class="col-6 col-lg-3 mb-3 mb-lg-0 px-1">
+          <div class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
             <div class="info-card-container">
               <div class="gps-info-box gps-shop">
                 <div class="gps-info-box-back gps-info-box-fbc d-flex flex-column justify-content-center bg-success">
