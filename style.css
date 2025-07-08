@@ -1554,12 +1554,8 @@ footer .footer-menu a.nav-link:hover:before {
     padding-top: 27.5px;
 }
 
-.gps-compounding .gps-info-box-back a:hover {
+.gps-info-box .gps-info-box-back a:hover {
     color: var(--bs-orange);
-}
-
-.gps-hospice .gps-info-box-back a:hover {
-    color: #AD4E0D;
 }
 
 
