@@ -99,9 +99,9 @@ class Recaptcha_Handler {
 	}
 
 	public function register_scripts() {
-		$script_name = static::get_script_name();
+		/* $script_name = static::get_script_name();
 		$src = 'https://www.google.com/recaptcha/api.js?render=explicit';
-		wp_register_script( $script_name, $src, [], ELEMENTOR_PRO_VERSION, true );
+		wp_register_script( $script_name, $src, [], ELEMENTOR_PRO_VERSION, false ); */
 	}
 
 	public function enqueue_scripts() {

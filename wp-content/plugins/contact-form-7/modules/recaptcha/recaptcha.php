@@ -22,11 +22,11 @@ function wpcf7_recaptcha_register_service() {
 }
 
 
-add_action(
+/* add_action(
 	'wp_enqueue_scripts',
 	'wpcf7_recaptcha_enqueue_scripts',
 	20, 0
-);
+); */
 
 /**
  * Enqueues frontend scripts for reCAPTCHA.
