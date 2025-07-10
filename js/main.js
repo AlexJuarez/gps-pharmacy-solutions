@@ -34,14 +34,14 @@ async function main() {
         div.classList.add("hero-image");
         div.setAttribute("data-hero-image", data);
         div.style.display = "none";
-        const heroImage = document.querySelectors(".hero .hero-image");
-        if (heroImage.length != 1) {
-            heroImage.splice(0, heroImage.length - 1).forEach((el) => {
+        const heroImages = document.querySelectorAll(".hero .hero-image");
+        if (heroImages.length != 1) {
+            heroImages.splice(0, heroImage.length - 1).forEach((el) => {
                     el.remove();
 
             });
         }
-        heroImage[0].parentNode.insertBefore(div, heroImage);
+        heroImages[0].parentNode.insertBefore(div, heroImages[0]);
         const styles = window.getComputedStyle(div);
         const url = styles["background-image"].replace(/url\(["']?/, "").replace(/["']?\)/, "");
         const image = new Image();
