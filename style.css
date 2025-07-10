@@ -1546,7 +1546,7 @@ footer .footer-menu a.nav-link:hover:before {
 }
 
 .grecaptcha-badge {
-	display: none;
+	display: none !important;
 }
 
 .gps-hospice .gps-info-box-back>a {
