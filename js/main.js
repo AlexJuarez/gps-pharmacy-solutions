@@ -14,6 +14,10 @@ async function main() {
 
     let mouseTimeout;
     function handleMouseLeave(event) {
+        if (mouseTimeout != null) {
+            clearTimeout(mouseTimeout);
+            mouseTimeout = null;
+        }
         mouseTimeout = setTimeout(() => {
             const $img = $(".hero-image");
             $img.attr("data-hero-image", "home");
