@@ -152,7 +152,7 @@ $is_about_page = strpos($current_page_url, '/company/about/') !== false;
                             </h2>
                             <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <p class="fs-5">We accept all major credit cards, including Visa, MasterCard, Discover and American Express. We also accept health savings (HSA) cards.</p>
+                                    <p class="fs-5">We accept all major credit cards, including Visa, MasterCard, Discover and American Express.</p>
                                 </div>
                             </div>
                         </div>
