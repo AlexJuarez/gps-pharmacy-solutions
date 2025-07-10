@@ -1,5 +1,8 @@
 (function() {
 
+async function main() {
+    const $ = await require("jQuery");
+
     function onClick(handler, el = document) {
         const handleClick = (event) => {
             handler(event);
@@ -18,7 +21,7 @@
             console.log('success');
             const $tar = $(event.target);
             const data = $tar.attr("data-hero-trigger");
-            $img = $page.find(".hero-image").first();
+            const $img = $(".hero-image");
             console.log($img, data);
             $img.attr("data-hero-image", data);
         }
@@ -27,9 +30,7 @@
     function handleMouseOut(event) {
         if (event.target.matches("[data-hero-trigger]") && mouseTimeout == null) {
             mouseTimeout = setTimeout(() => {
-                const $img = $page
-                        .find(".hero-image")
-                        .first();
+                const $img = $(".hero-image");
                 $img.attr("data-hero-image", "home");
                 clearTimeout(mouseTimeout);
                 mouseTimeout = null;
@@ -38,7 +39,7 @@
     }
 
     $page
-        .on("mouseenter", handleMouseOver)
+        .on("mouseover", handleMouseOver)
         .on("mouseout", handleMouseOut);
 
     require("Splide").then((Splide) => {
@@ -103,7 +104,6 @@
     function addToCart(event) {
         if (event.target.matches(".add_to_cart_button")) {
             if (
-                window.innerWidth <= 991 &&
                 window.location.href.includes("/product/")
             ) {
                 window.scroll({
@@ -140,20 +140,20 @@
     onClick((event) => handleClick(event), document);
 
     // make sure the correct message is displayed
-    const wooCommerceMessages = $(".woocommerce-message");
-    if (wooCommerceMessages.length) {
-        wooCommerceMessages.each((i, message) => {
+    const $wooCommerceMessages = $(".woocommerce-message");
+    if ($wooCommerceMessages) {
+        $wooCommerceMessages.each((i, message) => {
             const $message = $(message);
             $message.css({ display: "none" });
         });
-        wooCommerceMessages.last().addClass("d-block");
+        $wooCommerceMessages.last().addClass("d-block");
     }
 
     // add mobile optimized images in compounding page
     const $compoundingMobileContent = $(
         ".compounding-mobile-page-content .content"
     );
-    if ($compoundingMobileContent.length) {
+    if ($compoundingMobileContent) {
         $compoundingMobileContent.each((i, $el) => {
             const image = $el.find("img");
             image.css({ height: "auto" });
@@ -238,5 +238,8 @@
         subtree: true,
         attributes: true
     });
+}
+
+main().catch((err) => console.warn(`Error loading main.js: ${err}`));
 
 })();
