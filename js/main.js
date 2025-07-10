@@ -30,6 +30,19 @@ async function main() {
 
         const $tar = $(event.target);
         const data = $tar.attr("data-hero-trigger");
+        const div = document.createElement("div");
+        div.classList.add("hero-image");
+        div.setAttribute("data-hero-image", data);
+        const styles = document.getComputedStyle(div);
+        const url = styles.getPropertyValue("background-image");
+        const image = new Image();
+        image.src = url;
+        $(image).on("load", () => {
+            console.debug("Hero image loaded", data);
+            const $img = $(".hero-image");
+            console.log($img, data);
+            $img.attr("data-hero-image", data);
+        });
         const $img = $(".hero-image");
         console.log($img, data);
         $img.attr("data-hero-image", data);
