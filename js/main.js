@@ -35,7 +35,7 @@ async function main() {
         div.setAttribute("data-hero-image", data);
         div.style.display = "none";
         const heroImage = document.querySelector(".hero .hero-image");
-        heroImage.parentNode.insertBefore(heroImage, div);
+        heroImage.parentNode.insertBefore(div, heroImage);
         const styles = window.getComputedStyle(div);
         const url = styles["background-image"].replace(/url\(["']?/, "").replace(/["']?\)/, "");
         const image = new Image();
