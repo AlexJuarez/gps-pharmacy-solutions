@@ -2866,6 +2866,7 @@ p.product-title.text-center {
 
     .footer-col-border-right:after,
     .contact-col-border-right:after {
+        margin-top: 10px;
         border-right: none;
         width: 65%;
         display: block;
