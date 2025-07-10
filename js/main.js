@@ -36,11 +36,11 @@ async function main() {
         const styles = window.getComputedStyle(div);
         const url = styles.getPropertyValue("background-image");
         const image = new Image();
-        image.src = url;
-        $(image).on("load", () => {
+        image.addEventListener("load", () => {
             const $img = $(".hero-image");
             $img.attr("data-hero-image", data);
         });
+        image.src = url;
     }
 
     $('a[data-hero-trigger]').on('mouseover', handleMouseOver).on('mouseout', handleMouseOut);
