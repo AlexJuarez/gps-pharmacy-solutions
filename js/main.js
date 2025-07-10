@@ -14,11 +14,6 @@ async function main() {
 
     let mouseTimeout;
     function handleMouseOut(event) {
-        if (mouseTimeout = null) {
-            clearTimeout(mouseTimeout);
-            mouseTimeout = null;
-        }
-
         mouseTimeout = setTimeout(() => {
             const $img = $(".hero-image");
             $img.attr("data-hero-image", "home");
@@ -28,6 +23,11 @@ async function main() {
     }
 
     function handleMouseOver(event) {
+        if (mouseTimeout) {
+            clearTimeout(mouseTimeout);
+            mouseTimeout = null;
+        }
+
         const $tar = $(event.target);
         const data = $tar.attr("data-hero-trigger");
         const $img = $(".hero-image");
