@@ -15,19 +15,20 @@ async function main() {
 
     const $page = $("#page.site");
 
-    const handleMouseOver = ((event) => {
-
+    let mouseTimeout;
+    function handleMouseOver(event) {
+        console.log('mouse over', event.target)
         if (event.target.matches("[data-hero-trigger]")) {
-             $target = $(event.target.closest(''));
+            console.log('success');
             const $tar = $(event.target);
             const data = $tar.attr("data-hero-trigger");
             $img = $page.find(".hero-image").first();
+            console.log($img, data);
             $img.attr("data-hero-image", data);
         }
-    }).bind(this);
+    }
 
-    let mouseTimeout;
-    const handleMouseOut = ((event) => {
+    function handleMouseOut(event) {
         if (event.target.matches("[data-hero-trigger]") && mouseTimeout == null) {
             mouseTimeout = setTimeout(() => {
                 const $img = $page
@@ -38,7 +39,7 @@ async function main() {
                 mouseTimeout = null;
             }, 500);
         }
-    }).bind(this);
+    }
 
     $page
         .on("mouseenter", handleMouseOver)
