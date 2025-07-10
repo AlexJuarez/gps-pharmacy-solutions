@@ -15,15 +15,19 @@ async function main() {
     const $page = $("#page.site");
     let mouseTimeout;
 
- function handleMouseOut(event) {
-        if (event.target.matches("[data-hero-trigger]") && mouseTimeout == null) {
-            mouseTimeout = setTimeout(() => {
-                const $img = $(".hero-image");
-                $img.attr("data-hero-image", "home");
+    function resetHeroImage($tar) {
+        if ($(":hover").eq($tar)) {
+            console.debug("Mouse still over the target, not resetting image");
+            if (mouseTimeout) {
                 clearTimeout(mouseTimeout);
-                mouseTimeout = null;
-            }, 1000);
+            }
+            mouseTimeout = setTimeout(() => resetHeroImage($tar), 500);
+            return;
         }
+        const $img = $(".hero-image");
+        $img.attr("data-hero-image", "home");
+        clearTimeout(mouseTimeout);
+        mouseTimeout = null;
     }
 
     function handleMouseOver(event) {
@@ -35,7 +39,10 @@ async function main() {
             const $img = $(".hero-image");
             console.log($img, data);
             $img.attr("data-hero-image", data);
-            $tar.on("mouseleave", handleMouseOut, { once: true });
+            if (mouseTimeout) {
+                clearTimeout(mouseTimeout);
+            }
+            mouseTimeout = setTimeout(() => resetHeroImage($tar), 500);
         }
     }
 
