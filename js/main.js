@@ -33,14 +33,17 @@ async function main() {
         const div = document.createElement("div");
         div.classList.add("hero-image");
         div.setAttribute("data-hero-image", data);
+        div.style.display = "none";
+        document.querySelector('.hero').appendChild(div);
         const styles = window.getComputedStyle(div);
-        const url = styles.getPropertyValue("background-image");
+        const url = styles["background-image"].replace(/url\(["']?/, "").replace(/["']?\)/, "");
         const image = new Image();
         image.addEventListener("load", () => {
             const $img = $(".hero-image");
             $img.attr("data-hero-image", data);
         });
         image.src = url;
+        div.parentNode.removeChild(div);
     }
 
     $('a[data-hero-trigger]').on('mouseover', handleMouseOver).on('mouseout', handleMouseOut);
