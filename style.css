@@ -997,6 +997,7 @@ footer .footer-menu a {
     font-weight: 600;
     font-size: .875rem;
     display: grid;
+    width: 90%;
     grid-template-columns: 20px 1fr;
     align-items: baseline;
     padding: .25rem 0 .25rem 1rem;
