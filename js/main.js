@@ -12,42 +12,28 @@ async function main() {
         el.addEventListener("touchend", (event) => handleClick(event));
     }
 
-    const $page = $("#page.site");
     let mouseTimeout;
-
-    function resetHeroImage($tar) {
-        if ($(":hover").eq($tar)) {
-            console.debug("Mouse still over the target, not resetting image");
-            if (mouseTimeout) {
-                clearTimeout(mouseTimeout);
-            }
-            mouseTimeout = setTimeout(() => resetHeroImage($tar), 500);
-            return;
-        }
-        const $img = $(".hero-image");
-        $img.attr("data-hero-image", "home");
-        clearTimeout(mouseTimeout);
-        mouseTimeout = null;
+    function handleMouseLeave(event) {
+        mouseTimeout = setTimeout(() => {
+            const $img = $(".hero-image");
+            $img.attr("data-hero-image", "home");
+            clearTimeout(mouseTimeout);
+            mouseTimeout = null;
+        }, 500);
     }
 
     function handleMouseOver(event) {
-        console.log('mouse over', event.target)
-        if (event.target.matches("[data-hero-trigger]")) {
-            console.log('success');
-            const $tar = $(event.target);
-            const data = $tar.attr("data-hero-trigger");
-            const $img = $(".hero-image");
-            console.log($img, data);
-            $img.attr("data-hero-image", data);
-            if (mouseTimeout) {
-                clearTimeout(mouseTimeout);
-            }
-            mouseTimeout = setTimeout(() => resetHeroImage($tar), 500);
-        }
+        const $tar = $(event.target);
+        const data = $tar.attr("data-hero-trigger");
+        const $img = $(".hero-image");
+        console.log($img, data);
+        $img.attr("data-hero-image", data);
     }
 
-    $page
-        .on("mouseover", handleMouseOver);
+    $('[data-hero-trigger]').hover(
+        handleMouseOver,
+        handleMouseLeave
+    );
 
     require("Splide").then((Splide) => {
         const carousel = $("#splide");
