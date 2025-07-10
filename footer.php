@@ -121,7 +121,7 @@
               </section>
               <section>
                 <p class="montserrat-font title-link">Stay in Touch</p>
-                <div class="d-md-flex align-items-start ps-4">
+                <div class="d-md-flex align-items-start">
                   <div class="social-media d-flex flex-column justify-content-around">
 
                     <!-- set facebook info -->

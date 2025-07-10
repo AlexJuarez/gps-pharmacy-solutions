@@ -2,7 +2,6 @@
 
 async function main() {
     const $ = await require("jQuery");
-    const Splide = await require("Splide");
     const AOS = await require("AOS");
 
     function onClick(handler, el = document) {
@@ -46,18 +45,21 @@ async function main() {
         .on("mouseout", handleMouseOut);
 
     AOS.init();
-    const carousel = $("#splide");
-    if (carousel.length) {
-        new Splide("#splide", {
-            type: "loop",
-            width: "80%",
-            perPage: 3,
-            breakpoints: {
-                991: { perPage: 1 }
-            },
-            arrowPath: "M1.75 36.388L31 19.5 1.75 2.613v33.775z"
-        }).mount();
-    }
+
+    require("Splide").then((Splide) => {
+        const carousel = $("#splide");
+        if (carousel.length) {
+            new Splide("#splide", {
+                type: "loop",
+                width: "80%",
+                perPage: 3,
+                breakpoints: {
+                    991: { perPage: 1 }
+                },
+                arrowPath: "M1.75 36.388L31 19.5 1.75 2.613v33.775z"
+            }).mount();
+        }
+    });
 
     // convert text to date
     const $dateInputField = $('[name="date-427"]');

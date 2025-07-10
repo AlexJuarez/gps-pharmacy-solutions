@@ -242,7 +242,7 @@ get_header();
           <p>Wondering if we deliver to your address? Before placing your order, call us at <a
               class="text-decoration-none text-warning" href="tel:980-245-2028">980-245-2028</a> or contact us via email
             at <a class="text-decoration-none text-warning"
-              href="mailto:gpspharmacyteam@gpsmymeds.com">gpspharmacyteam@gpsmymeds.com</a>. Our team of pharmacists is
+              href="mailto:gpsmymeds@gmail.com">gpsmymeds@gmail.com</a>. Our team of pharmacists is
             standing by to assist you as a new customer and answer any questions you may have about our pharmacy
             solutions. </p>
         </div>
@@ -295,7 +295,7 @@ get_header();
         </div>
         <p>To learn more about GPS Pharmacy Solutions, please <a class="text-decoration-none text-warning"
             href="tel:980-245-2028">call</a> or contact us via <a class="text-decoration-none text-warning"
-            href="mailto:gpspharmacyteam@gpsmymeds.com">email</a>. Our experienced team is here to serve your health
+            href="mailto:gpsmymeds@gmail.com">email</a>. Our experienced team is here to serve your health
           needs!</p>
       </div>
     </div>
