@@ -14,8 +14,9 @@ async function main() {
 
     let mouseTimeout;
     function handleMouseOut(event) {
-        if (mouseTimeout != null) {
+        if (mouseTimeout = null) {
             clearTimeout(mouseTimeout);
+            mouseTimeout = null;
         }
 
         mouseTimeout = setTimeout(() => {
@@ -34,7 +35,7 @@ async function main() {
         $img.attr("data-hero-image", data);
     }
 
-    $('[data-hero-trigger]').on('mouseenter', handleMouseOver).on('mouseleave', handleMouseOut);
+    $('a[data-hero-trigger]').on('mouseenter', handleMouseOver).on('mouseleave', handleMouseOut);
 
     require("Splide").then((Splide) => {
         const carousel = $("#splide");
