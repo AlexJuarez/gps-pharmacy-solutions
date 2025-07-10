@@ -1,8 +1,5 @@
 (function() {
 
-async function main() {
-    const $ = await require("jQuery");
-
     function onClick(handler, el = document) {
         const handleClick = (event) => {
             handler(event);
@@ -241,8 +238,5 @@ async function main() {
         subtree: true,
         attributes: true
     });
-}
-
-main().catch((err) => console.warn(`Error loading main.js: ${err}`));
 
 })();

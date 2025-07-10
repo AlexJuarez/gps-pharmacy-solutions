@@ -6,11 +6,6 @@
  */
 (function() {
 
-
-
-async function navigation() {
-    const $ = await require("jQuery");
-
     console.debug(`Loading navigation`);
 
     function debounce (fn, ts = 250) {
@@ -112,9 +107,5 @@ async function navigation() {
     }
 
     onClick((event) => toggleFocus(event), document);
-}
 
-navigation(this).catch((err) =>
-    console.log(`Error loading navigation: ${err.msg}`)
-);
 })();
