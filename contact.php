@@ -81,7 +81,7 @@ get_header();
                         <div class="contact-details">
                             <!-- set email address -->
                             <?php $gps_email = get_theme_mod('gps_email'); ?>
-                            <p><a href="mailto:<?php echo empty($gps_email) ? 'gpspharmacyteam@gpsmymeds.com' : $gps_email; ?>" class="text-decoration-none"><strong><?php echo empty($gps_email) ? 'gpspharmacyteam@gpsmymeds.com' : $gps_email; ?></strong></a></p>
+                            <p><a href="mailto:<?php echo empty($gps_email) ? 'gpsmymeds@gmail.com' : $gps_email; ?>" class="text-decoration-none"><strong><?php echo empty($gps_email) ? 'gpsmymeds@gmail.com' : $gps_email; ?></strong></a></p>
                         </div>
                     </div>
                     <div class="col-lg-12">

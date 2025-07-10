@@ -24,7 +24,7 @@ get_header();
 							<div class="woocommerce-notices-wrapper"></div><p class="cart-empty woocommerce-info"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'gps-pharmacy-solutions' ); ?></p>						</h4>
 
 						<div class="product-atc-wrapper d-flex align-items-center m-5">
-							<a href="https://gpsmymeds.com/" class="fw-bold btn btn-success text-white w-fit-content py-md-3 px-md-5 py-2 px-3 ms-auto me-auto text-decoration-none montserrat-font">
+							<a href="https://<?php echo $_SERVER['SERVER_NAME'] ?>" class="fw-bold btn btn-success text-white w-fit-content py-md-3 px-md-5 py-2 px-3 ms-auto me-auto text-decoration-none montserrat-font">
 								Return to homepage							</a>
 						</div>
 					</div>
