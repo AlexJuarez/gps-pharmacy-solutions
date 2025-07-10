@@ -34,8 +34,14 @@ async function main() {
         div.classList.add("hero-image");
         div.setAttribute("data-hero-image", data);
         div.style.display = "none";
-        const heroImage = document.querySelector(".hero .hero-image");
-        heroImage.parentNode.insertBefore(div, heroImage);
+        const heroImage = document.querySelectors(".hero .hero-image");
+        if (heroImage.length != 1) {
+            heroImage.splice(0, heroImage.length - 1).forEach((el) => {
+                    el.remove();
+
+            });
+        }
+        heroImage[0].parentNode.insertBefore(div, heroImage);
         const styles = window.getComputedStyle(div);
         const url = styles["background-image"].replace(/url\(["']?/, "").replace(/["']?\)/, "");
         const image = new Image();
@@ -43,7 +49,11 @@ async function main() {
             $(div).fadeIn(200, () => {
                 const $img = $(".hero-image");
                 $img.attr("data-hero-image", data);
-                div.parentNode.removeChild(div);
+                try {
+                div.remove();
+                } catch (e) {
+
+                }
             });
         });
         image.src = url;
