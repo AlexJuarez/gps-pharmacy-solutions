@@ -13,8 +13,19 @@ async function main() {
     }
 
     const $page = $("#page.site");
-
     let mouseTimeout;
+
+ function handleMouseOut(event) {
+        if (event.target.matches("[data-hero-trigger]") && mouseTimeout == null) {
+            mouseTimeout = setTimeout(() => {
+                const $img = $(".hero-image");
+                $img.attr("data-hero-image", "home");
+                clearTimeout(mouseTimeout);
+                mouseTimeout = null;
+            }, 1000);
+        }
+    }
+
     function handleMouseOver(event) {
         console.log('mouse over', event.target)
         if (event.target.matches("[data-hero-trigger]")) {
@@ -24,23 +35,12 @@ async function main() {
             const $img = $(".hero-image");
             console.log($img, data);
             $img.attr("data-hero-image", data);
-        }
-    }
-
-    function handleMouseOut(event) {
-        if (event.target.matches("[data-hero-trigger]") && mouseTimeout == null) {
-            mouseTimeout = setTimeout(() => {
-                const $img = $(".hero-image");
-                $img.attr("data-hero-image", "home");
-                clearTimeout(mouseTimeout);
-                mouseTimeout = null;
-            }, 500);
+            $tar.on("mouseleave", handleMouseOut, { once: true });
         }
     }
 
     $page
-        .on("mouseover", handleMouseOver)
-        .on("mouseout", handleMouseOut);
+        .on("mouseover", handleMouseOver);
 
     require("Splide").then((Splide) => {
         const carousel = $("#splide");
