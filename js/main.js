@@ -35,7 +35,7 @@ async function main() {
         $img.attr("data-hero-image", data);
     }
 
-    $('a[data-hero-trigger]').on('mouseenter', handleMouseOver).on('mouseleave', handleMouseOut);
+    $('a[data-hero-trigger]').on('mouseover', handleMouseOver).on('mouseout', handleMouseOut);
 
     require("Splide").then((Splide) => {
         const carousel = $("#splide");
