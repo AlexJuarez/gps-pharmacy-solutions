@@ -34,12 +34,12 @@ async function main() {
         div.classList.add("hero-image");
         div.setAttribute("data-hero-image", data);
         div.style.display = "none";
-        document.querySelector('.hero').insertBefore(document.querySelector('.hero .hero-image', div);
+        document.querySelector('.hero').insertBefore(document.querySelector('.hero .hero-image', div));
         const styles = window.getComputedStyle(div);
         const url = styles["background-image"].replace(/url\(["']?/, "").replace(/["']?\)/, "");
         const image = new Image();
         image.addEventListener("load", () => {
-            $(div).fadeIn(500, () => {
+            $(div).fadeIn(200, () => {
                 const $img = $(".hero-image");
                 $img.attr("data-hero-image", data);
                 div.parentNode.removeChild(div);
