@@ -2,7 +2,6 @@
 
 async function main() {
     const $ = await require("jQuery");
-    const AOS = await require("AOS");
 
     function onClick(handler, el = document) {
         const handleClick = (event) => {
@@ -44,8 +43,6 @@ async function main() {
     $page
         .on("mouseenter", handleMouseOver)
         .on("mouseout", handleMouseOut);
-
-    AOS.init();
 
     require("Splide").then((Splide) => {
         const carousel = $("#splide");
@@ -105,7 +102,6 @@ async function main() {
         });
     });
 
-    const $addToCartButtons = $(".add_to_cart_button");
     let timeouts = {};
     function addToCart(event) {
         if (event.target.matches(".add_to_cart_button")) {
@@ -197,39 +193,6 @@ async function main() {
         }, 500);
     });
 
-    // complete order oer the phone
-    const $orderOverPhone = $("button.place-order-over-phone");
-
-    if ($orderOverPhone) {
-        const popup = $("#popup-order-over-phone");
-
-        let popTimeout;
-
-        $orderOverPhone.on("click", (e) => {
-            if (popTimeout == null) {
-                e.preventDefault();
-                popup.removeClass("d-none");
-                popup.data("aos", "fade-up");
-                AOS.init();
-
-                popTimeout = setTimeout(() => {
-                    popup.data("aos", null);
-                    popup.removeClass("aos-init");
-                    popup.removeClass("aos-animate");
-                    popup.css({ pointerEvents: "all" });
-                    clearTimeout(popTimeout);
-                    popTimeout = null;
-                }, 500);
-            }
-        });
-
-        popup.find(".close-button").on("click", (e) => {
-            if ($(e.currentTarget).is($(e.target.current))) {
-            }
-            e.preventDefault();
-            popup.addClass("d-none");
-        });
-    }
 
     // fix form not submitting after showing error
     const removeProcessingStatus = () => {
