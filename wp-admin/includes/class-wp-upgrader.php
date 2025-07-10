@@ -174,8 +174,8 @@ class WP_Upgrader {
 	 * @since 6.3.0
 	 */
 	protected function schedule_temp_backup_cleanup() {
-		if ( false === wp_next_scheduled( 'wp_delete_temp_updater_backups' ) ) {
-			wp_schedule_event( time(), 'weekly', 'wp_delete_temp_updater_backups' );
+		if (!wp_next_scheduled( 'wp_delete_temp_updater_backups' ) ) {
+			wp_schedule_event( strtotime('12pm'), 'weekly', 'wp_delete_temp_updater_backups' );
 		}
 	}
 
