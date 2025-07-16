@@ -124,7 +124,6 @@ async function main() {
             const $productBtn = $btn.parents('.product-added-btn');
             $productBtn.removeClass('d-none')
             const id = event.composedPath().map((e) => e.nodeName).join(':');
-            console.debug(`${id} btn path for add to cart`);
             if (timeouts[id] != null) {
                 timeouts[id] = setTimeout(() => {
                     $productBtn.addClass('d-none');
@@ -139,7 +138,6 @@ async function main() {
     function handleClick(event) {
         const $tar = $(event.target);
         if($tar.is('.menu-item-has-children > a')) {
-            console.debug($tar, 'triggered click');
             $tar.click();
         }
     }

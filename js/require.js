@@ -42,6 +42,11 @@ function require(target) {
         document.addEventListener('DOMContentLoaded', handleReady);
     }
 
+    promise.catch((err) => {
+        console.error(`Error loading ${target}:`, err);
+        rej(err);
+    });
+
     return promise;
 }
 

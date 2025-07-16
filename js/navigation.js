@@ -67,14 +67,12 @@ async function navigation() {
                 const $navBar = $(".navbar-collapse.collapse");
                 const isOpen = $siteNavigation.hasClass("toggled");
                 if (isOpen) {
-                    console.info(`${$toggler} nav closed`);
                     $siteNavigation.removeClass("toggled");
                     $navBar.removeClass("show");
                     $(document.body).removeClass("overflow-hidden");
                     $toggler.attr("aria-expanded", "false");
                 } else {
                     toggling = Date.now() + 500;
-                    console.info(`${$toggler} nav opened`);
                     $navBar.addClass("show");
                     $siteNavigation.addClass("toggled");
                     $toggler.attr("aria-expanded", "true");
@@ -98,7 +96,6 @@ async function navigation() {
         $target = $(event.target);
         $dropdown = $(event.target).parents(".nav-item.dropdown");
         if ($dropdown.length) {
-            console.info($dropdown, `dropdown clicked`);
             $('.nav-item.dropdown').filter(".focus").each((i, el) => {
                 $el = $(el);
                 if (!$el.is($dropdown)) {

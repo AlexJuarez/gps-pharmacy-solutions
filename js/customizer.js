@@ -7,8 +7,10 @@
  * Contains handlers to make Theme Customizer preview reload changes asynchronously.
  */
 
-( function( $ ) {
+(async function() {
 	// Site title and description.
+	const $ = await require("jQuery");
+
 	wp.customize( 'blogname', function( value ) {
 		value.bind( function( to ) {
 			$( '.site-title a' ).text( to );
@@ -39,4 +41,4 @@
 			}
 		} );
 	} );
-}( jQuery ) );
+}());
