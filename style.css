@@ -1560,10 +1560,10 @@ footer .footer-menu a.nav-link:hover:before {
 
 .gps-info-box .gps-info-box-back {
     &.bg-warning a:hover {
-        color: var(--bs-lightblue);
+            color: var(--bs-lightblue);
     }
 
-    & a:hover {
+    a:hover {
         color: var(--bs-orange);
     }
 }
