@@ -54,6 +54,8 @@ async function navigation() {
 
     function handleAddToCart(event) {
         console.log(window.location.origin + "/cart/");
+        const url = new URL(location);
+        window.location.pushHistory({}, "", utl);
         window.location.assign(window.location.origin + "/cart/");
     }
 
