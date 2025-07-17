@@ -689,12 +689,10 @@ label[for="payment_method_paypal"] img {
     left: -182px;
 }
 
-#navbar-nav .navbar-bar {
-    .dropdown-menu.show {
-        margin: 0;
-        padding: 5px;
-        box-sizing: border-box;
-    }
+.site-header .navbar-bar .dropdown-menu {
+    margin: 0;
+    padding: 5px;
+    box-sizing: border-box;
 }
 
 .dropdown-menu {
