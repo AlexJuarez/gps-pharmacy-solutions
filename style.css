@@ -689,12 +689,19 @@ label[for="payment_method_paypal"] img {
     left: -182px;
 }
 
+.menu-time {
+    .dropdown-menu.dropdown {
+        margin: 0;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+}
+
 .dropdown-menu {
     .dropdown-item {
         font-weight: bold;
     }
 
-    box-sizing: border-box;
     background-color: #045f9c;
     border: 1px solid rgb(48, 73, 91);
 }
