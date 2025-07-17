@@ -690,8 +690,12 @@ label[for="payment_method_paypal"] img {
 }
 
 .dropdown-menu {
+    .dropdown-item {
+        font-weight: bold;
+    }
+
+    box-sizing: border-box;
     background-color: #045f9c;
-    font-weight: bold;
     border: 1px solid rgb(48, 73, 91);
 }
 
@@ -699,7 +703,6 @@ label[for="payment_method_paypal"] img {
 .dropdown-menu .dropdown-item:focus {
     color: #FB8637;
     background-color: rgb(19 39 53 / 12%);
-    box-sizing: border-box;
     background-blend-mode: lighten;
     transition: background-color 0.2s ease;
 }
