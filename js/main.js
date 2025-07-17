@@ -249,8 +249,8 @@ main().catch((err) => console.warn(`Error loading main.js: ${err}`));
 
 })();
 
-document.addEventListener('DOMContentLoaded', () => {
-    const config = { childList: true, subtree: true, attributeFilter: ['defer'] };
+document.addEventListener('load', () => {
+    const config = { childList: true, subtree: true };
     const callback = (mutationList, observer) => {
         for (const mutation of mutationList) {
             if (["childList", "subtree"].includes(mutation.type)) {
