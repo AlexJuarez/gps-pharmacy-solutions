@@ -233,17 +233,21 @@ async function main() {
         setTimeout(() => removeProcessingStatus(), 3500);
     });
 
-    $('body').on('load', () => {
-        $('script').attr('async', 'async');
+    $(document).on('ready', () => {
+        document.querySelectorAll('script').forEach((script) => {
+            script.setAttributeNode(document.createAttribute('async'));
+        });
     }, { once: true})
 
     var observer = new MutationObserver(function(mutations, observer) {
-        $('script:not([async])').attr('async', 'async');
+        document.querySelectorAll('script:not([async])').forEach((script) => {
+            script.setAttributeNode(document.createAttribute('async'));
+        });
         checkWishlistMessage();
         activateAlertCloseButton();
     });
 
-    observer.observe(document, {
+    observer.observe(window.html, {
         childList: true,
         subtree: true,
         attributes: true
