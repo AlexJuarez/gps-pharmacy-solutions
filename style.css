@@ -1561,6 +1561,8 @@ footer .footer-menu a.nav-link:hover:before {
         border-radius: calc((var(--height) + 0px));
         max-height: min-content;
         height: 100%;
+        border: 1px solid transparent;
+        box-sizing: border-box;
     }
 
     &.gps-compounding .gps-info-box-front .button a {
