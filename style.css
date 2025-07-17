@@ -1588,11 +1588,12 @@ footer .footer-menu a.nav-link:hover:before {
             min-height: fit-content;
         }
     }
-    &.bg-warning div:not(.button) a:hover {
+
+    &.bg-warning a:hover {
         color: var(--bs-lightblue);
     }
 
-    div:not(.button) a:hover {
+    a:hover {
         color: var(--bs-orange);
     }
 }
