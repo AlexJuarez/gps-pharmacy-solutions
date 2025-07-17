@@ -2820,7 +2820,7 @@ p.product-title.text-center {
 
     .dropdown-menu.show .dropdown-item:hover,
     .dropdown-menu.show .dropdown-item:focus {
-        font-weight: initial;
+        font-weight: normal !important;
         color: #fff;
         background-color: rgba(157, 181, 198, 0.12);
     }
