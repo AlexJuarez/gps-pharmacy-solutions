@@ -690,7 +690,6 @@ label[for="payment_method_paypal"] img {
 }
 
 .site-header .navbar-nav .dropdown-menu {
-    margin: 0;
     padding: 5px;
     box-sizing: border-box;
     .menu-item {
