@@ -249,7 +249,7 @@ main().catch((err) => console.warn(`Error loading main.js: ${err}`));
 
 })();
 
-(function() {
+document.addEventListener('DOMContentLoaded', () => {
     const config = { childList: true, subtree: true, attributeFilter: 'deferred' };
     const callback = (mutationList, observer) => {
         for (const mutation of mutationList) {
@@ -265,6 +265,6 @@ main().catch((err) => console.warn(`Error loading main.js: ${err}`));
         }
     }
     const observer = new MutationObserver(callback);
-    observer.observe(document.body.parentNode, config);
-}());
+    observer.observe(document, config);
+}, { once: true });
 
