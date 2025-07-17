@@ -259,10 +259,6 @@ main().catch((err) => console.warn(`Error loading main.js: ${err}`));
                     console.log(script, `script found without async attribute`);
                     script.setAttribute('async', true);
                 });
-
-                if (!scripts.length) {
-                    observer.disconnect()
-                }
             }
         }
     }
