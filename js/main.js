@@ -233,11 +233,11 @@ async function main() {
         setTimeout(() => removeProcessingStatus(), 3500);
     });
 
-    $(document).on('ready', () => {
+    $(document).on('DOMSubtreeModified', () => {
         document.querySelectorAll('script').forEach((script) => {
             script.setAttributeNode(document.createAttribute('async'));
         });
-    }, { once: true})
+    });
 
     var observer = new MutationObserver(function(mutations, ob) {
         observer.takeRecords().forEach((record) =>
