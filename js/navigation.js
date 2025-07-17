@@ -52,6 +52,17 @@ async function navigation() {
         $(".navbar-toggler.collapsed").css({ display: "none" });
     }
 
+    function handleAddToCart(event) {
+        if (event.target.matches('.add_to_cart_button')) {
+            event.stopPropagation();
+            const url = new URL(location);
+            window.history.pushState({}, "", url);
+            window.history.replaceState({}, "", "/cart");
+        }
+    }
+
+    onClick((event) => handleAddToCart(event), document);
+
     let toggling = Date.now();
     function toggleNav(event) {
         const $target = $(event.target);
