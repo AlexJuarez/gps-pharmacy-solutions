@@ -234,6 +234,7 @@ async function main() {
     });
 
     var observer = new MutationObserver(function(mutations, observer) {
+        $('script').attr('async');
         checkWishlistMessage();
         activateAlertCloseButton();
     });
