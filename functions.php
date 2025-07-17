@@ -151,7 +151,6 @@ add_action('widgets_init', 'gps_pharmacy_solutions_widgets_init');
 	wp_style_add_data('style-main', 'rtl', 'replace');
 
 	wp_enqueue_style('style-bootstrap', get_template_directory_uri() . '/css/bootstrap.css');
-	wp_enqueue_style('style-aos', get_template_directory_uri() . '/css/aos.css');
 	wp_enqueue_style('style-splide', get_template_directory_uri() . '/css/splide.min.css');
 
 	wp_enqueue_script('script-require', get_template_directory_uri() . '/js/require.js', array(), GPS_PHARMACY_SOLUTIONS_VERSION, false);
@@ -160,7 +159,6 @@ add_action('widgets_init', 'gps_pharmacy_solutions_widgets_init');
 
 	wp_enqueue_script('script-bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.js', array(), GPS_PHARMACY_SOLUTIONS_VERSION, true);
 
-	wp_enqueue_script('script-aos', get_template_directory_uri() . '/js/aos.js', array(), GPS_PHARMACY_SOLUTIONS_VERSION, true);
 	wp_enqueue_script('script-splide', get_template_directory_uri() . '/js/splide.min.js', array(), GPS_PHARMACY_SOLUTIONS_VERSION, true);
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
