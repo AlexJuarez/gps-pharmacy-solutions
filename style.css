@@ -1604,10 +1604,12 @@ footer .footer-menu a.nav-link:hover:before {
 
 .gps-info-box .gps-info-box-back {
     .button {
-        > a:hover {
-            background-color: rgba(193, 193, 193, 0.895);
-            box-sizing: border-box;
-            border: 1px solid #e0e0e0e3;
+        > a {
+            &:hover, &:active {
+                background-color: #f2f2f2e6;
+                box-sizing: border-box;
+                border: 1px solid #e0e0e0e3;
+            }
         }
 
         > a {
@@ -1619,12 +1621,16 @@ footer .footer-menu a.nav-link:hover:before {
         }
     }
 
-    &.bg-warning > a:hover {
-        color: var(--bs-lightblue);
+    &.bg-warning > a {
+        &:hover, &:active {
+            color: var(--bs-lightblue);
+        }
     }
 
-    > a:hover {
-        color: var(--bs-orange);
+    > a {
+        &:hover, &:active {
+            color: var(--bs-orange);
+        }
     }
 }
 
@@ -2143,8 +2149,10 @@ a.added_to_cart.wc-forward {
     color: var(--bs-secondary);
 }
 
-.breadcrumb-url a:hover {
-    color: var(--bs-secondary);
+.breadcrumb-url a {
+    &:active, &:hover {
+        color: var(--bs-secondary);
+    }
 }
 
 h3.product-note {
@@ -2174,8 +2182,10 @@ table.wishlist_table tbody .product-stock-status span {
     color: var(--bs-success) !important;
 }
 
-.yith-wcwl-add-to-wishlist a:hover {
-    color: var(--bs-orange) !important;
+.yith-wcwl-add-to-wishlist a {
+    &:hover, &:active {
+        color: var(--bs-orange) !important;
+    }
 }
 
 .wishlist_view .wishlist-items-wrapper td {
@@ -2561,13 +2571,17 @@ span.select2-selection.select2-selection--single,
     bottom: 0;
 }
 
-.product-title>a:hover {
-    color: var(--bs-warning) !important;
+.product-title > a {
+    &:hover, &:active {
+        color: var(--bs-warning) !important;
+    }
 }
 
-.cart-item-actions .add-to-wishlist a:hover {
-    background-color: var(--bs-warning);
-    border-color: var(--bs-warning);
+.cart-item-actions .add-to-wishlist a {
+    &:hover, &:active {
+        background-color: var(--bs-warning);
+        border-color: var(--bs-warning);
+    }
 }
 
 .woocommerce-product-gallery__wrapper {
