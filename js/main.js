@@ -250,12 +250,14 @@ main().catch((err) => console.warn(`Error loading main.js: ${err}`));
 })();
 
 (function() {
-    const config = { childList: true, subtree: true };
+    const config = { childList: true, subtree: true, attributeFilter: 'deferred' };
     const callback = (mutationList, observer) => {
         for (const mutation of mutationList) {
             if (["childList", "subtree"].includes(mutation.type)) {
                 const scripts = document.querySelectorAll('script:not([async="true"])');
                 scripts.forEach((script) => {
+                    if (script.getAttribute('src').includes(/[backbone|i18n|common|mouse|draggable|Marionette]/))
+                        return;
                     console.log(script, `script found without async attribute`);
                     script.setAttribute('async', true);
                 });
