@@ -53,9 +53,7 @@ async function navigation() {
     }
 
     function handleAddToCart(event) {
-        const url = new URL(location);
-        window.history.pushState({}, "", url);
-        window.location.href = "/cart/";
+        window.location.replace(window.location.origin + "/cart/");
     }
 
     document.querySelectorAll('.add_to_cart_button').forEach((node) => {
