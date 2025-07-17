@@ -1512,28 +1512,33 @@ footer .footer-menu a.nav-link:hover:before {
         color: #fff;
         text-decoration: none;
         padding: 10px 25px;
-        border-radius: 100px;
+        --height: 100vh;
         font-weight: 700;
         font-size: 14.5px;
         margin-top: 25px;
-        display: block;
+        display: inline-block;
+        max-width: max-content;
+        width: 100vw;
         text-align: center;
+        border-radius: calc((var(--height) + 0px));
+        max-height: min-content;
+        height: 100%;
     }
 
-    &.gps-compounding .button a {
+    &.gps-compounding .gps-info-box-front .button a {
         background-color: var(--bs-blue);
     }
 
 
-    &.gps-hospice .button a {
+    &.gps-hospice .gps-info-box-front  .button a {
         background-color: #FB8637;
     }
 
-    &.gps-research .button a {
+    &.gps-research .gps-info-box-front  .button a {
         background-color: #4FBFFE;
     }
 
-    &.gps-shop .button a {
+    &.gps-shop .gps-info-box-front  .button a {
         background-color: #23B65E;
     }
 
@@ -1560,7 +1565,7 @@ footer .footer-menu a.nav-link:hover:before {
 
 .gps-info-box .gps-info-box-back {
     &.bg-warning a:hover {
-            color: var(--bs-lightblue);
+        color: var(--bs-lightblue);
     }
 
     a:hover {
@@ -2625,15 +2630,19 @@ p.product-title.text-center {
 
     .gps-info-box-back {
         .button a {
-            background-color: #fcfcfc;
+            background-color:#fcfcfc;
             opacity: 0.9;
         }
-        .button a:not(:hover) {
-            background-color: #fcfcfc;
+        .button a:hover {
+            background-color: #c8c5ff;
+            border: 1px solid #808080e3;
         }
 
         .button {
-            border: 1px solid #cececee3;
+            a {
+                line-height: inherit;
+                min-height: fit-content;
+            }
         }
 
         display: flex;
