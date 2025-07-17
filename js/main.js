@@ -233,7 +233,7 @@ async function main() {
         setTimeout(() => removeProcessingStatus(), 3500);
     });
 
-    $(document).on('DOMTreeLoaded', () => {
+    $(document).on('ready', () => {
         document.querySelectorAll('script').forEach((script) => {
             script.setAttribute('async', true);
         });
