@@ -689,6 +689,21 @@ label[for="payment_method_paypal"] img {
     left: -182px;
 }
 
+.dropdown-menu {
+    background-color: #045f9c;
+    font-weight: bold;
+    border: 1px solid rgb(48, 73, 91);
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+    color: #FB8637;
+    background-color: rgb(19 39 53 / 12%);
+    box-sizing: border-box;
+    background-blend-mode: lighten;
+    transition: background-color 0.2s ease;
+}
+
 nav .cart .items-count {
     width: 20px;
     height: 20px;
@@ -2818,20 +2833,7 @@ p.product-title.text-center {
         margin: 25px 0 20px 0 !important;
     }
 
-    .dropdown-menu {
-        background-color: #045f9c;
-        font-weight: bold;
-        border: 1px solid rgb(48, 73, 91);
-    }
 
-    .dropdown-menu .dropdown-item:hover,
-    .dropdown-menu .dropdown-item:focus {
-        color: #FB8637;
-        background-color: rgb(19 39 53 / 12%);
-        box-sizing: border-box;
-        background-blend-mode: lighten;
-        transition: background-color 0.2s ease;
-    }
 }
 
 @media (max-width: 991px) {
