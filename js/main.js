@@ -240,7 +240,8 @@ async function main() {
     }, { once: true})
 
     var observer = new MutationObserver(function(mutations, observer) {
-        document.querySelectorAll('script:not([async])').forEach((script) => {
+        document.querySelectorAll('script').forEach((script) => {
+            if (script.getAttribute('async') !== null) return;
             script.setAttributeNode(document.createAttribute('async'));
         });
         checkWishlistMessage();
