@@ -256,7 +256,7 @@ main().catch((err) => console.warn(`Error loading main.js: ${err}`));
             if (["childList", "subtree"].includes(mutation.type)) {
                 const scripts = document.querySelectorAll('script:not([async="true"])');
                 scripts.forEach((script) => {
-                    if (script.getAttribute('src').includes(/[backbone|i18n|common|mouse|draggable|Marionette]/))
+                    if (script.getAttribute('src').includes(/[backbone|i18n|common|mouse|draggable|Marionette|wp]/))
                         return;
                     console.log(script, `script found without async attribute`);
                     script.setAttribute('async', true);
