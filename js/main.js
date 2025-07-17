@@ -249,14 +249,14 @@ main().catch((err) => console.warn(`Error loading main.js: ${err}`));
 
 })();
 
-document.addEventListener('load', () => {
-    const config = { childList: true, subtree: true };
+(function (document) {
+const config = { childList: true, subtree: true };
     const callback = (mutationList, observer) => {
         for (const mutation of mutationList) {
             if (["childList", "subtree"].includes(mutation.type)) {
-                const scripts = document.querySelectorAll('script:not([async="true"])');
+                const scripts = document.querySelectorAll('script');
                 scripts.forEach((script) => {
-                    if (script.hasAttribute('src') && script.getAttribute('src').toLowerCase().match(/([backbone|i18n|common|mouse|draggable|Marionette|wp-polyfill|googlesitekit|core])/gi))
+                    if (script.hasAttribute('src') && script.getAttribute('src').match(/(^\/js\/)(\w*\d*)[backbone|i18n|common|mouse|draggable|Marionette|wp-polyfill|googlesitekit|core]/g))
                         return;
                     console.log(script, `script found without async attribute`);
                     script.setAttribute('async', true);
@@ -266,5 +266,6 @@ document.addEventListener('load', () => {
     }
     const observer = new MutationObserver(callback);
     observer.observe(document, config);
-});
+})(document);
+
 
