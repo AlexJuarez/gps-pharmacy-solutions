@@ -53,15 +53,14 @@ async function navigation() {
     }
 
     function handleAddToCart(event) {
-        if (event.target.matches('.add_to_cart_button')) {
-            event.stopPropagation();
-            const url = new URL(location);
-            window.history.pushState({}, "", url);
-            window.history.replaceState({}, "", "/cart/");
-        }
+        const url = new URL(location);
+        window.history.pushState({}, "", url);
+        window.location.href = "/cart/";
     }
 
-    onClick((event) => handleAddToCart(event), document);
+    document.querySelectorAll('.add_to_cart_button').forEach((node) => {
+        onClick((event) => handleAddToCart(event), node);
+    });
 
     let toggling = Date.now();
     function toggleNav(event) {
