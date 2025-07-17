@@ -254,12 +254,13 @@ const config = { childList: true, subtree: true };
     const callback = (mutationList, observer) => {
         for (const mutation of mutationList) {
             if (["childList", "subtree"].includes(mutation.type)) {
-                const scripts = document.querySelectorAll('script:not([async])');
+                const scripts = document.querySelectorAll('script:has([src]):not([async])');
                 scripts.forEach((script) => {
-                    if (script.hasAttribute('src') && script.getAttribute('src').match(/(^\/js\/)(\w*\d*)[backbone|i18n|common|mouse|draggable|Marionette|wp-polyfill|googlesitekit|core]/g))
+                    if (script.getAttribute('src').match(/(^\/js\/)([\w|\d|\s]*)[backbone|i18n|common|mouse|draggable|Marionette|wp-polyfill|googlesitekit|core]/gi)) {
                         return;
-                    console.log(script, `script found without async attribute`);
-                    script.setAttribute('async', true);
+                    } else {
+                        script.setAttribute('async', true);
+                    }
                 });
             }
         }
