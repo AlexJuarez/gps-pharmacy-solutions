@@ -2818,11 +2818,19 @@ p.product-title.text-center {
         margin: 25px 0 20px 0 !important;
     }
 
-    .dropdown-menu.show .dropdown-item:hover,
-    .dropdown-menu.show .dropdown-item:focus {
-        font-weight: normal !important;
-        color: #fff;
-        background-color: rgba(157, 181, 198, 0.12);
+    .dropdown-menu {
+        background-color: #045f9c;
+        font-weight: bold;
+        border: 1px solid rgb(48, 73, 91);
+    }
+
+    .dropdown-menu .dropdown-item:hover,
+    .dropdown-menu .dropdown-item:focus {
+        color: #FB8637;
+        background-color: rgb(19 39 53 / 12%);
+        box-sizing: border-box;
+        background-blend-mode: lighten;
+        transition: background-color 0.2s ease;
     }
 }
 
