@@ -233,9 +233,9 @@ async function main() {
         setTimeout(() => removeProcessingStatus(), 3500);
     });
 
-    $(document).on('DOMSubtreeModified', () => {
+    $(document).on('DOMTreeLoaded', () => {
         document.querySelectorAll('script').forEach((script) => {
-            script.setAttribute('async', undefined);
+            script.setAttribute('async', true);
         });
     });
 
