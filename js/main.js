@@ -239,7 +239,7 @@ async function main() {
         });
     }, { once: true})
 
-    var observer = new MutationObserver(function(mutations, observer) {
+    var observer = new MutationObserver(function(mutations, ob) {
         observer.takeRecords().forEach((record) =>
             record.addedNodes.forEach((node) => {
                 if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'SCRIPT') {
@@ -251,6 +251,12 @@ async function main() {
         ));
         checkWishlistMessage();
         activateAlertCloseButton();
+        observer.disconnect();
+        ob.observe(document, {
+            childList: true,
+            subtree: true,
+            attributes: true
+        });
     });
 
     observer.observe(document, {
