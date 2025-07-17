@@ -693,6 +693,16 @@ label[for="payment_method_paypal"] img {
     margin: 0;
     padding: 5px;
     box-sizing: border-box;
+    .menu-item {
+        &:first-child {
+            margin-top: -5px;
+        }
+        &:last-child {
+            margin-bottom: -5px;
+        }
+        margin-left: -5px;
+        margin-right: -5px;
+    }
 }
 
 .dropdown-menu {
