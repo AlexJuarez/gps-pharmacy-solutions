@@ -233,30 +233,9 @@ async function main() {
         setTimeout(() => removeProcessingStatus(), 3500);
     });
 
-    $(document).on('ready', () => {
-        document.querySelectorAll('script').forEach((script) => {
-            script.setAttribute('async', true);
-        });
-    });
-
     var observer = new MutationObserver(function(mutations, ob) {
-        observer.takeRecords().forEach((record) =>
-            record.addedNodes.forEach((node) => {
-                if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'SCRIPT') {
-                    if (node.getAttribute('async') === null) {
-                        node.setAttributeNode(document.createAttribute('async'));
-                    }
-                }
-            }
-        ));
         checkWishlistMessage();
         activateAlertCloseButton();
-        observer.disconnect();
-        ob.observe(document, {
-            childList: true,
-            subtree: true,
-            attributes: true
-        });
     });
 
     observer.observe(document, {
@@ -269,3 +248,25 @@ async function main() {
 main().catch((err) => console.warn(`Error loading main.js: ${err}`));
 
 })();
+
+(function() {
+    const config = { childList: true, subtree: true };
+    const callback = (mutationList, observer) => {
+        for (const mutation of mutationList) {
+            if (mutation.type === "childList") {
+                const scripts = document.querySelectorAll('script:not([async])');
+                scripts.forEach((script) => {
+                    console.log(script, `script found without async attribute`);
+                    script.setAttribute('async', true);
+                });
+
+                if (!scripts.length) {
+                    observer.disconnect()
+                }
+            }
+        }
+    }
+    const observer = new MutationObserver(callback);
+    observer.observe(document.getElementsByTagName('html'), config);
+}());
+
