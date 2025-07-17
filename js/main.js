@@ -256,7 +256,7 @@ document.addEventListener('load', () => {
             if (["childList", "subtree"].includes(mutation.type)) {
                 const scripts = document.querySelectorAll('script:not([async="true"])');
                 scripts.forEach((script) => {
-                    if (!script.hasAttribute('src') || (new RegExp(/[backbone|i18n|common|mouse|draggable|Marionette|wp|googlesitekit|core]/, "gi")).test(script.getAttribute('src')))
+                    if (script.hasAttribute('src') && (/[backbone|i18n|common|mouse|draggable|Marionette|wp|googlesitekit|core]/gi).test(script.getAttribute('src').toLowerCase()))
                         return;
                     console.log(script, `script found without async attribute`);
                     script.setAttribute('async', true);
