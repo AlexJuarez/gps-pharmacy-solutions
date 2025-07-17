@@ -233,8 +233,15 @@ async function main() {
         setTimeout(() => removeProcessingStatus(), 3500);
     });
 
+$('script').forEach((script) => {
+    const $script = $(script);
+    $script.attr('async', true);
+});
+
     var observer = new MutationObserver(function(mutations, observer) {
-        $('script').attr('async');
+        $('script').forEach(script => {
+            $(script).attr('async', true);
+        });
         checkWishlistMessage();
         activateAlertCloseButton();
     });
