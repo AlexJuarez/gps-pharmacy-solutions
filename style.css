@@ -2624,6 +2624,18 @@ p.product-title.text-center {
     }
 
     .gps-hospice .gps-info-box-back {
+        .button a {
+            background-color: #fcfcfc;
+            opacity: 0.9;
+        }
+        .button a:not(:hover) {
+            background-color: #fcfcfc;
+        }
+
+        .button {
+            border: 1px solid #cececee3;
+        }
+
         display: flex;
         flex-direction: column;
         margin: auto 0;

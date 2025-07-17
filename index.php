@@ -56,7 +56,7 @@ get_header();
                     href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Aesthetics']); ?>">Aesthetics</a>
                   <div class="button montserrat-font">
                     <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Compounding']); ?>"
-                      class="bg-white text-primary w-fit-content ms-auto me-auto">Explore Now</a>
+                      class="text-primary w-fit-content ms-auto me-auto">Explore Now</a>
                   </div>
                 </div>
                 <div
@@ -102,7 +102,7 @@ get_header();
                     Solutions</a>
                   <div class="button montserrat-font">
                     <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Hospice']); ?>"
-                      class="bg-white text-warning w-fit-content ms-auto me-auto">Explore Now</a>
+                      class="text-warning w-fit-content ms-auto me-auto">Explore Now</a>
                   </div>
                 </div>
                 <div
@@ -131,7 +131,7 @@ get_header();
                     Trials and Research</a>
                   <div class="button montserrat-font">
                     <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Clinical Trials and Research']); ?>"
-                      class="bg-white text-info w-fit-content ms-auto me-auto">Explore Now</a>
+                      class="text-info w-fit-content ms-auto me-auto">Explore Now</a>
                   </div>
                 </div>
                 <div
@@ -167,7 +167,7 @@ get_header();
                     Restoration for Women and Men</a>
                   <div class="button montserrat-font">
                     <a href="<?php echo get_permalink(GPS_PHARMACY_SOLUTIONS_PAGE_IDS['Shop']); ?>"
-                      class="bg-white text-success w-fit-content ms-auto me-auto">Explore Now</a>
+                      class="text-success w-fit-content ms-auto me-auto">Explore Now</a>
                   </div>
                 </div>
                 <div
