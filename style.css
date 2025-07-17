@@ -1603,12 +1603,13 @@ footer .footer-menu a.nav-link:hover:before {
 
 .gps-info-box .gps-info-box-back {
     .button {
-        a {
-            &:hover {
-                background-color: #c8c5ff;
-                border: 1px solid #808080e3;
-            }
 
+        > a:hover {
+                background-color: rgba(193, 193, 193, 0.895);
+                border: 1px solid #e0e0e0e3;
+        }
+
+        > a {
             background-color:#fcfcfc;
             opacity: 0.9;
 
@@ -1617,11 +1618,11 @@ footer .footer-menu a.nav-link:hover:before {
         }
     }
 
-    &.bg-warning a:hover {
+    &.bg-warning > a:hover {
         color: var(--bs-lightblue);
     }
 
-    a:hover {
+    > a:hover {
         color: var(--bs-orange);
     }
 }
