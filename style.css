@@ -1314,10 +1314,6 @@ form.wpcf7-form br {
     display: none;
 }
 
-.dropdown-toggle.nav-link.show {
-    font-weight: 700;
-}
-
 .notice p,
 .wpcf7-form {
     max-width: 999px;

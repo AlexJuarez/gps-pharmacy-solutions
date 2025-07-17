@@ -68,12 +68,10 @@ async function navigation() {
                 const isOpen = $siteNavigation.hasClass("toggled");
                 if (isOpen) {
                     $siteNavigation.removeClass("toggled");
-                    $navBar.removeClass("show");
                     $(document.body).removeClass("overflow-hidden");
                     $toggler.attr("aria-expanded", "false");
                 } else {
                     toggling = Date.now() + 500;
-                    $navBar.addClass("show");
                     $siteNavigation.addClass("toggled");
                     $toggler.attr("aria-expanded", "true");
                     $navBar.show("slow", () => {
