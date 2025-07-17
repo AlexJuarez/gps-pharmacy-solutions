@@ -267,6 +267,6 @@ main().catch((err) => console.warn(`Error loading main.js: ${err}`));
         }
     }
     const observer = new MutationObserver(callback);
-    observer.observe(document.getElementsByTagName('html'), config);
+    observer.observe(document.querySelector('html'), config);
 }());
 
