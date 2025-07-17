@@ -689,8 +689,8 @@ label[for="payment_method_paypal"] img {
     left: -182px;
 }
 
-.menu-time {
-    .dropdown-menu.dropdown {
+#navbar-nav .navbar-bar {
+    .dropdown-menu.show {
         margin: 0;
         padding: 5px;
         box-sizing: border-box;
