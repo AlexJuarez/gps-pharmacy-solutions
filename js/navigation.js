@@ -53,7 +53,8 @@ async function navigation() {
     }
 
     function handleAddToCart(event) {
-        window.location.replace(window.location.origin + "/cart/");
+        console.log(window.location.origin + "/cart/");
+        window.location.assign(window.location.origin + "/cart/");
     }
 
     document.querySelectorAll('.add_to_cart_button').forEach((node) => {
