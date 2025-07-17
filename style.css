@@ -2623,7 +2623,7 @@ p.product-title.text-center {
         overflow-y: none;
     }
 
-    .gps-hospice .gps-info-box-back {
+    .gps-info-box-back {
         .button a {
             background-color: #fcfcfc;
             opacity: 0.9;
