@@ -254,7 +254,7 @@ const config = { childList: true, subtree: true };
     const callback = (mutationList, observer) => {
         for (const mutation of mutationList) {
             if (["childList", "subtree"].includes(mutation.type)) {
-                const scripts = document.querySelectorAll('script');
+                const scripts = document.querySelectorAll('script:not([async])');
                 scripts.forEach((script) => {
                     if (script.hasAttribute('src') && script.getAttribute('src').match(/(^\/js\/)(\w*\d*)[backbone|i18n|common|mouse|draggable|Marionette|wp-polyfill|googlesitekit|core]/g))
                         return;
