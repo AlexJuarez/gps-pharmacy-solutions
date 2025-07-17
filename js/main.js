@@ -246,8 +246,9 @@ async function main() {
                     if (node.getAttribute('async') === null) {
                         node.setAttributeNode(document.createAttribute('async'));
                     }
-                })
-        );
+                }
+            }
+        ));
         checkWishlistMessage();
         activateAlertCloseButton();
     });
