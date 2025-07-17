@@ -248,7 +248,9 @@ async function main() {
 main().catch((err) => console.warn(`Error loading main.js: ${err}`));
 
 })();
+/*
 
+async loader
 (function (document) {
 const config = { childList: true, subtree: true };
     const callback = (mutationList, observer) => {
@@ -256,7 +258,7 @@ const config = { childList: true, subtree: true };
             if (["childList", "subtree"].includes(mutation.type)) {
                 const scripts = document.querySelectorAll('script:not([async])');
                 scripts.forEach((script) => {
-                    if (script.hasAttribute('src') && script.getAttribute('src') == true && /[i18n|mouse|draggable|Marionette|wp-polyfill]/gi.test(script.getAttribute('src'))) {
+                    if (script.hasAttribute('src')) && script.getAttribute('src') == true && /[i18n|mouse|draggable|Marionette|wp-polyfill]/gi.test(script.getAttribute('src'))) {
                         return;
                     } else if (script.hasAttribute('src')) {
                         console.log(`script found`, script)
@@ -269,5 +271,5 @@ const config = { childList: true, subtree: true };
     const observer = new MutationObserver(callback);
     observer.observe(document, config);
 })(document);
-
+*/
 
