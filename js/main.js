@@ -240,15 +240,19 @@ async function main() {
     }, { once: true})
 
     var observer = new MutationObserver(function(mutations, observer) {
-        document.querySelectorAll('script').forEach((script) => {
-            if (script.getAttribute('async') !== null) return;
-            script.setAttributeNode(document.createAttribute('async'));
-        });
+        observer.takeRecords().forEach((record) =>
+            record.addedNodes.forEach((node) => {
+                if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'SCRIPT') {
+                    if (node.getAttribute('async') === null) {
+                        node.setAttributeNode(document.createAttribute('async'));
+                    }
+                })
+        );
         checkWishlistMessage();
         activateAlertCloseButton();
     });
 
-    observer.observe(window.html, {
+    observer.observe(document, {
         childList: true,
         subtree: true,
         attributes: true
