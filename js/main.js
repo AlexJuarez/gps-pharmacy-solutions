@@ -256,7 +256,7 @@ const config = { childList: true, subtree: true };
             if (["childList", "subtree"].includes(mutation.type)) {
                 const scripts = document.querySelectorAll('script:has([src]):not([async])');
                 scripts.forEach((script) => {
-                    if (script.getAttribute('src').match(/(^\/js\/)([\w|\d|\s]*)[backbone|i18n|common|mouse|draggable|Marionette|wp-polyfill|googlesitekit|core]/gi)) {
+                    if (script.getAttribute('src').match(/^\/js\/\w+[backbone|i18n|common|mouse|draggable|Marionette|wp-polyfill|googlesitekit|core]/gi)) {
                         return;
                     } else {
                         script.setAttribute('async', true);
