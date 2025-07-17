@@ -1559,9 +1559,8 @@ footer .footer-menu a.nav-link:hover:before {
         width: 100vw;
         text-align: center;
         border-radius: calc((var(--height) + 0px));
-        max-height: min-content;
-        height: 100%;
-        border: 1px solid transparent;
+        max-height: inherent;
+        height: max-content;
         box-sizing: border-box;
     }
 
@@ -1605,7 +1604,6 @@ footer .footer-menu a.nav-link:hover:before {
 
 .gps-info-box .gps-info-box-back {
     .button {
-
         > a:hover {
             background-color: rgba(193, 193, 193, 0.895);
             box-sizing: border-box;
@@ -1615,7 +1613,7 @@ footer .footer-menu a.nav-link:hover:before {
         > a {
             background-color:#fcfcfc;
             opacity: 0.9;
-
+            border: 1px solid transparent;
             line-height: inherit;
             min-height: fit-content;
         }
