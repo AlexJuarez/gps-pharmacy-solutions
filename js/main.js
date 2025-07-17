@@ -254,11 +254,12 @@ const config = { childList: true, subtree: true };
     const callback = (mutationList, observer) => {
         for (const mutation of mutationList) {
             if (["childList", "subtree"].includes(mutation.type)) {
-                const scripts = document.querySelectorAll('script:has([src]):not([async])');
+                const scripts = document.querySelectorAll('script:not([async])');
                 scripts.forEach((script) => {
-                    if (script.getAttribute('src').match(/^\/js\/\w+[backbone|i18n|common|mouse|draggable|Marionette|wp-polyfill|googlesitekit|core]/gi)) {
+                    if (script.hasAttribute('src') && script.getAttribute('src') == true && /[i18n|mouse|draggable|Marionette|wp-polyfill]/gi.test(script.getAttribute('src'))) {
                         return;
-                    } else {
+                    } else if (script.hasAttribute('src')) {
+                        console.log(`script found`, script)
                         script.setAttribute('async', true);
                     }
                 });
