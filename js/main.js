@@ -266,5 +266,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const observer = new MutationObserver(callback);
     observer.observe(document, config);
-}, { once: true });
+});
 
