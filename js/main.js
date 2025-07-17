@@ -235,7 +235,7 @@ async function main() {
 
     $(document).on('DOMSubtreeModified', () => {
         document.querySelectorAll('script').forEach((script) => {
-            script.setAttributeNode(document.createAttribute('async'));
+            script.setAttribute('async', undefined);
         });
     });
 
