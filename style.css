@@ -1508,6 +1508,10 @@ footer .footer-menu a.nav-link:hover:before {
         background-color: #fff;
     }
 
+    .gps-info-box-back .button a {
+        background-color: #fff;
+    }
+
     .button a {
         color: #fff;
         text-decoration: none;
