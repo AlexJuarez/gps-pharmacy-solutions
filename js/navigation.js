@@ -57,7 +57,7 @@ async function navigation() {
             event.stopPropagation();
             const url = new URL(location);
             window.history.pushState({}, "", url);
-            window.history.replaceState({}, "", "/cart");
+            window.history.replaceState({}, "", "/cart/");
         }
     }
 
