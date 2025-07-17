@@ -1474,6 +1474,15 @@ footer .footer-menu a.nav-link:hover:before {
     .gps-info-box-back {
         transform: rotateY(180deg);
 
+        .button a {
+            background-color:#fcfcfc;
+            opacity: 0.9;
+        }
+        .button a:hover {
+            background-color: #c8c5ff;
+            border: 1px solid #808080e3;
+        }
+
         & a {
             color: #fff;
             text-decoration: none;
@@ -1508,9 +1517,6 @@ footer .footer-menu a.nav-link:hover:before {
         background-color: #fff;
     }
 
-    .gps-info-box-back .button a {
-        background-color: #fff;
-    }
 
     .button a {
         color: #fff;
@@ -1534,7 +1540,7 @@ footer .footer-menu a.nav-link:hover:before {
     }
 
 
-    &.gps-hospice .gps-info-box-front  .button a {
+    &.gps-hospice .gps-info-box-front .button a {
         background-color: #FB8637;
     }
 
@@ -1568,11 +1574,25 @@ footer .footer-menu a.nav-link:hover:before {
 }
 
 .gps-info-box .gps-info-box-back {
-    &.bg-warning a:hover {
+    .button {
+        a {
+            &:hover {
+                background-color: #c8c5ff;
+                border: 1px solid #808080e3;
+            }
+
+            background-color:#fcfcfc;
+            opacity: 0.9;
+
+            line-height: inherit;
+            min-height: fit-content;
+        }
+    }
+    &.bg-warning div:not(.button) a:hover {
         color: var(--bs-lightblue);
     }
 
-    a:hover {
+    div:not(.button) a:hover {
         color: var(--bs-orange);
     }
 }
@@ -2633,21 +2653,7 @@ p.product-title.text-center {
     }
 
     .gps-info-box-back {
-        .button a {
-            background-color:#fcfcfc;
-            opacity: 0.9;
-        }
-        .button a:hover {
-            background-color: #c8c5ff;
-            border: 1px solid #808080e3;
-        }
 
-        .button {
-            a {
-                line-height: inherit;
-                min-height: fit-content;
-            }
-        }
 
         display: flex;
         flex-direction: column;
