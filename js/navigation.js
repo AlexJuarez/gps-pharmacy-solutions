@@ -14,6 +14,7 @@ async function navigation() {
 
     function onClick(handler, el = document) {
         el.addEventListener("mousedown", handler);
+        el.addEventListener("touchend", handler);
     }
 
     const $siteNavigation = $(".main-navigation");
@@ -48,13 +49,14 @@ async function navigation() {
 
         const $toggler = $(event.target);
         const $siteNavigation = $(".main-navigation");
+        const $navBar = $(".navbar-collapse.collapse");
 
-        if ($toggler.is('.close-button')) {
+        if ($toggler.closest('.close-button').length) {
             $siteNavigation.removeClass("toggled");
-            $(document.body).removeClass("overflow-hidden");
             $toggler.attr("aria-expanded", "false");
+            $(document.body).removeClass("overflow-hidden");
+            $navBar.hide();
         } else {
-            const $navBar = $(".navbar-collapse.collapse");
             const isOpen = $siteNavigation.hasClass("toggled");
             if (isOpen) {
                 $siteNavigation.removeClass("toggled");
