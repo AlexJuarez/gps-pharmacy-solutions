@@ -42,22 +42,18 @@ async function navigation() {
 
     let toggling = Date.now();
     function toggleNav(event) {
-        const {target} = event;
         if (Date.now() < toggling) {
             return;
         }
 
-        const $toggler = $(".navbar-toggler");
+        const $toggler = $(event.target);
+        const $siteNavigation = $(".main-navigation");
 
-        if (target.matches('.close-button')) {
-            const $siteNavigation = $(".main-navigation");
+        if ($toggler.is('.close-button')) {
             $siteNavigation.removeClass("toggled");
             $(document.body).removeClass("overflow-hidden");
             $toggler.attr("aria-expanded", "false");
-            return;
-        }
-
-        if ($toggler.length) {
+        } else {
             const $navBar = $(".navbar-collapse.collapse");
             const isOpen = $siteNavigation.hasClass("toggled");
             if (isOpen) {
