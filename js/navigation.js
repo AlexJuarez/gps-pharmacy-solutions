@@ -47,6 +47,8 @@ async function navigation() {
             return;
         }
 
+        const $toggler = $(".navbar-toggler");
+
         if (target.matches('.close-button')) {
             const $siteNavigation = $(".main-navigation");
             $siteNavigation.removeClass("toggled");
@@ -55,7 +57,6 @@ async function navigation() {
             return;
         }
 
-        const $toggler = $(".navbar-toggler");
         if ($toggler.length) {
             const $navBar = $(".navbar-collapse.collapse");
             const isOpen = $siteNavigation.hasClass("toggled");
