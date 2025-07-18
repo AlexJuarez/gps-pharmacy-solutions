@@ -11,32 +11,9 @@
 async function navigation() {
     const $ = await require("jQuery");
 
-    console.debug(`Loading navigation`);
 
-    function debounce (fn, ts = 250) {
-        let timer;
-        return (event) => {
-            if (timer == null) {
-                timer = setTimeout(() => {
-                    fn.call(this, event);
-                    clearTimeout(timer);
-                    timer = null;
-                }, ts);
-            } else {
-                fn.call(this, event)
-            }
-        };
-    }
-
-    function onClick(handler, el = document, opts = {}) {
-
-        const handleClick = (event) => {
-            handler(event);
-        };
-
-        const fn = debounce(handleClick, 250);
-
-        el.addEventListener("click", fn, opts);
+    function onClick(handler, el = document) {
+        el.addEventListener("mousedown", handler);
     }
 
     const $siteNavigation = $(".main-navigation");
@@ -98,7 +75,7 @@ async function navigation() {
     }
 
     document.querySelectorAll('.navbar-toggler').forEach((el, i) => {
-        onClick((event) => toggleNav(event), el);
+        onClick(toggleNav, el);
     })
 
 
