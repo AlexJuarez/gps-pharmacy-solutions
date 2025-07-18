@@ -47,12 +47,12 @@ async function navigation() {
             return;
         }
 
-        const $closeBtn = $(event.target).is('.close-button') || $(event.target).closest('.close-button');
-        const $toggleBtn = $(event.target).is('.navbar-toggler') || $(event.target).closest('.navbar-toggler');
+        const $closeBtn = ($(event.target).is('.close-button') || $(event.target).parent().is('.close-button')) && $('.close-button');
+        const $toggleBtn = ($(event.target).is('.navbar-toggler') || $(event.target).parent().is('.navbar-toggler')) && $('.navbar-toggler');
         const $siteNavigation = $(".main-navigation");
         const $navBar = $(".navbar-collapse.collapse");
 
-        if ($closeBtn.length) {
+        if ($closeBtn) {
             toggling = Date.now() + 500;
             $navBar.hide(300, () => {
                 $siteNavigation.removeClass("toggled");
@@ -66,6 +66,7 @@ async function navigation() {
                 $navBar.hide(300, () => {
                     $siteNavigation.removeClass("toggled");
                     $toggleBtn.attr("aria-expanded", "false");
+                    $('.close-button').attr("aria-expanded", "false");
                     $(document.body).removeClass("overflow-hidden");
                 });
             } else {
@@ -73,9 +74,9 @@ async function navigation() {
                 $navBar.show(300, () => {
                     $siteNavigation.addClass("toggled");
                     $toggleBtn.attr("aria-expanded", "true");
-                    $closeBtn.attr("aria-expanded", "true");
+                    $('.close-button').attr("aria-expanded", "true");
                     $(document.body).addClass("overflow-hidden");
-                }, 400);
+                });
             }
         }
     }
