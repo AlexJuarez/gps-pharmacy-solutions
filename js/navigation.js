@@ -65,6 +65,7 @@ async function navigation() {
 
     let toggling = Date.now();
     function toggleNav(event) {
+        const {target} = event;
         if (Date.now() < toggling) {
             return;
         }
