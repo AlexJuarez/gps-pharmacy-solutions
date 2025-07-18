@@ -65,35 +65,41 @@ async function navigation() {
 
     let toggling = Date.now();
     function toggleNav(event) {
-        const $target = $(event.target);
+        if (Date.now() < toggling) {
+            return;
+        }
 
-        if ($target.is('a[href]').length) {
-            window.loading = true;
-            window.addEventListener('beforeunload', (event) => {
-                window.loading = false;
-             });
-        } else if (Date.now() > toggling) {
-            const $toggler = $target.closest(".navbar-toggler");
-            if ($toggler.length) {
-                const $navBar = $(".navbar-collapse.collapse");
-                const isOpen = $siteNavigation.hasClass("toggled");
-                if (isOpen) {
-                    $siteNavigation.removeClass("toggled");
-                    $(document.body).removeClass("overflow-hidden");
-                    $toggler.attr("aria-expanded", "false");
-                } else {
-                    toggling = Date.now() + 500;
-                    $siteNavigation.addClass("toggled");
-                    $toggler.attr("aria-expanded", "true");
-                    $navBar.show("slow", () => {
-                        $(document.body).addClass("overflow-hidden");
-                    });
-                }
+        if (target.matches('.close-button')) {
+            const $siteNavigation = $(".main-navigation");
+            $siteNavigation.removeClass("toggled");
+            $(document.body).removeClass("overflow-hidden");
+            $toggler.attr("aria-expanded", "false");
+            return;
+        }
+
+        const $toggler = $(".navbar-toggler");
+        if ($toggler.length) {
+            const $navBar = $(".navbar-collapse.collapse");
+            const isOpen = $siteNavigation.hasClass("toggled");
+            if (isOpen) {
+                $siteNavigation.removeClass("toggled");
+                $(document.body).removeClass("overflow-hidden");
+                $toggler.attr("aria-expanded", "false");
+            } else {
+                toggling = Date.now() + 500;
+                $siteNavigation.addClass("toggled");
+                $toggler.attr("aria-expanded", "true");
+                $navBar.show("slow", () => {
+                    $(document.body).addClass("overflow-hidden");
+                });
             }
         }
     }
 
-    onClick((event) => toggleNav(event), document);
+    document.querySelectorAll('.navbar-toggler').forEach((el, i) => {
+        onClick((event) => toggleNav(event), el);
+    })
+
 
     // Get all the link elements with children within the menu.
 

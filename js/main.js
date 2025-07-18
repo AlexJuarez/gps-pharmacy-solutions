@@ -217,7 +217,7 @@ async function main() {
         const wcNoticeCloseButtons = $(".wc-notice-close-button");
         if (!wcNoticeCloseButtons.length) return;
         const isWishList = $(".wc-notice-close-button.wish");
-        wcNoticeCloseButtons.each((i, wcNoticeCloseButton) => {
+        wcNoticeCloseButtons.forEach((i, wcNoticeCloseButton) => {
             if (i === wcNoticeCloseButtons.length - 1 && !isWishList)
                 wcNoticeCloseButton.parent().addClass("d-block");
 
