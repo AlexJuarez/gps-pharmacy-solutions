@@ -47,28 +47,35 @@ async function navigation() {
             return;
         }
 
-        const $toggler = $(event.target);
+        const $closeBtn = $(event.target).is('.close-button') || $(event.target).closest('.close-button');
+        const $toggleBtn = $(event.target).is('.navbar-toggler') || $(event.target).closest('.navbar-toggler');
         const $siteNavigation = $(".main-navigation");
         const $navBar = $(".navbar-collapse.collapse");
 
-        if ($toggler.closest('.close-button').length) {
-            $siteNavigation.removeClass("toggled");
-            $toggler.attr("aria-expanded", "false");
-            $(document.body).removeClass("overflow-hidden");
-            $navBar.hide();
+        if ($closeBtn.length) {
+            toggling = Date.now() + 500;
+            $navBar.hide(300, () => {
+                $siteNavigation.removeClass("toggled");
+                $closeBtn.attr("aria-expanded", "false");
+                $(document.body).removeClass("overflow-hidden");
+            });
         } else {
             const isOpen = $siteNavigation.hasClass("toggled");
             if (isOpen) {
-                $siteNavigation.removeClass("toggled");
-                $(document.body).removeClass("overflow-hidden");
-                $toggler.attr("aria-expanded", "false");
+                toggling = Date.now() + 500;
+                $navBar.hide(300, () => {
+                    $siteNavigation.removeClass("toggled");
+                    $toggleBtn.attr("aria-expanded", "false");
+                    $(document.body).removeClass("overflow-hidden");
+                });
             } else {
                 toggling = Date.now() + 500;
-                $siteNavigation.addClass("toggled");
-                $toggler.attr("aria-expanded", "true");
-                $navBar.show("slow", () => {
+                $navBar.show(300, () => {
+                    $siteNavigation.addClass("toggled");
+                    $toggleBtn.attr("aria-expanded", "true");
+                    $closeBtn.attr("aria-expanded", "true");
                     $(document.body).addClass("overflow-hidden");
-                });
+                }, 400);
             }
         }
     }
